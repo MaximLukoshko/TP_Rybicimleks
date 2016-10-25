@@ -4,8 +4,7 @@
 
 <Workspace>
 	<Local Expanded="Yes">
-		<Model Expanded="Yes" ID="{1676FCD1-17A9-454C-8747-5822ECD13ED6}" Loaded="No" Name="Rybocompleks" Type="{FF4B6538-9856-42CF-B9B9-304ED370CEAA}" URL="Rybocompleks.prj"/>
-		<Model Expanded="Yes" ID="{1676FCD1-17A9-454C-8747-5822ECD13ED6}" Name="Rybocompleks" Type="{FF4B6538-9856-42CF-B9B9-304ED370CEAA}" URL="Rybocompleks.prj"/>
+		<Model Expanded="Yes" ID="{1676FCD1-17A9-454C-8747-5822ECD13ED6}" Name="Rybocompleks" Selected="Yes" Type="{FF4B6538-9856-42CF-B9B9-304ED370CEAA}" URL="Rybocompleks.prj"/>
 	</Local>
 	<BrowserModule Name="Repository"/>
 </Workspace>
