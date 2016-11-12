@@ -1,1 +1,1 @@
-# TP_Rybicimleks
+# Rybocompleks.GUI
