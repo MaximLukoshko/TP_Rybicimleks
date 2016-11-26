@@ -12,10 +12,28 @@ namespace Rybocompleks.GUI
         public string stageName { get; set; }
         public int houres { get; set; }
         public int minutes { get; set; }
-        public int temperature { get; set; }
+        private int temperature=25;
+        public int Temperature { 
+            get
+            {
+                return temperature;
+            }
+            
+            set
+            {
+                if ((value > 0) && (value < 100))
+                {
+                    temperature = value;
+                }
+                else
+                {
+                    temperature = 25;
+                }
+            }
+        }
         public int oxygen { get; set; }
         public int LightPerDay { get; set; }
-        public int pH { get; set; }
+        public double pH { get; set; }
         public GPNode(){}
         public GPNode(string stageName = "имя интсрукции", int houres = 0, int minutes = 0, 
             int temperature = 25, int oxygen = 20, int LightPerDay = 12, int pH = 7)

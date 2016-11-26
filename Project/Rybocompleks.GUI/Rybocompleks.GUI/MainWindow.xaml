@@ -1,0 +1,94 @@
+﻿<Window x:Class="Rybocompleks.GUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Рыбокомплекс" Height="auto" Width="auto">
+
+    <Grid ShowGridLines="False">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" ></RowDefinition>
+            <RowDefinition Height="Auto" ></RowDefinition>
+            <RowDefinition></RowDefinition>           
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Height="20" VerticalAlignment="Top">
+            <MenuItem Header="_Файл" >
+                <MenuItem Header="_Создать" HorizontalAlignment="Stretch" Click="New_BtnClick"/>
+                <MenuItem Header="_Открыть..." HorizontalAlignment="Stretch" Click="Open_BtnClick"/>
+                <MenuItem Header="_Сохранить" HorizontalAlignment="Stretch" Click="Save_BtnClick"/>
+                <MenuItem Header="_Сохранить как..." HorizontalAlignment="Stretch" Click="SaveAs_BtnClick"/>
+                <Separator/>
+                <MenuItem Header="_Выход" HorizontalAlignment="Stretch" Click="Exit_Click"/>
+            </MenuItem>
+            <MenuItem Header="_Правка">                
+                <MenuItem Header="_Вырезать" HorizontalAlignment="Stretch"/>
+                <MenuItem Header="_Копировать" HorizontalAlignment="Stretch"/>
+                <MenuItem Header="_Вставить" HorizontalAlignment="Stretch"/>
+                <MenuItem Header="_Удалить" HorizontalAlignment="Stretch" Click="del_BtnClick"/>
+                <Separator/>
+                <MenuItem Header="_Перейти..." HorizontalAlignment="Stretch"/>
+            </MenuItem>
+            <MenuItem Header="_Управление">
+                <MenuItem Header="_Запусить цикл выращивания" HorizontalAlignment="Stretch" Click="RunGC_BtnClick"/>
+            </MenuItem>
+            <MenuItem Header="_Справка">
+                <MenuItem Header="_Просмотреть справку" HorizontalAlignment="Stretch"/>
+                <Separator/>
+                <MenuItem Header="_О программе" HorizontalAlignment="Stretch"/>
+            </MenuItem>
+        </Menu>
+        <ToolBarTray Grid.Row="1" Grid.Column="0" >            
+            <ToolBar HorizontalAlignment="Stretch">
+                <Button ToolTip="Создать">
+                    <Image Height="16" Width="16" Source="/Content/icons/file/new.ico" />
+                </Button>
+                <Button ToolTip="Открыть">
+                    <Image Height="16" Width="16" Source="/Content/icons/file/open.ico" />
+                </Button>
+                <Button ToolTip="Сохранить">
+                    <Image Height="16" Width="16" Source="/Content/icons/file/save.ico" />
+                </Button>
+                <Separator />
+                <Button ToolTip="Вырезать">
+                    <Image Height="16" Width="16" Source="/Content/icons/edit/cut.ico" />
+                </Button>
+                <Button ToolTip="Копировать">
+                    <Image Height="16" Width="16" Source="/Content/icons/edit/copy.ico" />
+                </Button>
+                <Button ToolTip="Вствить">
+                    <Image Height="16" Width="16" Source="/Content/icons/edit/paste.ico" />
+                </Button>
+            </ToolBar>
+        </ToolBarTray>
+        <DataGrid Name="gpDataGrid" Grid.Row="2" Grid.Column="0" AutoGenerateColumns="False" Background="White"
+                  CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False" CanUserSortColumns="False">            
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    
+                    <MenuItem Header="_Вырезать" HorizontalAlignment="Stretch"/>
+                    <MenuItem Header="_Копировать" HorizontalAlignment="Stretch"/>
+                    <MenuItem Header="_Вставить" HorizontalAlignment="Stretch"/>
+                    <MenuItem Header="_Удалить" HorizontalAlignment="Stretch" Click="del_BtnClick"/>                    
+                </ContextMenu>                
+            </DataGrid.ContextMenu>
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Наименование стадии"  Width="280" Binding="{Binding Path=stageName}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Часов" Width="90" Binding="{Binding Path=houres}"/>
+                <DataGridTextColumn Header="Минут" Width="90" Binding="{Binding Path=minutes}"/>
+                <DataGridTextColumn Header="Температура" Width="90"  Binding="{Binding Path=Temperature}"/>
+                <DataGridTextColumn Header="Кислород" Width="90" Binding="{Binding Path=oxygen}"/>
+                <DataGridTextColumn Header="Освещение" Width="90" Binding="{Binding Path=LightPerDay}"/>
+                <DataGridTextColumn Header="pH" Width="90" Binding="{Binding Path=pH}"/>
+            </DataGrid.Columns>
+
+        </DataGrid>      
+    </Grid>
+</Window>
