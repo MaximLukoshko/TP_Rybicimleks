@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Rybocompleks.Data
 {
-    interface ITemperatureMeasurment : IMeasurment
+    public interface ITemperatureMeasurment : IMeasurment
     {
         Int16 GetTemperature();
     }

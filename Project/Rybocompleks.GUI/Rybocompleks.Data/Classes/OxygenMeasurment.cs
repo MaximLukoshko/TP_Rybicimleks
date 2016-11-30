@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Rybocompleks.Data.Classes
 {
-    sealed class OxygenMeasurrment : IOxygenMeasurrment, IPhysicalObjectState
+    public sealed class OxygenMeasurment : IOxygenMeasurrment, IPhysicalObjectState
     {
-        OxygenMeasurrment(Int16 oxygen)
+        public OxygenMeasurment(Int16 oxygen)
         {
             Oxygen = oxygen;
         }
@@ -25,7 +25,7 @@ namespace Rybocompleks.Data.Classes
 
         public int Compare(IMeasurment meas)
         {
-            return Oxygen.CompareTo(((OxygenMeasurrment)meas).Oxygen);
+            return Oxygen.CompareTo(((OxygenMeasurment)meas).Oxygen);
         }
 
         public String GetStringValue()

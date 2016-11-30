@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Rybocompleks.Data.Classes
 {
-    sealed class LightMeasurment :ILightMeasurment,IPhysicalObjectState
+    public sealed class LightMeasurment :ILightMeasurment,IPhysicalObjectState
     {
-        LightMeasurment( Boolean turnedOn)
+        public LightMeasurment( Boolean turnedOn)
         {
             TurnedOn = turnedOn;
         }

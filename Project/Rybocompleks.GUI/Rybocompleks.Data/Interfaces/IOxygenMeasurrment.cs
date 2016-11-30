@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Rybocompleks.Data
 {
-    interface IOxygenMeasurrment:IMeasurment
+    public interface IOxygenMeasurrment:IMeasurment
     {
         Int16 GetOxygen();
     }

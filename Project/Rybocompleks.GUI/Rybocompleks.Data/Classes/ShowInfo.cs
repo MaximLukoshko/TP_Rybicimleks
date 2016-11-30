@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Rybocompleks.Data.Classes
 {
-    sealed class ShowInfo
+    public sealed class ShowInfo
     {
         public IPhysicalObjectState State = null;
 

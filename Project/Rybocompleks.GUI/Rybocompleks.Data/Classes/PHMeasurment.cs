@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Rybocompleks.Data.Classes
 {
-    sealed class PHMeasurment : IPHMeasurment,IPhysicalObjectState
+    public sealed class PHMeasurment : IPHMeasurment,IPhysicalObjectState
     {
-        PHMeasurment(Double ph)
+        public PHMeasurment(Double ph)
         {
             PH = ph;
         }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Rybocompleks.Data
 {
-    interface ILightMeasurment:IMeasurment
+    public interface ILightMeasurment:IMeasurment
     {
         // TRUE - turned ON
         // FALSE - turned OFF

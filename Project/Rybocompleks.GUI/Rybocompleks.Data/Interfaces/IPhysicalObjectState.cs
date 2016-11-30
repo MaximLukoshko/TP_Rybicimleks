@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Rybocompleks.Data
 {
-    interface IPhysicalObjectState
+    public interface IPhysicalObjectState
     {
         String GetStringValue();
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Rybocompleks.Data
 {
-    interface IPHMeasurment:IMeasurment
+    public interface IPHMeasurment:IMeasurment
     {
         Double GetPH();
     }

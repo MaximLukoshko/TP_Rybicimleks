@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Rybocompleks.Data
+namespace Rybocompleks.Data.Classes
 {
-    sealed class TemperatureMeasurment : ITemperatureMeasurment, IPhysicalObjectState
+    public sealed class TemperatureMeasurment : ITemperatureMeasurment, IPhysicalObjectState
     {
-        TemperatureMeasurment(Int16 temperature)
+        public TemperatureMeasurment(Int16 temperature)
         {
             Temperature = temperature;
         }
