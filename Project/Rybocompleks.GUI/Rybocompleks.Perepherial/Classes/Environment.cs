@@ -27,21 +27,13 @@ namespace Perepherial.Classes
         public static ITemperatureMeasurment Temperature 
         { 
             get
-            {
-                //Если температура не задана, присваиваем ей случайное значение от 0 до 100
-//                 if (null == temperature)
-//                     temperature = new TemperatureMeasurment((Int32)((new Random()).Next(0, 100)));
-                
+            {                
                 return temperature;
             } 
 
             set
             {
-                //Если температура не задана, присваиваем ей случайное значение от 0 до 100
-//                 if (null == temperature)
-//                     temperature = new TemperatureMeasurment((Int32)((new Random()).Next(0, 100)));
-                
-                temperature = new TemperatureMeasurment( (Int32)((temperature.GetTemperature() + ((ITemperatureMeasurment)value).GetTemperature())/2) );
+                temperature = new TemperatureMeasurment((temperature.GetTemperature() + value.GetTemperature()) / 2);
             } 
         }
 
@@ -49,20 +41,12 @@ namespace Perepherial.Classes
         {
             get
             {
-                //Если кислород не задан, присваиваем ему случайное значение от 0 до 1000
-//                 if (null == oxygen)
-//                     oxygen = new OxygenMeasurment((Int32)((new Random()).Next(0, 1000)));
-
                 return oxygen;
             }
 
             set
             {
-                //Если кислород не задан, присваиваем ему случайное значение от 0 до 1000
-//                 if (null == oxygen)
-//                     oxygen = new OxygenMeasurment((Int32)((new Random()).Next(0, 1000)));
-
-                oxygen = new OxygenMeasurment((Int32)((oxygen.GetOxygen() + ((IOxygenMeasurrment)value).GetOxygen()) / 2));
+                oxygen = new OxygenMeasurment((oxygen.GetOxygen() + value.GetOxygen()) / 2);
             }
         }
 
@@ -70,20 +54,24 @@ namespace Perepherial.Classes
         {
             get
             {
-                //Если кислотность не задана, присваиваем ей случайное значение от 0 до 7,5
-//                 if (null == ph)
-//                     ph = new PHMeasurment((Double)((new Random()).Next(0, 1000)/156));
-
                 return ph;
             }
 
             set
             {
-                //Если кислотность не задана, присваиваем ей случайное значение от 0 до 7,5
-//                 if (null == ph)
-//                     ph = new PHMeasurment((Double)((new Random()).Next(0, 1000) / 156));
+                ph = new PHMeasurment((Double)((ph.GetPH() + value.GetPH()) / 2));
+            }
+        }
+        public static ILightMeasurment Light
+        {
+            get
+            {
+                return light;
+            }
 
-                ph = new PHMeasurment((Double)((ph.GetPH() + ((IPHMeasurment)value).GetPH()) / 2));
+            set
+            {
+                light = new LightMeasurment(value.GetLightState());
             }
         }
     }
