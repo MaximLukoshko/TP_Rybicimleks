@@ -8,7 +8,7 @@ using Rybocompleks.Data;
 
 namespace Perepherial.Classes
 {
-    internal static class Environment
+    internal static class Nature
     {
         //Data
         private static TemperatureMeasurment temperature = null;
@@ -16,7 +16,7 @@ namespace Perepherial.Classes
         private static PHMeasurment ph = null;
         private static LightMeasurment light = null;
 
-        static Environment()
+        static Nature()
         {
             temperature = new TemperatureMeasurment((new Random()).Next(0, 100));
             ph = new PHMeasurment(((new Random()).NextDouble()*10));

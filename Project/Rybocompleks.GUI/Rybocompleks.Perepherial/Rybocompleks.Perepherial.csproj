@@ -39,11 +39,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Environment.cs" />
+    <Compile Include="Devices\Device.cs" />
+    <Compile Include="Devices\IDevice.cs" />
+    <Compile Include="Environment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Interfaces\" />
+    <Folder Include="ActiveSensors\" />
+    <Folder Include="Sensors\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Rybocompleks.Data\Rybocompleks.Data.csproj">
