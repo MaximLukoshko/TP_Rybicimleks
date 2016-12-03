@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\LightMeasurment.cs" />
+    <Compile Include="Classes\Location.cs" />
     <Compile Include="Classes\OxygenMeasurment.cs" />
     <Compile Include="Classes\PHMeasurment.cs" />
     <Compile Include="Classes\ShowInfo.cs" />
@@ -48,6 +49,7 @@
     <Compile Include="Interfaces\IMeasurment.cs" />
     <Compile Include="Interfaces\IOxygenMeasurrment.cs" />
     <Compile Include="Interfaces\IPHMeasurment.cs" />
+    <Compile Include="Interfaces\IPhysicalObject.cs" />
     <Compile Include="Interfaces\IPhysicalObjectState.cs" />
     <Compile Include="Interfaces\ITemperatureMeasurment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
