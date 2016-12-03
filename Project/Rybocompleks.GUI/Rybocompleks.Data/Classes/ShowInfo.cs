@@ -11,6 +11,16 @@ namespace Rybocompleks.Data.Classes
     {
         public IPhysicalObjectState State = null;
 
-        //public IPhysicalObject Item = null;
+        public IPhysicalObject Item = null;
+
+        public IPhysicalObjectState GetState()
+        {
+            return State;
+        }
+
+        public IPhysicalObject GetItem()
+        {
+            return Item;
+        }
     }
 }

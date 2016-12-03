@@ -8,5 +8,8 @@ namespace Rybocompleks.Data.Interfaces
 {
     public interface IShowInfo
     {
+        IPhysicalObjectState GetState();
+
+        IPhysicalObject GetItem();
     }
 }

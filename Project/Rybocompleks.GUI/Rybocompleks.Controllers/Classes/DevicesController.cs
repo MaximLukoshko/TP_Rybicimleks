@@ -1,5 +1,7 @@
-﻿using Rybocompleks.Controllers.Interfaces;
+﻿using Perepherial.Devices;
+using Rybocompleks.Controllers.Interfaces;
 using Rybocompleks.Data;
+using Rybocompleks.Data.Classes;
 using Rybocompleks.Data.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -11,24 +13,48 @@ namespace Rybocompleks.Controllers.Classes
 {
     class DevicesController : IDevicesController
     {
+        protected Controller<IDevice> physicalObjectsController;
         public DevicesController()
         {
-            throw new NotImplementedException();
+            physicalObjectsController = new Controller<IDevice>();
         }
 
         public IDictionary<Int32, IMeasurment> GetDevicesStates()
         {
-            throw new NotImplementedException();
+            IDictionary<Int32, IMeasurment> ret = new Dictionary<Int32, IMeasurment>();
+            IDictionary<Int32, IDevice> devices = physicalObjectsController.GetPhysicalObjects();
+
+            foreach(IDevice dev in devices.Values)
+                ret.Add(dev.GetPropertyID(), dev.GetState());
+
+            return ret;
         }
 
         public void AffectEnvironment(IDictionary<Int32, IMeasurment> reauiredStates)
         {
-            throw new NotImplementedException();
+            IDictionary<Int32, IDevice> devices = physicalObjectsController.GetPhysicalObjects();
+
+            foreach (IMeasurment meas in reauiredStates.Values)
+            {
+                IDevice dev = devices[meas.GetPropertyID()];
+                dev.SetState(meas);
+            }
         }
 
         public ICollection<IShowInfo> GetShowInfo()
         {
-            throw new NotImplementedException();
+            List<IShowInfo> ret = new List<IShowInfo>();
+            IDictionary<Int32, IDevice> devices = physicalObjectsController.GetPhysicalObjects();
+
+            foreach(IDevice it in devices.Values)
+            {
+                ShowInfo shInf = new ShowInfo();
+                shInf.State=it.GetState();
+                shInf.Item = it;
+                ret.Add(shInf);
+            }
+
+            return ret;
         }
     }
 }

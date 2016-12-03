@@ -50,6 +50,10 @@
       <Project>{77c8bdc2-4483-47ae-9bcc-fd0b13334bec}</Project>
       <Name>Rybocompleks.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Rybocompleks.Perepherial\Rybocompleks.Perepherial.csproj">
+      <Project>{c7298fba-cb81-40f8-b5cd-97333cd4794e}</Project>
+      <Name>Rybocompleks.Perepherial</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
