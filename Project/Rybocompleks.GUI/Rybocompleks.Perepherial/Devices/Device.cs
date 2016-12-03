@@ -12,7 +12,7 @@ namespace Perepherial.Devices
     abstract class Device : IDevice
     {
         protected IMeasurment State = null;
-        private Location location;
+        protected Location location;
 
         public Device(Location loc)
         {
