@@ -8,17 +8,17 @@ namespace Rybocompleks.Data.Classes
 {
     public sealed class OxygenMeasurment : IOxygenMeasurrment, IPhysicalObjectState
     {
-        public OxygenMeasurment(Int16 oxygen)
+        public OxygenMeasurment(Int32 oxygen)
         {
             Oxygen = oxygen;
         }
 
-        public Int16 GetOxygen()
+        public Int32 GetOxygen()
         {
             return Oxygen;
         }
 
-        public Int16 GetPropertyID()
+        public Int32 GetPropertyID()
         {
             throw new NotImplementedException();
         }
@@ -34,6 +34,6 @@ namespace Rybocompleks.Data.Classes
         }
         
         // Data
-        private Int16 Oxygen;
+        private Int32 Oxygen;
     }
 }

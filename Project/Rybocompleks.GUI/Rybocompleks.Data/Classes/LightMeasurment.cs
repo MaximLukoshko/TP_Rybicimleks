@@ -19,7 +19,7 @@ namespace Rybocompleks.Data.Classes
             return TurnedOn;
         }
 
-        public Int16 GetPropertyID()
+        public Int32 GetPropertyID()
         {
             throw new NotImplementedException();
         }

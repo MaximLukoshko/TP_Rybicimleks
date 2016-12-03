@@ -8,7 +8,7 @@ namespace Rybocompleks.Data
 {
     public interface IMeasurment
     {
-        Int16 GetPropertyID();
+        Int32 GetPropertyID();
         int Compare(IMeasurment meas);
     }
 }

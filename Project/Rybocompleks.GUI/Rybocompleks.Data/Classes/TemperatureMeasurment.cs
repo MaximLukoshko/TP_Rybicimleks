@@ -8,18 +8,18 @@ namespace Rybocompleks.Data.Classes
 {
     public sealed class TemperatureMeasurment : ITemperatureMeasurment, IPhysicalObjectState
     {
-        public TemperatureMeasurment(Int16 temperature)
+        public TemperatureMeasurment(Int32 temperature)
         {
             Temperature = temperature;
         }
 
 
-        public Int16 GetTemperature()
+        public Int32 GetTemperature()
         {
             return Temperature;
         }
 
-        public Int16 GetPropertyID()
+        public Int32 GetPropertyID()
         {
             throw new NotImplementedException();
         }
@@ -35,6 +35,6 @@ namespace Rybocompleks.Data.Classes
         }
 
         //Data
-        private Int16 Temperature;
+        private Int32 Temperature;
     }
 }
