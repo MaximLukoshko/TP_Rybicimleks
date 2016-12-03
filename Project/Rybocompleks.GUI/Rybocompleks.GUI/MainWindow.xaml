@@ -21,72 +21,72 @@
                 <Separator/>
                 <MenuItem Header="_Выход" HorizontalAlignment="Stretch" Click="Exit_Click"/>
             </MenuItem>
-            <MenuItem Header="_Правка">                
-                <MenuItem Header="_Вырезать" HorizontalAlignment="Stretch"/>
-                <MenuItem Header="_Копировать" HorizontalAlignment="Stretch"/>
-                <MenuItem Header="_Вставить" HorizontalAlignment="Stretch"/>
-                <MenuItem Header="_Удалить" HorizontalAlignment="Stretch" Click="del_BtnClick"/>
+            <MenuItem Header="_Правка" Name="MenuEdit" >                
+                <MenuItem Header="_Вырезать" HorizontalAlignment="Stretch" Click="EditCutClick"/>
+                <MenuItem Header="_Копировать" HorizontalAlignment="Stretch" Click="EditCopyClick"/>
+                <MenuItem Name="MenuEditInsert" Header="_Вставить" HorizontalAlignment="Stretch" Click="EditInsertClick"/>
+                <MenuItem Header="_Удалить" HorizontalAlignment="Stretch" Click="EditDeleteClick"/>
                 <Separator/>
-                <MenuItem Header="_Перейти..." HorizontalAlignment="Stretch"/>
+                <MenuItem Header="_Перейти..." HorizontalAlignment="Stretch" Click="SelectLineClick"/>
             </MenuItem>
             <MenuItem Header="_Управление">
                 <MenuItem Header="_Запусить цикл выращивания" HorizontalAlignment="Stretch" Click="RunGC_BtnClick"/>
             </MenuItem>
             <MenuItem Header="_Справка">
-                <MenuItem Header="_Просмотреть справку" HorizontalAlignment="Stretch"/>
-                <Separator/>
-                <MenuItem Header="_О программе" HorizontalAlignment="Stretch"/>
+               <MenuItem Header="_Просмотр справку" HorizontalAlignment="Stretch"/>
+               <MenuItem Header="_О программе" HorizontalAlignment="Stretch"/>
             </MenuItem>
         </Menu>
-        <ToolBarTray Grid.Row="1" Grid.Column="0" >            
-            <ToolBar HorizontalAlignment="Stretch">
-                <Button ToolTip="Создать">
+        <ToolBarTray Name="toolButTray" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch">
+            <ToolBar HorizontalAlignment="Stretch" Width="{Binding ElementName=toolButTray, Path=ActualWidth}">
+                <Button ToolTip="Создать" Click="New_BtnClick">
                     <Image Height="16" Width="16" Source="/Content/icons/file/new.ico" />
                 </Button>
-                <Button ToolTip="Открыть">
+                <Button ToolTip="Открыть" Click="Open_BtnClick">
                     <Image Height="16" Width="16" Source="/Content/icons/file/open.ico" />
                 </Button>
-                <Button ToolTip="Сохранить">
+                <Button ToolTip="Сохранить" Click="Save_BtnClick">
                     <Image Height="16" Width="16" Source="/Content/icons/file/save.ico" />
                 </Button>
                 <Separator />
-                <Button ToolTip="Вырезать">
+                <Button ToolTip="Вырезать" Click="EditCutClick">
                     <Image Height="16" Width="16" Source="/Content/icons/edit/cut.ico" />
                 </Button>
-                <Button ToolTip="Копировать">
+                <Button ToolTip="Копировать" Click="EditCopyClick">
                     <Image Height="16" Width="16" Source="/Content/icons/edit/copy.ico" />
                 </Button>
-                <Button ToolTip="Вствить">
+                <Button Name="InsertBtn"  ToolTip="Вствить" Click="EditInsertClick">
                     <Image Height="16" Width="16" Source="/Content/icons/edit/paste.ico" />
                 </Button>
+                <Separator/>
+                <Button ToolTip="Запустить цикл выращивания" Click="RunGC_BtnClick">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Height="16" Width="16" Source="/Content/icons/run.ico" />
+                        <TextBlock Margin="5,0,0,0">Запуск</TextBlock>
+                    </StackPanel>
+                </Button>
+
             </ToolBar>
         </ToolBarTray>
         <DataGrid Name="gpDataGrid" Grid.Row="2" Grid.Column="0" AutoGenerateColumns="False" Background="White"
                   CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False" CanUserSortColumns="False">            
             <DataGrid.ContextMenu>
-                <ContextMenu>
-                    
-                    <MenuItem Header="_Вырезать" HorizontalAlignment="Stretch"/>
-                    <MenuItem Header="_Копировать" HorizontalAlignment="Stretch"/>
-                    <MenuItem Header="_Вставить" HorizontalAlignment="Stretch"/>
-                    <MenuItem Header="_Удалить" HorizontalAlignment="Stretch" Click="del_BtnClick"/>                    
+                <ContextMenu>                    
+                    <MenuItem Header="_Вырезать" HorizontalAlignment="Stretch" Click="EditCutClick"/>
+                    <MenuItem Header="_Копировать" HorizontalAlignment="Stretch" Click="EditCopyClick"/>
+                    <MenuItem Name="ContextMenuInsert" Header="_Вставить" HorizontalAlignment="Stretch" Click="EditInsertClick"/>
+                    <MenuItem Header="_Удалить" HorizontalAlignment="Stretch" Click="EditDeleteClick"/>                    
                 </ContextMenu>                
             </DataGrid.ContextMenu>
 
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Наименование стадии"  Width="280" Binding="{Binding Path=stageName}">
-                    <DataGridTextColumn.ElementStyle>
-                        <Style TargetType="TextBlock">
-                            <Setter Property="TextWrapping" Value="Wrap"></Setter>
-                        </Style>
-                    </DataGridTextColumn.ElementStyle>
-                </DataGridTextColumn>
-                <DataGridTextColumn Header="Часов" Width="90" Binding="{Binding Path=houres}"/>
-                <DataGridTextColumn Header="Минут" Width="90" Binding="{Binding Path=minutes}"/>
-                <DataGridTextColumn Header="Температура" Width="90"  Binding="{Binding Path=Temperature}"/>
-                <DataGridTextColumn Header="Кислород" Width="90" Binding="{Binding Path=oxygen}"/>
-                <DataGridTextColumn Header="Освещение" Width="90" Binding="{Binding Path=LightPerDay}"/>
-                <DataGridTextColumn Header="pH" Width="90" Binding="{Binding Path=pH}"/>
+                <DataGridTextColumn Header="Наименование стадии"    Width="280" Binding="{Binding Path=StageName, UpdateSourceTrigger=LostFocus}"/>
+                <DataGridTextColumn Header="Часов" Width="90" Binding="{Binding Path=Houres, UpdateSourceTrigger=LostFocus}"/>
+                <DataGridTextColumn Header="Минут" Width="90" Binding="{Binding Path=Minutes, UpdateSourceTrigger=LostFocus}"/>
+                <DataGridTextColumn Header="Температура" Width="90"  Binding="{Binding Path=Temperature, UpdateSourceTrigger=LostFocus}"/>
+                <DataGridTextColumn Header="Кислород" Width="90" Binding="{Binding Path=Oxygen, UpdateSourceTrigger=LostFocus}"/>
+                <DataGridTextColumn Header="Освещение" Width="90" Binding="{Binding Path=LightPerDay, UpdateSourceTrigger=LostFocus}"/>
+                <DataGridTextColumn Header="pH" Width="90" Binding="{Binding Path=PH, UpdateSourceTrigger=LostFocus}"/>
             </DataGrid.Columns>
 
         </DataGrid>      

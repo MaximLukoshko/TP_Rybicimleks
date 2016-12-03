@@ -58,6 +58,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="GPNode.cs" />
+    <Compile Include="SelectStringWindow.xaml.cs">
+      <DependentUpon>SelectStringWindow.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GrowingCycleWindow.xaml.cs">
@@ -101,8 +104,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="SelectStringWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Content\icons\run.ico" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Content\icons\edit\copy.ico" />
     <Resource Include="Content\icons\edit\cut.ico" />
