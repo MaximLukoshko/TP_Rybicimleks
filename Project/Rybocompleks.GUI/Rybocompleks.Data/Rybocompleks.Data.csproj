@@ -51,6 +51,7 @@
     <Compile Include="Interfaces\IPHMeasurment.cs" />
     <Compile Include="Interfaces\IPhysicalObject.cs" />
     <Compile Include="Interfaces\IPhysicalObjectState.cs" />
+    <Compile Include="Interfaces\IShowInfo.cs" />
     <Compile Include="Interfaces\ITemperatureMeasurment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
