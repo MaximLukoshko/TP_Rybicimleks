@@ -41,8 +41,10 @@
   <ItemGroup>
     <Compile Include="Classes\Controller.cs" />
     <Compile Include="Classes\DevicesController.cs" />
+    <Compile Include="Classes\SensorsController.cs" />
     <Compile Include="Interfaces\IController.cs" />
     <Compile Include="Interfaces\IDevicesController.cs" />
+    <Compile Include="Interfaces\ISensorsController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
