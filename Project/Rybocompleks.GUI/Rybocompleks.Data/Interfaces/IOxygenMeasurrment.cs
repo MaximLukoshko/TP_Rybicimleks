@@ -8,6 +8,6 @@ namespace Rybocompleks.Data
 {
     public interface IOxygenMeasurrment:IMeasurment
     {
-        Int16 GetOxygen();
+        Int32 GetOxygen();
     }
 }

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C7298FBA-CB81-40F8-B5CD-97333CD4794E}</ProjectGuid>
+    <ProjectGuid>{FF395F8C-5263-4D14-AE5C-534B30828361}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Perepherial</RootNamespace>
-    <AssemblyName>Perepherial</AssemblyName>
+    <RootNamespace>Rybocompleks.Dispatcher</RootNamespace>
+    <AssemblyName>Rybocompleks.Dispatcher</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,29 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Devices\Device.cs" />
-    <Compile Include="Devices\IDevice.cs" />
-    <Compile Include="Devices\LightDevice.cs" />
-    <Compile Include="Devices\OxygenDevice.cs" />
-    <Compile Include="Devices\PhDevice.cs" />
-    <Compile Include="Devices\TemperatureDevice.cs" />
-    <Compile Include="Environment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sensors\ISensor.cs" />
-    <Compile Include="Sensors\LightSensor.cs" />
-    <Compile Include="Sensors\OxygenSensor.cs" />
-    <Compile Include="Sensors\PhSensor.cs" />
-    <Compile Include="Sensors\Sensor.cs" />
-    <Compile Include="Sensors\TemperatureSensor.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ActiveSensors\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Rybocompleks.Data\Rybocompleks.Data.csproj">
-      <Project>{77c8bdc2-4483-47ae-9bcc-fd0b13334bec}</Project>
-      <Name>Rybocompleks.Data</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

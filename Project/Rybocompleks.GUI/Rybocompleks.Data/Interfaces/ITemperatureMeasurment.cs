@@ -8,6 +8,6 @@ namespace Rybocompleks.Data
 {
     public interface ITemperatureMeasurment : IMeasurment
     {
-        Int16 GetTemperature();
+        Int32 GetTemperature();
     }
 }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Rybocompleks.Data
 {
-    public interface IMeasurment
+    public interface IMeasurment : IPhysicalObjectState
     {
-        Int16 GetPropertyID();
+        Int32 GetPropertyID();
         int Compare(IMeasurment meas);
     }
 }
