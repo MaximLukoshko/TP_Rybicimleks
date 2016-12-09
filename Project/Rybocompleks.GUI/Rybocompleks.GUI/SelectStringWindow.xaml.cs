@@ -44,7 +44,7 @@ namespace Rybocompleks.GUI
                 }
                 catch (FormatException e)
                 {
-                    MessageBox.Show("Неверный формат", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Неверный формат", "Ошибка " + e.ToString(), MessageBoxButton.OK, MessageBoxImage.Error);
                     result = 0;
                 }
                 return result; 

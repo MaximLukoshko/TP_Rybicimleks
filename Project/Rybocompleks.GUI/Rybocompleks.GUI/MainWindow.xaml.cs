@@ -1,5 +1,4 @@
-﻿using Rybocompleks.GrowingPlan.Interfaces;
-using Rybocompleks.GrowingPlan.Classes;
+﻿using Rybocompleks.GrowingPlan;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

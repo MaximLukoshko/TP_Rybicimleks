@@ -1,13 +1,12 @@
 ﻿using Rybocompleks.Data;
-using Rybocompleks.Data;
-using Rybocompleks.GrowingPlan.Interfaces;
+using Rybocompleks.GrowingPlan;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Rybocompleks.GrowingPlan.Classes
+namespace Rybocompleks.GrowingPlan
 {    
     [Serializable]
     public class GrowingPlanList : IGrowingPlan
