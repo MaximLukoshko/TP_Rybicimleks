@@ -19,9 +19,9 @@ namespace Rybocompleks.Data.Classes
             return Temperature;
         }
 
-        public Int32 GetPropertyID()
+        public MeasurmentTypes.Type GetPropertyID()
         {
-            throw new NotImplementedException();
+            return MeasurmentTypes.Type.Temperature;
         }
 
         public int Compare(IMeasurment meas)

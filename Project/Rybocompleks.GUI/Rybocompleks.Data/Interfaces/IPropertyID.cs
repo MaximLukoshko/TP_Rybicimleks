@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace Rybocompleks.Data.Interfaces
 {
-    public interface IPhysicalObject : IPropertyID
+    public interface IPropertyID
     {
-        Location GetLocation();
-        void SetLocation(Location location);
-        String GetName();
-        Int32 GetIcon();
+        MeasurmentTypes.Type GetPropertyID();
     }
 }

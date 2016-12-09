@@ -39,7 +39,7 @@ namespace Perepherial.Devices
             location = loc;
         }
 
-        public abstract int GetPropertyID();
+        public abstract MeasurmentTypes.Type GetPropertyID();
         public abstract string GetName();
         public abstract int GetIcon();
      

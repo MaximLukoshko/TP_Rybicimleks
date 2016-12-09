@@ -39,6 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Instruction.cs" />
+    <Compile Include="Classes\LightInstruction.cs" />
     <Compile Include="Classes\LightMeasurment.cs" />
     <Compile Include="Classes\Location.cs" />
     <Compile Include="Classes\MeasurmentTypes.cs" />
@@ -46,12 +48,14 @@
     <Compile Include="Classes\PHMeasurment.cs" />
     <Compile Include="Classes\ShowInfo.cs" />
     <Compile Include="Classes\TemperatureMeasurment.cs" />
+    <Compile Include="Interfaces\IInstruction.cs" />
     <Compile Include="Interfaces\ILightMeasurment.cs" />
     <Compile Include="Interfaces\IMeasurment.cs" />
     <Compile Include="Interfaces\IOxygenMeasurrment.cs" />
     <Compile Include="Interfaces\IPHMeasurment.cs" />
     <Compile Include="Interfaces\IPhysicalObject.cs" />
     <Compile Include="Interfaces\IPhysicalObjectState.cs" />
+    <Compile Include="Interfaces\IPropertyID.cs" />
     <Compile Include="Interfaces\IShowInfo.cs" />
     <Compile Include="Interfaces\ITemperatureMeasurment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

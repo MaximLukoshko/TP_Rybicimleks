@@ -1,4 +1,5 @@
 ﻿using Rybocompleks.Data;
+using Rybocompleks.Data.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace Rybocompleks.Controllers.Interfaces
 {
     interface ISensorsController : IController
     {
-        IDictionary<Int32, IMeasurment> GetEnvironmentStates();
+        IDictionary<MeasurmentTypes.Type, IMeasurment> GetEnvironmentStates();
     }
 }

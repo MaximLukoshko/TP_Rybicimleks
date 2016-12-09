@@ -19,9 +19,9 @@ namespace Rybocompleks.Data.Classes
             return TurnedOn;
         }
 
-        public Int32 GetPropertyID()
+        public MeasurmentTypes.Type GetPropertyID()
         {
-            throw new NotImplementedException();
+            return MeasurmentTypes.Type.LightPerDay;
         }
 
         public int Compare(IMeasurment meas)

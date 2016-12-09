@@ -19,9 +19,9 @@ namespace Rybocompleks.Data.Classes
             return PH;
         }
 
-        public Int32 GetPropertyID()
+        public MeasurmentTypes.Type GetPropertyID()
         {
-            throw new NotImplementedException();
+            return MeasurmentTypes.Type.PH;
         }
 
         public int Compare(IMeasurment meas)

@@ -19,10 +19,10 @@ namespace Rybocompleks.Controllers.Classes
             physicalObjectsController = new Controller<IDevice>();
         }
 
-        public IDictionary<Int32, IMeasurment> GetDevicesStates()
+        public IDictionary<MeasurmentTypes.Type, IMeasurment> GetDevicesStates()
         {
-            IDictionary<Int32, IMeasurment> ret = new Dictionary<Int32, IMeasurment>();
-            IDictionary<Int32, IDevice> devices = physicalObjectsController.GetPhysicalObjects();
+            IDictionary<MeasurmentTypes.Type, IMeasurment> ret = new Dictionary<MeasurmentTypes.Type, IMeasurment>();
+            IDictionary<MeasurmentTypes.Type, IDevice> devices = physicalObjectsController.GetPhysicalObjects();
 
             foreach(IDevice dev in devices.Values)
                 ret.Add(dev.GetPropertyID(), dev.GetState());
@@ -30,9 +30,9 @@ namespace Rybocompleks.Controllers.Classes
             return ret;
         }
 
-        public void AffectEnvironment(IDictionary<Int32, IMeasurment> reauiredStates)
+        public void AffectEnvironment(IDictionary<MeasurmentTypes.Type, IMeasurment> reauiredStates)
         {
-            IDictionary<Int32, IDevice> devices = physicalObjectsController.GetPhysicalObjects();
+            IDictionary<MeasurmentTypes.Type, IDevice> devices = physicalObjectsController.GetPhysicalObjects();
 
             foreach (IMeasurment meas in reauiredStates.Values)
             {
@@ -44,7 +44,7 @@ namespace Rybocompleks.Controllers.Classes
         public ICollection<IShowInfo> GetShowInfo()
         {
             List<IShowInfo> ret = new List<IShowInfo>();
-            IDictionary<Int32, IDevice> devices = physicalObjectsController.GetPhysicalObjects();
+            IDictionary<MeasurmentTypes.Type, IDevice> devices = physicalObjectsController.GetPhysicalObjects();
 
             foreach(IDevice it in devices.Values)
             {

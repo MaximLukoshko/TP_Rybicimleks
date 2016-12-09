@@ -1,4 +1,5 @@
-﻿using Rybocompleks.Data.Interfaces;
+﻿using Rybocompleks.Data.Classes;
+using Rybocompleks.Data.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +11,11 @@ namespace Rybocompleks.Controllers.Classes
     
     class Controller<IPhysObjType> where IPhysObjType : IPhysicalObject
     {
-        protected IDictionary<Int32, IPhysObjType> devices;
+        protected IDictionary<MeasurmentTypes.Type, IPhysObjType> devices;
 
         public Controller()
         {
-            devices = new Dictionary<Int32, IPhysObjType>();
+            devices = new Dictionary<MeasurmentTypes.Type, IPhysObjType>();
         }
 
         public ICollection<IShowInfo> GetShowInfo()
@@ -27,7 +28,7 @@ namespace Rybocompleks.Controllers.Classes
             devices.Add(obj.GetPropertyID(), obj);
         }
 
-        public IDictionary<Int32, IPhysObjType> GetPhysicalObjects()
+        public IDictionary<MeasurmentTypes.Type, IPhysObjType> GetPhysicalObjects()
         {
             return devices;
         }

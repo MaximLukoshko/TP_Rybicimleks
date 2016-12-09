@@ -36,10 +36,7 @@ namespace Perepherial.Sensors
            location = loc;
         }
 
-        public Int32 GetPropertyID()
-        {
-            throw new NotImplementedException();
-        }
+        public abstract MeasurmentTypes.Type GetPropertyID();
 
         public abstract String GetName();
 

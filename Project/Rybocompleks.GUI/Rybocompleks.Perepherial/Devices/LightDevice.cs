@@ -20,9 +20,9 @@ namespace Perepherial.Devices
             Nature.Light = (LightMeasurment)State;
         }
 
-        public override int GetPropertyID()
+        public override MeasurmentTypes.Type GetPropertyID()
         {
-            throw new NotImplementedException();
+            return MeasurmentTypes.Type.LightPerDay;
         }
 
         public override string GetName()

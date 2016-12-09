@@ -19,10 +19,10 @@ namespace Rybocompleks.Controllers.Classes
             physicalObjectsController = new Controller<ISensor>();
         }
 
-        public IDictionary<Int32, IMeasurment> GetEnvironmentStates()
+        public IDictionary<MeasurmentTypes.Type, IMeasurment> GetEnvironmentStates()
         {
-            IDictionary<Int32, IMeasurment> ret = new Dictionary<Int32, IMeasurment>();
-            IDictionary<Int32, ISensor> sensors = physicalObjectsController.GetPhysicalObjects();
+            IDictionary<MeasurmentTypes.Type, IMeasurment> ret = new Dictionary<MeasurmentTypes.Type, IMeasurment>();
+            IDictionary<MeasurmentTypes.Type, ISensor> sensors = physicalObjectsController.GetPhysicalObjects();
 
             foreach (ISensor sens in sensors.Values)
                 ret.Add(sens.GetPropertyID(), sens.Measure());
@@ -33,7 +33,7 @@ namespace Rybocompleks.Controllers.Classes
         public ICollection<IShowInfo> GetShowInfo()
         {
             List<IShowInfo> ret = new List<IShowInfo>();
-            IDictionary<Int32, ISensor> sensors = physicalObjectsController.GetPhysicalObjects();
+            IDictionary<MeasurmentTypes.Type, ISensor> sensors = physicalObjectsController.GetPhysicalObjects();
 
             foreach (ISensor it in sensors.Values)
             {

@@ -21,7 +21,7 @@ namespace Perepherial.Devices
             Nature.Temperature = (ITemperatureMeasurment)State;
         }
 
-        public override int GetPropertyID()
+        public override MeasurmentTypes.Type GetPropertyID()
         {
             throw new NotImplementedException();
         }

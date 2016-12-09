@@ -31,5 +31,10 @@ namespace Perepherial.Sensors
             lastMeasurment = Nature.Oxygen;
             return lastMeasurment;
         }
+
+        public override MeasurmentTypes.Type GetPropertyID()
+        {
+            return MeasurmentTypes.Type.Oxygen;
+        }
     }
 }

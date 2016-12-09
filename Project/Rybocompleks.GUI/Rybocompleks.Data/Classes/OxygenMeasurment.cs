@@ -18,9 +18,9 @@ namespace Rybocompleks.Data.Classes
             return Oxygen;
         }
 
-        public Int32 GetPropertyID()
+        public MeasurmentTypes.Type GetPropertyID()
         {
-            throw new NotImplementedException();
+            return MeasurmentTypes.Type.Oxygen;
         }
 
         public int Compare(IMeasurment meas)
