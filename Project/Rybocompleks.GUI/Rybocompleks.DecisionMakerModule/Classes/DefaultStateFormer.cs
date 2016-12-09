@@ -1,14 +1,7 @@
 ﻿using Rybocompleks.Data;
-using Rybocompleks.Data.Classes;
-using Rybocompleks.Data.Interfaces;
-using Rybocompleks.DecisionMakerModule.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Rybocompleks.DecisionMakerModule;
 
-namespace Rybocompleks.DecisionMakerModule.Classes
+namespace Rybocompleks.DecisionMakerModule
 {
     internal class DefaultStateFormer : IStateFormer
     {

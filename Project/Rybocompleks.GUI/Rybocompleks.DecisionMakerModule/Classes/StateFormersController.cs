@@ -1,14 +1,8 @@
 ﻿using Rybocompleks.Data;
-using Rybocompleks.Data.Classes;
-using Rybocompleks.Data.Interfaces;
-using Rybocompleks.DecisionMakerModule.Interfaces;
-using System;
+using Rybocompleks.DecisionMakerModule;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Rybocompleks.DecisionMakerModule.Classes
+namespace Rybocompleks.DecisionMakerModule
 {
      public class StateFormersController : IStateFormersController
     {

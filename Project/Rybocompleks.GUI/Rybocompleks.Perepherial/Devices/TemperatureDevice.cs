@@ -1,13 +1,12 @@
-﻿using Perepherial.Classes;
+﻿using Rybocompleks.Perepherial;
 using Rybocompleks.Data;
-using Rybocompleks.Data.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Perepherial.Devices
+namespace Rybocompleks.Perepherial
 {
     class TemperatureDevice : Device
     {
@@ -15,7 +14,7 @@ namespace Perepherial.Devices
         {
             SetState( new TemperatureMeasurment(0) );
         }
-        public override void SetState(Rybocompleks.Data.IMeasurment state)
+        public override void SetState(IMeasurment state)
         {
             State = null != (ITemperatureMeasurment)state ? state : new TemperatureMeasurment(0);
             Nature.Temperature = (ITemperatureMeasurment)State;

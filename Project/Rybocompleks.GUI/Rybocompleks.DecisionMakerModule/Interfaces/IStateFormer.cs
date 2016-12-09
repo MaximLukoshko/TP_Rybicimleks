@@ -1,12 +1,6 @@
 ﻿using Rybocompleks.Data;
-using Rybocompleks.Data.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Rybocompleks.DecisionMakerModule.Interfaces
+namespace Rybocompleks.DecisionMakerModule
 {
     internal interface IStateFormer : IPropertyID
     {

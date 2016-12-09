@@ -1,15 +1,13 @@
-﻿using Perepherial.Sensors;
-using Rybocompleks.Controllers.Interfaces;
+﻿using Rybocompleks.Perepherial;
+using Rybocompleks.Controllers;
 using Rybocompleks.Data;
-using Rybocompleks.Data.Classes;
-using Rybocompleks.Data.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Rybocompleks.Controllers.Classes
+namespace Rybocompleks.Controllers
 {
     class SensorsController : ISensorsController
     {

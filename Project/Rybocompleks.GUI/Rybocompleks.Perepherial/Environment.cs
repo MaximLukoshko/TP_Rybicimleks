@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Rybocompleks.Data.Classes;
 using Rybocompleks.Data;
 
-namespace Perepherial.Classes
+namespace Rybocompleks.Perepherial
 {
     internal static class Nature
     {

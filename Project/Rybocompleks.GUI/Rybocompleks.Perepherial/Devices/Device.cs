@@ -1,13 +1,12 @@
-﻿using Perepherial.Classes;
+﻿using Rybocompleks.Perepherial;
 using Rybocompleks.Data;
-using Rybocompleks.Data.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Perepherial.Devices
+namespace Rybocompleks.Perepherial
 {
     abstract class Device : IDevice
     {
@@ -22,19 +21,19 @@ namespace Perepherial.Devices
                 throw new NullReferenceException();
         }
 
-        public abstract void SetState(Rybocompleks.Data.IMeasurment state);
+        public abstract void SetState(IMeasurment state);
 
-        public Rybocompleks.Data.IMeasurment GetState()
+        public IMeasurment GetState()
         {
             return State;
         }
 
-        public Rybocompleks.Data.Classes.Location GetLocation()
+        public Rybocompleks.Data.Location GetLocation()
         {
             return location;
         }
 
-        public void SetLocation(Rybocompleks.Data.Classes.Location loc)
+        public void SetLocation(Rybocompleks.Data.Location loc)
         {
             location = loc;
         }

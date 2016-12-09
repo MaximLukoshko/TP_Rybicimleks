@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Rybocompleks.Data.Classes
+namespace Rybocompleks.Data
 {
     public sealed class OxygenMeasurment : IOxygenMeasurrment, IPhysicalObjectState
     {

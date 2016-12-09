@@ -1,12 +1,12 @@
-﻿using Perepherial.Classes;
-using Rybocompleks.Data.Classes;
+﻿using Rybocompleks.Perepherial;
+using Rybocompleks.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Perepherial.Devices
+namespace Rybocompleks.Perepherial
 {
     class PhDevice : Device
     {
@@ -14,7 +14,7 @@ namespace Perepherial.Devices
         {
             SetState( new PHMeasurment(0) );
         }
-        public override void SetState(Rybocompleks.Data.IMeasurment state)
+        public override void SetState(IMeasurment state)
         {
             State = null != (PHMeasurment)state ? state : new PHMeasurment(0);
             Nature.PH = (PHMeasurment)State;

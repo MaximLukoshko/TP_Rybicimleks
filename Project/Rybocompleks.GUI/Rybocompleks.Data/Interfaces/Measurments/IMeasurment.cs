@@ -1,5 +1,5 @@
-﻿using Rybocompleks.Data.Classes;
-using Rybocompleks.Data.Interfaces;
+﻿using Rybocompleks.Data;
+using Rybocompleks.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;

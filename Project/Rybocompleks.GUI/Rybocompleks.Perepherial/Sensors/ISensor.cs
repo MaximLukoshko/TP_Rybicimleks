@@ -1,12 +1,11 @@
 ﻿using Rybocompleks.Data;
-using Rybocompleks.Data.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Perepherial.Sensors
+namespace Rybocompleks.Perepherial
 {
     public interface ISensor : IPhysicalObject
     {

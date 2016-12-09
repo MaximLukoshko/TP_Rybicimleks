@@ -1,5 +1,5 @@
 ﻿using Rybocompleks.Data;
-using Rybocompleks.Data.Classes;
+using Rybocompleks.Data;
 using Rybocompleks.GrowingPlan.Interfaces;
 using System;
 using System.Collections.Generic;

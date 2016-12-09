@@ -1,13 +1,12 @@
-﻿using Perepherial.Classes;
+﻿using Rybocompleks.Perepherial;
 using Rybocompleks.Data;
-using Rybocompleks.Data.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Perepherial.Sensors
+namespace Rybocompleks.Perepherial
 {
     class TemperatureSensor : Sensor
     {
