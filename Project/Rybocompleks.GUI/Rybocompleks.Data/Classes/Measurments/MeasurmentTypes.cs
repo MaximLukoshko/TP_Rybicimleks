@@ -9,11 +9,12 @@ namespace Rybocompleks.Data.Classes
     static public class MeasurmentTypes
     {
         public enum Type
-        {            
-            Temperature = 1,
-            Oxygen = 2, 
-            LightPerDay =3,
-            PH = 4
+        {          
+            DefaultType      = 0,
+            Temperature      = 1,
+            Oxygen           = 2, 
+            LightPerDay      = 3,
+            PH               = 4,
         }
     }
 }
