@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Rybocompleks.GrowingPlan.Interfaces;
+using Rybocompleks.GrowingPlan.Classes;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -20,8 +22,8 @@ namespace Rybocompleks.GUI
 {
     public partial class MainWindow : Window
     {
-        private GPNode clipboard;
-        public GPNode Clipboard
+        private GPInstruction clipboard;
+        public GPInstruction Clipboard
         {
             get { return clipboard; }
             set
@@ -41,6 +43,19 @@ namespace Rybocompleks.GUI
             }
         }
 
+        private IGrowingPlan gpList;
+      
+        private string gpFilePath = null;
+        public MainWindow()
+        {
+            InitializeComponent();
+            gpList = new GrowingPlanList();
+            gpDataGrid.ItemsSource = gpList.Instructions;
+            UpdateWindow();
+            Clipboard = null;
+        }
+        
+    
         private void InsertIsEnabled(bool b)
         {
             MenuEditInsert.IsEnabled = b;
@@ -48,12 +63,11 @@ namespace Rybocompleks.GUI
             ContextMenuInsert.IsEnabled = b;
         }
 
-
         private void EditCopyClick(object sender, RoutedEventArgs e)
         {
-            if (gpDataGrid.SelectedIndex >= 0 && gpDataGrid.SelectedIndex < gpList.Count && gpList != null)
+            if (gpDataGrid.SelectedIndex >= 0 && gpDataGrid.SelectedIndex < gpList.Instructions.Count && gpList != null)
             {
-                this.Clipboard = new GPNode(gpList[gpDataGrid.SelectedIndex]);
+                this.Clipboard = new GPInstruction((GPInstruction)gpList.Instructions[gpDataGrid.SelectedIndex]);                
             }
         }
 
@@ -61,15 +75,15 @@ namespace Rybocompleks.GUI
         {
             if (Clipboard != null && gpList != null)
             {
-                if (gpDataGrid.SelectedIndex >= 0 && gpDataGrid.SelectedIndex < gpList.Count + 1)
+                if (gpDataGrid.SelectedIndex >= 0 && gpDataGrid.SelectedIndex < gpList.Instructions.Count + 1)
                 {
-                    gpList.Insert(gpDataGrid.SelectedIndex, new GPNode(Clipboard));
-                    UpdateWindow();
+                    gpList.Instructions.Insert(gpDataGrid.SelectedIndex, new GPInstruction(Clipboard));
                 }
                 else
                 {
-                    gpList.Insert(gpList.Count, new GPNode(Clipboard));
+                    gpList.Instructions.Insert(gpList.Instructions.Count, new GPInstruction(Clipboard));                    
                 }
+                UpdateWindow();
             }
         }
 
@@ -78,12 +92,12 @@ namespace Rybocompleks.GUI
             int i = gpDataGrid.SelectedIndex;
             try
             {
-                gpList.Remove(gpList[i]);
+                gpList.Instructions.Remove(gpList.Instructions[i]);
+                UpdateWindow();
             }
             catch (ArgumentOutOfRangeException)
             { }
         }
-
 
         private void EditCutClick(object sender, RoutedEventArgs e)
         {
@@ -91,25 +105,22 @@ namespace Rybocompleks.GUI
             EditDeleteClick(sender, e);
         }
 
-
-        private ObservableCollection<GPNode> gpList;
-
-        private string gpFilePath = null;
         private void LoadGP()
         {
             if (!System.IO.File.Exists(gpFilePath))
             {
                 MessageBox.Show("указанный файл (" + gpFilePath + ") отсутсвует", "Ошибка!");
             }
-            XmlSerializer formatter = new XmlSerializer(typeof(ObservableCollection<GPNode>));
+            XmlSerializer formatter = new XmlSerializer(typeof(GrowingPlanList));
             using (FileStream fs = new FileStream(gpFilePath, FileMode.OpenOrCreate))
             {
-                gpList = (ObservableCollection<GPNode>)formatter.Deserialize(fs);
+                gpList = (GrowingPlanList)formatter.Deserialize(fs);
             }
         }
         private bool SaveGP()
         {
-            XmlSerializer formatter = new XmlSerializer(typeof(ObservableCollection<GPNode>));
+            //XmlSerializer formatter = new XmlSerializer(typeof(ObservableCollection<GPInstruction>));
+            XmlSerializer formatter = new XmlSerializer(typeof(GrowingPlanList));
 
             if (File.Exists(gpFilePath)) File.Delete(gpFilePath);
 
@@ -120,13 +131,6 @@ namespace Rybocompleks.GUI
             }
         }
 
-        public MainWindow()
-        {
-            gpList = new ObservableCollection<GPNode>();
-            InitializeComponent();
-            gpDataGrid.ItemsSource = gpList;
-            Clipboard = null;
-        }
 
         private void SaveAs_BtnClick(object sender, RoutedEventArgs e)
         {
@@ -194,9 +198,9 @@ namespace Rybocompleks.GUI
             if (dialogResult == MessageBoxResult.Yes)
             {
                 gpFilePath = null;
-                gpList = new ObservableCollection<GPNode>();
-                UpdateWindow();
+                gpList = new GrowingPlanList();
                 Save_BtnClick(sender, e);
+                UpdateWindow();
             }
         }
 
@@ -221,14 +225,14 @@ namespace Rybocompleks.GUI
             // else
             //  this.Title = "Новый палан - Рыбокомплекс";
             gpDataGrid.ItemsSource = null;
-            gpDataGrid.ItemsSource = gpList;
+            gpDataGrid.ItemsSource = gpList.Instructions;
         }
 
         private void SelectLineClick(object sender, RoutedEventArgs e)
         {
-            if (gpList.Count > 1)
+            if (gpList.Instructions.Count > 1)
             {
-                SelectStringWindow ssw = new SelectStringWindow(gpList.Count);
+                SelectStringWindow ssw = new SelectStringWindow(gpList.Instructions.Count);
                 if (ssw.ShowDialog() == true)
                 {
                     try

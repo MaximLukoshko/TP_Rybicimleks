@@ -39,7 +39,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\GPInstruction.cs" />
+    <Compile Include="Classes\GrowingPlan.cs" />
+    <Compile Include="Interfaces\IGrowingPlan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Rybocompleks.Data\Rybocompleks.Data.csproj">
+      <Project>{77c8bdc2-4483-47ae-9bcc-fd0b13334bec}</Project>
+      <Name>Rybocompleks.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

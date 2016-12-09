@@ -57,7 +57,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="GPNode.cs" />
     <Compile Include="SelectStringWindow.xaml.cs">
       <DependentUpon>SelectStringWindow.xaml</DependentUpon>
     </Compile>
@@ -121,6 +120,12 @@
     <Resource Include="Content\icons\file\new.ico" />
     <Resource Include="Content\icons\file\open.ico" />
     <Resource Include="Content\icons\file\save.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Rybocompleks.GrowingPlan\Rybocompleks.GrowingPlan.csproj">
+      <Project>{c724a41a-fac1-48a2-b807-52b0881a0515}</Project>
+      <Name>Rybocompleks.GrowingPlan</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
