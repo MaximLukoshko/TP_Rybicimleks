@@ -33,7 +33,7 @@ namespace Rybocompleks.Dispatcher
             devicesController = new DevicesController();
             sensorsController = new SensorsController();
             stateFormersController = new StateFormersController();
-            growingPlan = new GrowingPlanList();
+            growingPlan = gp;
         }
 
         public void RunFishGrowing()
