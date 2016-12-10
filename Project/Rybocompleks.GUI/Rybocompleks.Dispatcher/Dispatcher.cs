@@ -6,12 +6,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Rybocompleks.Dispatcher
 {
     public class Dispatcher : IDispatcher
     {
+        private Thread RunThread;
+
         private IDevicesController devicesController;
         private ISensorsController sensorsController;
         private IStateFormersController stateFormersController;
@@ -21,6 +24,7 @@ namespace Rybocompleks.Dispatcher
 
         public Dispatcher(IGrowingPlan gp)
         {
+            RunThread = new Thread(Run);
             Hours = 0;
             Minutes = 0;
             devicesController = new DevicesController();
@@ -31,12 +35,12 @@ namespace Rybocompleks.Dispatcher
 
         public void RunFishGrowing()
         {
-            throw new NotImplementedException();
+            RunThread.Start();
         }
 
         public void StopFishGrowing()
         {
-            throw new NotImplementedException();
+            
         }
 
         public ICollection<IShowInfo> GetShowInfo()
@@ -52,16 +56,38 @@ namespace Rybocompleks.Dispatcher
             return ret;
         }
 
-        private void MakeCycle()
+        private Boolean MakeCycle()
         {
+            IDictionary<MeasurmentTypes.Type, IInstruction> allowedStates = growingPlan.GetAllowedStates(Hours, Minutes);
+            if (null == allowedStates)
+                return false;
+            
             IDictionary<MeasurmentTypes.Type, IMeasurment> envStates = sensorsController.GetEnvironmentStates();
 //            IDictionary<MeasurmentTypes.Type, IMeasurment> devStates = devicesController.GetDevicesStates();
 
-            IDictionary<MeasurmentTypes.Type, IInstruction> allowedStates = growingPlan.GetAllowedStates(Hours, Minutes);
             
             IDictionary<MeasurmentTypes.Type, IMeasurment> reqStates = stateFormersController.FormDevicesInstructions(envStates,allowedStates);
 
             devicesController.AffectEnvironment(reqStates);
+
+            return true;
+        }
+        private void Tic_Toc()
+        {
+            Minutes++;
+            if(Minutes>60)
+            {
+                Hours++;
+                Minutes -= 60;
+            }
+        }
+        private void Run()
+        {
+            while (true == MakeCycle())
+            {
+                Tic_Toc();
+                Thread.Sleep(1000);
+            }
         }
     }
 }
