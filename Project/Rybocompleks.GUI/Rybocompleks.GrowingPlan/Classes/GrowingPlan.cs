@@ -15,7 +15,13 @@ namespace Rybocompleks.GrowingPlan
         public GrowingPlanList()
         {
             Instructions = new List<GPInstruction>();
-        }      
+        }
+
+        public IDictionary<MeasurmentTypes.Type, IInstruction> GetAllowedStates(Int32 hours, Int32 minutes)
+        {
+            throw new NotImplementedException();
+        }
+
        /* public Dictionary<MeasurmentTypes.Type, IMeasurment> getAllowedStates()
         {
             Dictionary<MeasurmentTypes.Type ,IMeasurment> res = new Dictionary<MeasurmentTypes.Type,IMeasurment>();

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Rybocompleks.Controllers
 {
-    class SensorsController : ISensorsController
+    public class SensorsController : ISensorsController
     {
         protected Controller<ISensor> physicalObjectsController;
         public SensorsController()

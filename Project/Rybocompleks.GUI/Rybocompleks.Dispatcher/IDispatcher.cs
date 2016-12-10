@@ -7,6 +7,6 @@ namespace Rybocompleks.Dispatcher
     {
         void RunFishGrowing();
         void StopFishGrowing();
-        ICollection<ShowInfo> GetShowInfo();
+        ICollection<IShowInfo> GetShowInfo();
     }
 }

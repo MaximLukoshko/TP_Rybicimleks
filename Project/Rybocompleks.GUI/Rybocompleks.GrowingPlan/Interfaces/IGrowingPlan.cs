@@ -11,6 +11,6 @@ namespace Rybocompleks.GrowingPlan
     public interface IGrowingPlan
     {
         List<GPInstruction> Instructions   {get;set;}
-     //   Dictionary<MeasurmentTypes.Type, IMeasurment> getAllowedStates();          
+        IDictionary<MeasurmentTypes.Type, IInstruction> GetAllowedStates(Int32 hours, Int32 minutes);
     }
 }

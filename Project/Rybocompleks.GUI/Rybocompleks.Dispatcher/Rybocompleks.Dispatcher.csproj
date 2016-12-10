@@ -44,9 +44,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Rybocompleks.Controllers\Rybocompleks.Controllers.csproj">
+      <Project>{cd23bb1d-1e0c-481f-8ee9-9921d03522ca}</Project>
+      <Name>Rybocompleks.Controllers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Rybocompleks.Data\Rybocompleks.Data.csproj">
       <Project>{77c8bdc2-4483-47ae-9bcc-fd0b13334bec}</Project>
       <Name>Rybocompleks.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rybocompleks.DecisionMakerModule\Rybocompleks.DecisionMakerModule.csproj">
+      <Project>{207aa976-9637-40ae-83e3-dd3920b21c9f}</Project>
+      <Name>Rybocompleks.DecisionMakerModule</Name>
     </ProjectReference>
     <ProjectReference Include="..\Rybocompleks.GrowingPlan\Rybocompleks.GrowingPlan.csproj">
       <Project>{c724a41a-fac1-48a2-b807-52b0881a0515}</Project>

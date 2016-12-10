@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Rybocompleks.Controllers
 {
-    class DevicesController : IDevicesController
+    public class DevicesController : IDevicesController
     {
         protected Controller<IDevice> physicalObjectsController;
         public DevicesController()

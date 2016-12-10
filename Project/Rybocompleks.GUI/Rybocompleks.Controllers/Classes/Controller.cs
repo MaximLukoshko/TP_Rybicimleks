@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Rybocompleks.Controllers
 {
     
-    class Controller<IPhysObjType> where IPhysObjType : IPhysicalObject
+    public class Controller<IPhysObjType> where IPhysObjType : IPhysicalObject
     {
         protected IDictionary<MeasurmentTypes.Type, IPhysObjType> devices;
 

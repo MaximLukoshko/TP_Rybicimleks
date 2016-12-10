@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Rybocompleks.Controllers
 {
-    interface IController
+    public interface IController
     {
         ICollection<IShowInfo> GetShowInfo();
     }
