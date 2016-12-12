@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Rybocompleks.Perepherial
 {
-    class PhSensor : Sensor
+    public class PhSensor : Sensor
     {
         public PhSensor(Location loc) : base(loc)
         {

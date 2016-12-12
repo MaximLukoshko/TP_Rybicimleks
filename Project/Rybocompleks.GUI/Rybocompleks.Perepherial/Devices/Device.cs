@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Rybocompleks.Perepherial
 {
-    abstract class Device : IDevice
+    public abstract class Device : IDevice
     {
         protected IMeasurment State = null;
         protected Location location;

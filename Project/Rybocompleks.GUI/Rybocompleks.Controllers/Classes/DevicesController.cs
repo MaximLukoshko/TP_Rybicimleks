@@ -15,6 +15,10 @@ namespace Rybocompleks.Controllers
         public DevicesController()
         {
             physicalObjectsController = new Controller<IDevice>();
+            physicalObjectsController.AddObject(new TemperatureDevice(new Location(0, 0)));
+            physicalObjectsController.AddObject(new OxygenDevice(new Location(0, 0)));
+            physicalObjectsController.AddObject(new PhDevice(new Location(0, 0)));
+            physicalObjectsController.AddObject(new LightDevice(new Location(0, 0)));
         }
 
         public IDictionary<MeasurmentTypes.Type, IMeasurment> GetDevicesStates()

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Rybocompleks.Perepherial
 {
-    abstract class Sensor : ISensor
+    public abstract class Sensor : ISensor
     {
         protected IMeasurment lastMeasurment = null;
         protected Location location;

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Rybocompleks.Perepherial
 {
-    class LightDevice : Device
+    public class LightDevice : Device
     {
         public LightDevice(Location loc) : base(loc)
         {
