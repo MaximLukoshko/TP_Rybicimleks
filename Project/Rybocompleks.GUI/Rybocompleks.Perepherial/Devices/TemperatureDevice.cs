@@ -22,7 +22,7 @@ namespace Rybocompleks.Perepherial
 
         public override MeasurmentTypes.Type GetPropertyID()
         {
-            throw new NotImplementedException();
+            return MeasurmentTypes.Type.Temperature;
         }
 
         public override string GetName()

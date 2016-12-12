@@ -10,6 +10,8 @@ namespace Rybocompleks.DecisionMakerModule
          public StateFormersController()
          {
              StateFormers = new Dictionary<MeasurmentTypes.Type, IStateFormer>();
+             StateFormers.Add(MeasurmentTypes.Type.DefaultType, new DefaultStateFormer());
+             StateFormers.Add(MeasurmentTypes.Type.LightPerDay, new LightStateFormer());
          }
 
          public IDictionary<MeasurmentTypes.Type, IMeasurment> FormDevicesInstructions(IDictionary<MeasurmentTypes.Type, IMeasurment> currentStates, IDictionary<MeasurmentTypes.Type, IInstruction> allowedStates)
@@ -18,8 +20,10 @@ namespace Rybocompleks.DecisionMakerModule
              
              foreach(IMeasurment curState in currentStates.Values)
              {
-                 IStateFormer former = StateFormers[curState.GetPropertyID()];
-                 if (null == former)
+                 IStateFormer former = null;
+                 if(StateFormers.ContainsKey(curState.GetPropertyID()))    
+                    former = StateFormers[curState.GetPropertyID()];
+                 else
                      former = StateFormers[MeasurmentTypes.Type.DefaultType];
 
                  ret.Add(curState.GetPropertyID(),

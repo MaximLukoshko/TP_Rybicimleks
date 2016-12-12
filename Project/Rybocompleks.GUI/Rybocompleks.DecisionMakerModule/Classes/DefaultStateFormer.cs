@@ -13,7 +13,7 @@ namespace Rybocompleks.DecisionMakerModule
             if (currentState.Compare(allowedStates.GetMinAllowedState()) == -1)
                 return allowedStates.GetMaxAllowedState();
             
-            if (currentState.Compare(allowedStates.GetMaxAllowedState()) == 11)
+            if (currentState.Compare(allowedStates.GetMaxAllowedState()) == 1)
                 return allowedStates.GetMinAllowedState();
 
             return currentState;

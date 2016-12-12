@@ -16,9 +16,6 @@ namespace Rybocompleks.Perepherial
         public Device(Location loc)
         {
             location = loc;
-            
-            if (null == State)
-                throw new NullReferenceException();
         }
 
         public abstract void SetState(IMeasurment state);

@@ -15,9 +15,6 @@ namespace Rybocompleks.Perepherial
         public Sensor(Location loc)
         {
             location = loc;
-
-            if (null == lastMeasurment)
-                throw new NullReferenceException();
         }
 
         public IMeasurment GetLastMeasurment()
