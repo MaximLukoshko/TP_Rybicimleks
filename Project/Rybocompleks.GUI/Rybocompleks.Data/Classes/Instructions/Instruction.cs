@@ -20,6 +20,14 @@ namespace Rybocompleks.Data
             MaxAllowedState = maxAllowedState;
             MinAllowedState = minAllowedState;
         }
+        public Instruction(IMeasurment allowedState)
+        {
+            if (null == allowedState)
+                throw new NullReferenceException();
+
+            MaxAllowedState = allowedState;
+            MinAllowedState = allowedState;
+        }
 
         public IMeasurment GetMaxAllowedState()
         {

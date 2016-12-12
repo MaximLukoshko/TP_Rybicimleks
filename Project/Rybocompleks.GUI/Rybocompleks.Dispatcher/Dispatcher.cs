@@ -19,11 +19,11 @@ namespace Rybocompleks.Dispatcher
         private IDevicesController devicesController;
         private ISensorsController sensorsController;
         private IStateFormersController stateFormersController;
-        private IGrowingPlan growingPlan;
+        private IGrowingPlanCommon growingPlan;
         private Int32 Hours;
         private Int32 Minutes;
 
-        public Dispatcher(IGrowingPlan gp)
+        public Dispatcher(IGrowingPlanCommon gp)
         {
             mutex = new Mutex();
             RunThread = new Thread(Run);

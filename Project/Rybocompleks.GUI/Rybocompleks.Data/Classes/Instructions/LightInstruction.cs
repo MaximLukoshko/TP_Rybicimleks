@@ -9,20 +9,16 @@ namespace Rybocompleks.Data
 {
     public class LightInstruction : IInstruction
     {
-        public int TimeToSwitchOFF_Hours { get; set; }
-        public int TimeToSwitchOFF_Minutes { get; set; }
+        public int HoursPerDay { get; set; }
         public int CurrentInstruction_Hours { get; set; }
-        public int CurrentInstruction_Minutes { get; set; }
 
+        public LightInstruction(Int32 hours_per_day)
+        {
+            HoursPerDay = hours_per_day;
+        }
         public IMeasurment GetMaxAllowedState()
         {
-            if (CurrentInstruction_Hours > TimeToSwitchOFF_Hours)
-                return new LightMeasurment(false);
-
-            if (CurrentInstruction_Hours < TimeToSwitchOFF_Hours)
-                return new LightMeasurment(true);
-
-            if (CurrentInstruction_Minutes > TimeToSwitchOFF_Minutes)
+            if (CurrentInstruction_Hours > HoursPerDay)
                 return new LightMeasurment(false);
 
             return new LightMeasurment(true);

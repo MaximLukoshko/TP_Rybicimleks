@@ -1,4 +1,5 @@
-﻿using Rybocompleks.GrowingPlan;
+﻿using Rybocompleks.Dispatcher;
+using Rybocompleks.GrowingPlan;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -213,8 +214,15 @@ namespace Rybocompleks.GUI
 
         private void RunGC_BtnClick(object sender, RoutedEventArgs e)
         {
-            GrowingCycleWindow gcw = new GrowingCycleWindow();
+//             IList<IToGPAllowedStates> instructions_copy = new List<IToGPAllowedStates>();
+//             foreach (IToGPAllowedStates instr in gpList.Instructions)
+//                 instructions_copy.Add(instr);
+
+            IDispatcher dispatcher = new Dispatcher.Dispatcher(new GrowingPlanCommon(gpList.Instructions.ToList<IToGPAllowedStates>()));
+            GrowingCycleWindow gcw = new GrowingCycleWindow(dispatcher);
             gcw.Show();
+            gpList = new GrowingPlanList();
+            dispatcher.RunFishGrowing();
         }
 
         private void UpdateWindow()

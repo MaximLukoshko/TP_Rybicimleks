@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Rybocompleks.GrowingPlan;
+using Rybocompleks.Data;
 namespace Rybocompleks.GrowingPlan
 {
     [Serializable]
-    public class GPInstruction
+    public class GPInstruction : IToGPAllowedStates
     {
         public GPInstruction(){}
         public GPInstruction(string instructionName = "имя интсрукции", int hours = 0, int minutes = 0,
@@ -34,6 +35,17 @@ namespace Rybocompleks.GrowingPlan
             this.PH = gpn.PH;
         }
 
+        public GPAllowedStates ToGPAllowedStates()
+        {
+            IDictionary<MeasurmentTypes.Type, IInstruction> ret_states = new Dictionary<MeasurmentTypes.Type, IInstruction>();
+
+            ret_states.Add(MeasurmentTypes.Type.Temperature, new Instruction(new TemperatureMeasurment(TemperatureMax), new TemperatureMeasurment(TemperatureMin)));
+            ret_states.Add(MeasurmentTypes.Type.PH, new Instruction(new PHMeasurment(PH)));
+            ret_states.Add(MeasurmentTypes.Type.Oxygen, new Instruction(new OxygenMeasurment(Oxygen)));
+            ret_states.Add(MeasurmentTypes.Type.LightPerDay, new LightInstruction(LightHoursPerDay));
+
+            return new GPAllowedStates(InstructionName, Hours, Minutes, ret_states);
+        }
 
 
         private string instructionName;

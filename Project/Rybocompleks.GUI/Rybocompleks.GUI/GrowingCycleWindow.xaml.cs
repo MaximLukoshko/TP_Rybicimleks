@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Rybocompleks.Dispatcher;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,11 @@ namespace Rybocompleks.GUI
     /// </summary>
     public partial class GrowingCycleWindow : Window
     {
-        public GrowingCycleWindow()
+        private IDispatcher GrowingDispatcher;
+        public GrowingCycleWindow(IDispatcher dispatcher)
         {
             InitializeComponent();
+            GrowingDispatcher = dispatcher;
         }
     }
 }

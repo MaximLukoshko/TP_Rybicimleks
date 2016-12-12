@@ -40,8 +40,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\GPInstruction.cs" />
+    <Compile Include="Classes\GPAllowedStates.cs" />
     <Compile Include="Classes\GrowingPlan.cs" />
+    <Compile Include="Classes\GrowingPlanCommon.cs" />
     <Compile Include="Interfaces\IGrowingPlan.cs" />
+    <Compile Include="Interfaces\IGrowingPlanCommon.cs" />
+    <Compile Include="Interfaces\IToGPAllowedStates.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -122,6 +122,10 @@
     <Resource Include="Content\icons\file\save.ico" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Rybocompleks.Dispatcher\Rybocompleks.Dispatcher.csproj">
+      <Project>{ff395f8c-5263-4d14-ae5c-534b30828361}</Project>
+      <Name>Rybocompleks.Dispatcher</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Rybocompleks.GrowingPlan\Rybocompleks.GrowingPlan.csproj">
       <Project>{c724a41a-fac1-48a2-b807-52b0881a0515}</Project>
       <Name>Rybocompleks.GrowingPlan</Name>
