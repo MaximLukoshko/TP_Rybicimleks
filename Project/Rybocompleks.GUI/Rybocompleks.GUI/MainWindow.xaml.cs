@@ -43,7 +43,7 @@ namespace Rybocompleks.GUI
             }
         }
 
-        private IGrowingPlan gpList;
+        private GrowingPlanList gpList;
       
         private string gpFilePath = null;
         public MainWindow()
