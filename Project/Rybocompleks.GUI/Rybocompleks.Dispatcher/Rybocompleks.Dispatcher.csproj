@@ -39,8 +39,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dispatcher.cs" />
-    <Compile Include="IDispatcher.cs" />
+    <Compile Include="Classes\GPAllowedStates.cs" />
+    <Compile Include="Classes\GrowingPlanCommon.cs" />
+    <Compile Include="Classes\Dispatcher.cs" />
+    <Compile Include="Interfaces\IDispatcher.cs" />
+    <Compile Include="Interfaces\IGrowingPlanCommon.cs" />
+    <Compile Include="Interfaces\IToGPAllowedStates.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -55,10 +59,6 @@
     <ProjectReference Include="..\Rybocompleks.DecisionMakerModule\Rybocompleks.DecisionMakerModule.csproj">
       <Project>{207aa976-9637-40ae-83e3-dd3920b21c9f}</Project>
       <Name>Rybocompleks.DecisionMakerModule</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Rybocompleks.GrowingPlan\Rybocompleks.GrowingPlan.csproj">
-      <Project>{c724a41a-fac1-48a2-b807-52b0881a0515}</Project>
-      <Name>Rybocompleks.GrowingPlan</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
