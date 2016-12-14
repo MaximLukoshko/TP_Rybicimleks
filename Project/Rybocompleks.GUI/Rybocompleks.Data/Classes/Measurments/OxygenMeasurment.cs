@@ -30,7 +30,7 @@ namespace Rybocompleks.Data
 
         public String GetStringValue()
         {
-            return Oxygen.ToString() + "ox";
+            return Oxygen.ToString() + " ox";
         }
         
         // Data

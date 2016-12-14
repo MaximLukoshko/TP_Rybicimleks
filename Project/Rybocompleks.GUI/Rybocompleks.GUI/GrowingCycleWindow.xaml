@@ -8,7 +8,7 @@
                 <MenuItem Header="Меню">
                     <MenuItem Header="Пауза"/>
                     <Separator/>
-                    <MenuItem Header="Выход"/>
+                <MenuItem Header="Выход" Click="MenuItemExit_Click"/>
                 </MenuItem>
             </Menu>
 
@@ -21,10 +21,11 @@
                 <RowDefinition Height="62*"/>
                 <RowDefinition Height="38*"/>
             </Grid.RowDefinitions>
-            <DataGrid Name="dgSystemCondition"  Grid.Row="0" Grid.Column="0" ToolTip="табличное отображение состояния системы">
+            <DataGrid Name="dgSystemCondition"  Grid.Row="0" Grid.Column="0" AutoGenerateColumns="False" CanUserAddRows="False"
+                      CanUserReorderColumns="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Устройство" Width="70*"/>
-                    <DataGridTextColumn Header="Значение"  Width="30*"/>
+                    <DataGridTextColumn Header="Устройство" Width="auto"  Binding="{Binding Path=ElementName, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Состояние"  Width="10*"  Binding="{Binding Path=ElementState, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
                 </DataGrid.Columns>
             </DataGrid>
             <DataGrid Grid.Row="1" Grid.Column="0" ToolTip="текущая инструкция">

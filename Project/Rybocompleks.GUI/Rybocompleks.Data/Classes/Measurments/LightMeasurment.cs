@@ -36,7 +36,7 @@ namespace Rybocompleks.Data
 
         public String GetStringValue()
         {
-            return "Лампа " + (TurnedOn ? "включена" : "выключена");
+            return (TurnedOn ? "включена" : "выключена");
         }
 
         //Data

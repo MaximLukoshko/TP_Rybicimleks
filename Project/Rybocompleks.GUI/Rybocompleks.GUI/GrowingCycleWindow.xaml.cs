@@ -22,28 +22,32 @@ namespace Rybocompleks.GUI
     public partial class GrowingCycleWindow : Window
     {
         private IDispatcher GrowingDispatcher;
-        private List<string> states;
+        private List<SystemConditionNode> states;         
         public GrowingCycleWindow(IDispatcher dispatcher)
         {
             InitializeComponent();
             GrowingDispatcher = dispatcher;
-            states = new List<string>();
+            states = new List<SystemConditionNode>();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             GrowingDispatcher.RunFishGrowing();
-
-            List<IShowInfo> showInfoList = (List<IShowInfo>)GrowingDispatcher.GetShowInfo(); 
+            UpdateSystemConditionTable();          
+        }
+        private void UpdateSystemConditionTable()
+        {
+            List<IShowInfo> showInfoList = (List<IShowInfo>)GrowingDispatcher.GetShowInfo();
             //var states= from info in showInfoList select info.GetState().GetStringValue();
-            foreach(IShowInfo info in showInfoList)
+            states = new List<SystemConditionNode>();
+            foreach (IShowInfo info in showInfoList)
             {
-            //    states.Add(info.GetState().GetStringValue());
-              //  MessageBox.Show(info.GetState().GetStringValue());
+                string state = info.GetState().GetStringValue();
+                string name = info.GetItem().GetName();
+                states.Add(new SystemConditionNode(name, state));
             }
-            dgSystemCondition.ItemsSource = states;
-            
-            
+            dgSystemCondition.ItemsSource = null;            
+            dgSystemCondition.ItemsSource = states;            
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -59,6 +63,11 @@ namespace Rybocompleks.GUI
         private void Window_Closed(object sender, EventArgs e)
         {
             GrowingDispatcher.StopFishGrowing();
+        }
+
+        private void MenuItemExit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

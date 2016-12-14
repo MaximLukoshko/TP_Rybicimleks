@@ -8,8 +8,11 @@ namespace Rybocompleks.GUI
 {
     class SystemConditionNode
     {
+        public SystemConditionNode(){}
         public SystemConditionNode(string elementName, string elementState)
         {
+            ElementName = elementName;
+            ElementState = elementState;
         }
         public string ElementName { get; private set; }
         public string ElementState { get; private set; }
