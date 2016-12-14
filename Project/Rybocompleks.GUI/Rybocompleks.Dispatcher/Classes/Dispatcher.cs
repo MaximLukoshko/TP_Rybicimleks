@@ -97,7 +97,7 @@ namespace Rybocompleks.Dispatcher
             while (true == MakeCycle())
             {
                 Tic_Toc();
-                Thread.Sleep(1000); //  1 минута в программе ~ 1 секунда в жизни
+                Thread.Sleep(2000); //  1 минута в программе ~ 2 секунда в жизни
             }
         }
     }

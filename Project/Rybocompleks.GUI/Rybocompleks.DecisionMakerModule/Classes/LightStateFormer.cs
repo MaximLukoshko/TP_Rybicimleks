@@ -1,5 +1,6 @@
 ﻿using Rybocompleks.Data;
 using Rybocompleks.DecisionMakerModule;
+using System;
 
 namespace Rybocompleks.DecisionMakerModule
 {
@@ -17,7 +18,8 @@ namespace Rybocompleks.DecisionMakerModule
             //!!!!!
             //!!!!!
             //!!!!!
-            return allowedStates.GetStateByPropertyID(GetPropertyID()).GetMaxAllowedState();
+            LightInstruction instr = (LightInstruction)allowedStates.GetStateByPropertyID(GetPropertyID());
+            return ((Double)instr.HoursPerDay / 24) < allowedStates.Progress ? instr.GetMinAllowedState() : instr.GetMaxAllowedState();
         }
 
         public MeasurmentTypes.Type GetPropertyID()
