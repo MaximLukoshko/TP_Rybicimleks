@@ -41,7 +41,7 @@ namespace Rybocompleks.Data
 
         public MeasurmentTypes.Type GetPropertyID()
         {
-            return MeasurmentTypes.Type.DefaultType;
+            return MaxAllowedState.GetPropertyID();
         }
     }
 }

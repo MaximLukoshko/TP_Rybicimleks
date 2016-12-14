@@ -15,8 +15,8 @@ namespace Rybocompleks.GrowingPlan
         public Int32 Hours { get; private set; }
         public Int32 Minutes { get; private set; }
 
-        public IDictionary<MeasurmentTypes.Type, IInstruction> AllowedStates;
-        public GPAllowedStates(String name, Int32 hours, Int32 minutes, IDictionary<MeasurmentTypes.Type, IInstruction> allowedStates)
+        public IList<IInstruction> AllowedStates;
+        public GPAllowedStates(String name, Int32 hours, Int32 minutes, IList<IInstruction> allowedStates)
         {
             Name = name;
             Hours = hours;
@@ -26,7 +26,11 @@ namespace Rybocompleks.GrowingPlan
 
         public IInstruction GetStateByPropertyID(MeasurmentTypes.Type id)
         {
-            return AllowedStates[id];
+            foreach (IInstruction state in AllowedStates)
+                if (state.GetPropertyID() == id)
+                    return state;
+
+            return null;
         }
         
     }

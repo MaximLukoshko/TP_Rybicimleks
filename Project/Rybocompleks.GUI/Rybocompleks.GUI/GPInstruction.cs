@@ -37,12 +37,12 @@ namespace Rybocompleks.GrowingPlan
 
         public IGPAllowedStates ToIGPAllowedStates()
         {
-            IDictionary<MeasurmentTypes.Type, IInstruction> ret_states = new Dictionary<MeasurmentTypes.Type, IInstruction>();
+            IList<IInstruction> ret_states = new List<IInstruction>();
 
-            ret_states.Add(MeasurmentTypes.Type.Temperature, new Instruction(new TemperatureMeasurment(TemperatureMax), new TemperatureMeasurment(TemperatureMin)));
-            ret_states.Add(MeasurmentTypes.Type.PH, new Instruction(new PHMeasurment(PH)));
-            ret_states.Add(MeasurmentTypes.Type.Oxygen, new Instruction(new OxygenMeasurment(Oxygen)));
-            ret_states.Add(MeasurmentTypes.Type.LightPerDay, new LightInstruction(LightHoursPerDay));
+            ret_states.Add(new Instruction(new TemperatureMeasurment(TemperatureMax), new TemperatureMeasurment(TemperatureMin)));
+            ret_states.Add(new Instruction(new PHMeasurment(PH)));
+            ret_states.Add(new Instruction(new OxygenMeasurment(Oxygen)));
+            ret_states.Add(new LightInstruction(LightHoursPerDay));
 
             return new GPAllowedStates(InstructionName, Hours, Minutes, ret_states);
         }
