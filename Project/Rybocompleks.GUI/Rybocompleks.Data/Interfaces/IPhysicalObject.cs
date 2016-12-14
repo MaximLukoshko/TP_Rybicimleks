@@ -12,6 +12,5 @@ namespace Rybocompleks.Data
         Location GetLocation();
         void SetLocation(Location location);
         String Name{ get; set; }
-        Int32 GetIcon();
     }
 }

@@ -25,10 +25,5 @@ namespace Rybocompleks.Perepherial
         {
             return MeasurmentTypes.Type.Oxygen;
         }
-
-        public override int GetIcon()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -15,10 +15,6 @@ namespace Rybocompleks.Perepherial
         {
             Measure();
         }
-        public override Int32 GetIcon()
-        {
-            throw new NotImplementedException();
-        }
 
         public override IMeasurment Measure()
         {

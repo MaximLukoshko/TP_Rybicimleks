@@ -24,10 +24,5 @@ namespace Rybocompleks.Perepherial
         {
             return MeasurmentTypes.Type.LightPerDay;
         }
-
-        public override int GetIcon()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

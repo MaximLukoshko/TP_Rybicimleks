@@ -25,9 +25,5 @@ namespace Rybocompleks.Perepherial
         {
             return MeasurmentTypes.Type.Temperature;
         }
-        public override int GetIcon()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

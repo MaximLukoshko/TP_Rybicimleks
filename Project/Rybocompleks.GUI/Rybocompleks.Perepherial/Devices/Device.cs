@@ -37,7 +37,6 @@ namespace Rybocompleks.Perepherial
         }
 
         public abstract MeasurmentTypes.Type GetPropertyID();
-        public abstract int GetIcon();
      
     }
 }
