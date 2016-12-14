@@ -10,6 +10,13 @@ namespace Rybocompleks.DecisionMakerModule
 
         public IMeasurment FormDevicesInstruction(IMeasurment currentState, IGPAllowedStates allowedStates)
         {
+            // Добавить зависимость от прогресса
+            //!!!!!
+            //!!!!!
+            //!!!!!
+            //!!!!!
+            //!!!!!
+            //!!!!!
             return allowedStates.GetStateByPropertyID(GetPropertyID()).GetMaxAllowedState();
         }
 

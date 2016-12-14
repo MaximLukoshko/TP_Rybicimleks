@@ -10,7 +10,6 @@ namespace Rybocompleks.Data
     public class LightInstruction : IInstruction
     {
         public int HoursPerDay { get; set; }
-        public int CurrentInstruction_Hours { get; set; }
 
         public LightInstruction(Int32 hours_per_day)
         {
@@ -18,15 +17,12 @@ namespace Rybocompleks.Data
         }
         public IMeasurment GetMaxAllowedState()
         {
-            if (CurrentInstruction_Hours > HoursPerDay)
-                return new LightMeasurment(false);
-
             return new LightMeasurment(true);
         }
 
         public IMeasurment GetMinAllowedState()
         {
-            return GetMaxAllowedState();
+            return new LightMeasurment(false);
         }
 
         public MeasurmentTypes.Type GetPropertyID()
