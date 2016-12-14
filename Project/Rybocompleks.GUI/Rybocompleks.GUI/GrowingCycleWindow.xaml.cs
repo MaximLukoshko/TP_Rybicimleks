@@ -23,20 +23,21 @@ namespace Rybocompleks.GUI
     public partial class GrowingCycleWindow : Window
     {
         private IDispatcher GrowingDispatcher;
-        private List<SystemConditionNode> states;         
+        private List<SystemConditionNode> states;
+        private Thread MonitorSystemThread;
         public GrowingCycleWindow(IDispatcher dispatcher)
         {
             InitializeComponent();
             GrowingDispatcher = dispatcher;
             states = new List<SystemConditionNode>();
-            dgSystemCondition.ItemsSource = states;            
+            dgSystemCondition.ItemsSource = states;
+            MonitorSystemThread = new Thread(MonitorSystem);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             GrowingDispatcher.RunFishGrowing();
-            Thread monitorThread = new Thread(MonitorSystem);
-            monitorThread.Start();
+            MonitorSystemThread.Start();
         }
         private void UpdateSystemConditionTable()
         {
@@ -79,6 +80,7 @@ namespace Rybocompleks.GUI
 
         private void Window_Closed(object sender, EventArgs e)
         {
+            MonitorSystemThread.Abort();
             GrowingDispatcher.StopFishGrowing();
         }
 
