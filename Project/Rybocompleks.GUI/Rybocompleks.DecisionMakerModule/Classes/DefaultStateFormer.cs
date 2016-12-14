@@ -10,7 +10,7 @@ namespace Rybocompleks.DecisionMakerModule
 
         public IMeasurment FormDevicesInstruction(IMeasurment currentState, IGPAllowedStates allowedStates)
         {
-            IInstruction stateByProp = allowedStates.GetStateByPropertyID(GetPropertyID());
+            IInstruction stateByProp = allowedStates.GetStateByPropertyID(currentState.GetPropertyID());
             if (currentState.Compare(stateByProp.GetMinAllowedState()) == -1)
                 return stateByProp.GetMaxAllowedState();
 

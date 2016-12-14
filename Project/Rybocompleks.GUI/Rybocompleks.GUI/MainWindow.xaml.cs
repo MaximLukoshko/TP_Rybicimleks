@@ -221,7 +221,6 @@ namespace Rybocompleks.GUI
             IDispatcher dispatcher = new Dispatcher.Dispatcher(new GrowingPlanCommon(gpList.Instructions.ToList<IToIGPAllowedStates>()));
             GrowingCycleWindow gcw = new GrowingCycleWindow(dispatcher);
             gcw.Show();
-            gpList = new GrowingPlanList();
             dispatcher.RunFishGrowing();
         }
 
