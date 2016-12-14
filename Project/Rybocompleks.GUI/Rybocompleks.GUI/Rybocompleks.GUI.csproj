@@ -63,6 +63,7 @@
     <Compile Include="SelectStringWindow.xaml.cs">
       <DependentUpon>SelectStringWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SystemConditionNode.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GrowingCycleWindow.xaml.cs">

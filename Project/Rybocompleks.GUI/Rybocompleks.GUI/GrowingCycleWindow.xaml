@@ -1,7 +1,8 @@
 ﻿<Window x:Class="Rybocompleks.GUI.GrowingCycleWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="GrowingCycleWindow" Height="auto" Width="auto">
+        Title="GrowingCycleWindow" Height="auto" Width="auto"
+        Loaded="Window_Loaded" Closing="Window_Closing" Closed="Window_Closed">
         <DockPanel>
             <Menu DockPanel.Dock="Top" Background="{DynamicResource {x:Static SystemColors.InactiveBorderBrushKey}}">
                 <MenuItem Header="Меню">
@@ -20,8 +21,18 @@
                 <RowDefinition Height="62*"/>
                 <RowDefinition Height="38*"/>
             </Grid.RowDefinitions>
-            <DataGrid Grid.Row="0" Grid.Column="0" ToolTip="табличное отобрадение состояния системы"></DataGrid>
-            <DataGrid Grid.Row="1" Grid.Column="0" ToolTip="текущая инструкция"></DataGrid>
+            <DataGrid Name="dgSystemCondition"  Grid.Row="0" Grid.Column="0" ToolTip="табличное отображение состояния системы">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Устройство" Width="70*"/>
+                    <DataGridTextColumn Header="Значение"  Width="30*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <DataGrid Grid.Row="1" Grid.Column="0" ToolTip="текущая инструкция">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Параметр" Width="50*"/>
+                    <DataGridTextColumn Header="Допустимое значение"  Width="50*"/>
+                </DataGrid.Columns>
+            </DataGrid>
             <DataGrid Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" ToolTip="графическое отображение состония системы" Background="#FFB2F4F7"></DataGrid>
         </Grid>
     </DockPanel>
