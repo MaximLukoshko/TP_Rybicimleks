@@ -14,7 +14,8 @@ namespace Rybocompleks.DecisionMakerModule
              StateFormers.Add(MeasurmentTypes.Type.LightPerDay, new LightStateFormer());
          }
 
-         public IDictionary<MeasurmentTypes.Type, IMeasurment> FormDevicesInstructions(IDictionary<MeasurmentTypes.Type, IMeasurment> currentStates, IDictionary<MeasurmentTypes.Type, IInstruction> allowedStates)
+         public IDictionary<MeasurmentTypes.Type, IMeasurment> FormDevicesInstructions(IDictionary<MeasurmentTypes.Type, IMeasurment> currentStates, 
+             IGPAllowedStates allowedStates)
          {
              IDictionary<MeasurmentTypes.Type, IMeasurment> ret = new Dictionary<MeasurmentTypes.Type, IMeasurment>();
              
@@ -27,7 +28,7 @@ namespace Rybocompleks.DecisionMakerModule
                      former = StateFormers[MeasurmentTypes.Type.DefaultType];
 
                  ret.Add(curState.GetPropertyID(),
-                     former.FormDevicesInstruction(curState, allowedStates[curState.GetPropertyID()]));
+                     former.FormDevicesInstruction(curState, allowedStates));
              }
 
              return ret;

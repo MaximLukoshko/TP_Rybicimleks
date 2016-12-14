@@ -48,6 +48,7 @@
     <Compile Include="Classes\Measurments\PHMeasurment.cs" />
     <Compile Include="Classes\ShowInfo.cs" />
     <Compile Include="Classes\Measurments\TemperatureMeasurment.cs" />
+    <Compile Include="Interfaces\IGPAllowedStates.cs" />
     <Compile Include="Interfaces\IInstruction.cs" />
     <Compile Include="Interfaces\Measurments\ILightMeasurment.cs" />
     <Compile Include="Interfaces\Measurments\IMeasurment.cs" />

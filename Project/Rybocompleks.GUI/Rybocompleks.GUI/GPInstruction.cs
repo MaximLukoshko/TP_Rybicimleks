@@ -8,7 +8,7 @@ using Rybocompleks.Data;
 namespace Rybocompleks.GrowingPlan
 {
     [Serializable]
-    public class GPInstruction : IToGPAllowedStates
+    public class GPInstruction : IToIGPAllowedStates
     {
         public GPInstruction(){}
         public GPInstruction(string instructionName = "имя интсрукции", int hours = 0, int minutes = 0,
@@ -35,7 +35,7 @@ namespace Rybocompleks.GrowingPlan
             this.PH = gpn.PH;
         }
 
-        public GPAllowedStates ToGPAllowedStates()
+        public IGPAllowedStates ToIGPAllowedStates()
         {
             IDictionary<MeasurmentTypes.Type, IInstruction> ret_states = new Dictionary<MeasurmentTypes.Type, IInstruction>();
 

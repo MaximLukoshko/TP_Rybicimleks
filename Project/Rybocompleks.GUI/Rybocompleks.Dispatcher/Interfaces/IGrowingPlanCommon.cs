@@ -1,4 +1,5 @@
 ﻿using Rybocompleks.Data;
+using Rybocompleks.Dispatcher;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace Rybocompleks.GrowingPlan
 {
     public interface IGrowingPlanCommon
     {
-        IDictionary<MeasurmentTypes.Type, IInstruction> GetAllowedStates(Int32 hours, Int32 minutes);
+        IGPAllowedStates GetAllowedStates(Int32 hours, Int32 minutes);
     }
 }

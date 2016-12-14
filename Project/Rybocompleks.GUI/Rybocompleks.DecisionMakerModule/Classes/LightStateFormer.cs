@@ -8,9 +8,9 @@ namespace Rybocompleks.DecisionMakerModule
 
 
 
-        public IMeasurment FormDevicesInstruction(IMeasurment currentState, IInstruction allowedStates)
+        public IMeasurment FormDevicesInstruction(IMeasurment currentState, IGPAllowedStates allowedStates)
         {
-            return allowedStates.GetMaxAllowedState();
+            return allowedStates.GetStateByPropertyID(GetPropertyID()).GetMaxAllowedState();
         }
 
         public MeasurmentTypes.Type GetPropertyID()

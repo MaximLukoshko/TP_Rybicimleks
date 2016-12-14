@@ -4,6 +4,6 @@ namespace Rybocompleks.DecisionMakerModule
 {
     internal interface IStateFormer : IPropertyID
     {
-        IMeasurment FormDevicesInstruction(IMeasurment currentState, IInstruction allowedStates);
+        IMeasurment FormDevicesInstruction(IMeasurment currentState, IGPAllowedStates allowedStates);
     }
 }

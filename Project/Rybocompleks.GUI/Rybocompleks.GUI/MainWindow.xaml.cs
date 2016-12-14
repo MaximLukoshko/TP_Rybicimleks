@@ -218,7 +218,7 @@ namespace Rybocompleks.GUI
 //             foreach (IToGPAllowedStates instr in gpList.Instructions)
 //                 instructions_copy.Add(instr);
 
-            IDispatcher dispatcher = new Dispatcher.Dispatcher(new GrowingPlanCommon(gpList.Instructions.ToList<IToGPAllowedStates>()));
+            IDispatcher dispatcher = new Dispatcher.Dispatcher(new GrowingPlanCommon(gpList.Instructions.ToList<IToIGPAllowedStates>()));
             GrowingCycleWindow gcw = new GrowingCycleWindow(dispatcher);
             gcw.Show();
             gpList = new GrowingPlanList();

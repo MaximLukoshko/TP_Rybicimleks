@@ -66,9 +66,9 @@ namespace Rybocompleks.Dispatcher
 
         private Boolean MakeCycle()
         {
-                IDictionary<MeasurmentTypes.Type, IInstruction> allowedStates = growingPlan.GetAllowedStates(Hours, Minutes);
-                if (null == allowedStates)
-                    return false;
+            IGPAllowedStates allowedStates = growingPlan.GetAllowedStates(Hours, Minutes);
+            if (null == allowedStates)
+                return false;
             
             mutex.WaitOne();
             //Снимаем показания сенсоров
@@ -76,7 +76,7 @@ namespace Rybocompleks.Dispatcher
             // Снимаем состояние приборов
             //IDictionary<MeasurmentTypes.Type, IMeasurment> devStates = devicesController.GetDevicesStates
             //Формируем инструкции для приборов
-            IDictionary<MeasurmentTypes.Type, IMeasurment> reqStates = stateFormersController.FormDevicesInstructions(envStates,allowedStates);
+            IDictionary<MeasurmentTypes.Type, IMeasurment> reqStates = stateFormersController.FormDevicesInstructions(envStates, allowedStates);
             //Выставляем приборы в нужное состояние
             devicesController.AffectEnvironment(reqStates);
             mutex.ReleaseMutex();
