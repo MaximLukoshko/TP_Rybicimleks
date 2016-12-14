@@ -10,14 +10,9 @@ namespace Rybocompleks.Perepherial
 {
     public class OxygenSensor : Sensor
     {
-        public OxygenSensor(Location loc) : base(loc)
+        public OxygenSensor(Location loc, String name="Датчик кислорода") : base(loc,name)
         {
             Measure();
-        }
-
-        public override String GetName()
-        {
-            return "Датчик кислорода";
         }
 
         public override Int32 GetIcon()

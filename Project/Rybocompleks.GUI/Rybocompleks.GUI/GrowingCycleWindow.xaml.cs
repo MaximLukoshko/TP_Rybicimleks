@@ -43,7 +43,7 @@ namespace Rybocompleks.GUI
             foreach (IShowInfo info in showInfoList)
             {
                 string state = info.GetState().GetStringValue();
-                string name = info.GetItem().GetName();
+                string name = info.GetItem().Name;
                 states.Add(new SystemConditionNode(name, state));
             }
             dgSystemCondition.ItemsSource = null;            

@@ -31,7 +31,7 @@ namespace Rybocompleks.Data
 
         public String GetStringValue()
         {
-            return PH.ToString() + " ph";
+            return PH.ToString();
         }
 
         //Data

@@ -10,14 +10,9 @@ namespace Rybocompleks.Perepherial
 {
     public class PhSensor : Sensor
     {
-        public PhSensor(Location loc) : base(loc)
+        public PhSensor(Location loc,String name = "Датчик кислотности") : base(loc,name)
         {
             Measure();
-        }
-
-        public override String GetName()
-        {
-            return "Датчик кислотности";
         }
 
         public override Int32 GetIcon()

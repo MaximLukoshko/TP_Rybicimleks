@@ -10,7 +10,7 @@ namespace Rybocompleks.Perepherial
 {
     public class PhDevice : Device
     {
-        public PhDevice (Location loc) : base(loc)
+        public PhDevice(Location loc, String name = "Регулятор кислотности") : base(loc,name)
         {
             SetState( new PHMeasurment(0) );
         }
@@ -23,11 +23,6 @@ namespace Rybocompleks.Perepherial
         public override MeasurmentTypes.Type GetPropertyID()
         {
             return MeasurmentTypes.Type.PH;
-        }
-
-        public override string GetName()
-        {
-            return "Регулятор кислотности";
         }
 
         public override int GetIcon()

@@ -10,7 +10,8 @@ namespace Rybocompleks.Perepherial
 {
     public class TemperatureDevice : Device
     {
-        public TemperatureDevice(Location loc) : base(loc)
+        public TemperatureDevice(Location loc, String name = "Нагреватель")
+            : base(loc, name)
         {
             SetState( new TemperatureMeasurment(0) );
         }
@@ -24,12 +25,6 @@ namespace Rybocompleks.Perepherial
         {
             return MeasurmentTypes.Type.Temperature;
         }
-
-        public override string GetName()
-        {
-            return "Нагреватель";
-        }
-
         public override int GetIcon()
         {
             throw new NotImplementedException();

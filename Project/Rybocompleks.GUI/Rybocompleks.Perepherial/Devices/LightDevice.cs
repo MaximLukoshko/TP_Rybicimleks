@@ -10,7 +10,7 @@ namespace Rybocompleks.Perepherial
 {
     public class LightDevice : Device
     {
-        public LightDevice(Location loc) : base(loc)
+        public LightDevice(Location loc, String name="Лампа") : base(loc,name)
         {
             SetState(new LightMeasurment(false));
         }
@@ -23,11 +23,6 @@ namespace Rybocompleks.Perepherial
         public override MeasurmentTypes.Type GetPropertyID()
         {
             return MeasurmentTypes.Type.LightPerDay;
-        }
-
-        public override string GetName()
-        {
-            return "Лампа";
         }
 
         public override int GetIcon()

@@ -10,16 +10,10 @@ namespace Rybocompleks.Perepherial
 {
     public class TemperatureSensor : Sensor
     {
-        public TemperatureSensor(Location loc) : base(loc)
+        public TemperatureSensor(Location loc, String name = "Датчик температуры") : base(loc,name)
         {
             Measure();
         }
-
-        public override String GetName()
-        {
-            return "Датчик температуры";
-        }
-
         public override Int32 GetIcon()
         {
             throw new NotImplementedException();

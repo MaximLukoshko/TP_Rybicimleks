@@ -12,10 +12,11 @@ namespace Rybocompleks.Perepherial
     {
         protected IMeasurment State = null;
         protected Location location;
-
-        public Device(Location loc)
+        public String Name { get; set; }
+        public Device(Location loc, String name)
         {
             location = loc;
+            Name = name;
         }
 
         public abstract void SetState(IMeasurment state);
@@ -36,7 +37,6 @@ namespace Rybocompleks.Perepherial
         }
 
         public abstract MeasurmentTypes.Type GetPropertyID();
-        public abstract string GetName();
         public abstract int GetIcon();
      
     }

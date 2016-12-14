@@ -11,10 +11,13 @@ namespace Rybocompleks.Perepherial
     {
         protected IMeasurment lastMeasurment = null;
         protected Location location;
+        public String Name{ get; set; }
 
-        public Sensor(Location loc)
+
+        public Sensor(Location loc, String name)
         {
             location = loc;
+            Name = name;
         }
 
         public IMeasurment GetLastMeasurment()
@@ -33,9 +36,6 @@ namespace Rybocompleks.Perepherial
         }
 
         public abstract MeasurmentTypes.Type GetPropertyID();
-
-        public abstract String GetName();
-
         public abstract Int32 GetIcon();
         public abstract IMeasurment Measure();
     }

@@ -31,7 +31,7 @@ namespace Rybocompleks.Data
 
         public String GetStringValue()
         {
-            return Temperature.ToString() + " grad";
+            return Temperature.ToString();
         }
 
         //Data

@@ -10,7 +10,8 @@ namespace Rybocompleks.Perepherial
 {
     public class OxygenDevice : Device
     {
-        public OxygenDevice(Location loc) : base(loc)
+        public OxygenDevice(Location loc, String name = "Регулятор кислорода")
+            : base(loc,name)
         {
             SetState( new OxygenMeasurment(0) );
         }
@@ -23,11 +24,6 @@ namespace Rybocompleks.Perepherial
         public override MeasurmentTypes.Type GetPropertyID()
         {
             return MeasurmentTypes.Type.Oxygen;
-        }
-
-        public override string GetName()
-        {
-            return "Регулятор кислорода";
         }
 
         public override int GetIcon()

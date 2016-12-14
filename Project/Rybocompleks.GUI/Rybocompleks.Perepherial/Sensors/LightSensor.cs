@@ -10,16 +10,11 @@ namespace Rybocompleks.Perepherial
 {
     public class LightSensor : Sensor
     {
-        public LightSensor(Location loc) : base(loc)
+        public LightSensor(Location loc, String name = "Датчик освещённости")
+            : base(loc, name)
         {
             Measure();
         }
-
-        public override String GetName()
-        {
-            return "Датчик освещённости";
-        }
-
         public override Int32 GetIcon()
         {
             throw new NotImplementedException();

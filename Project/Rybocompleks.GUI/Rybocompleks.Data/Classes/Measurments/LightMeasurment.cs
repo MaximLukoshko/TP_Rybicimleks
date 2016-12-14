@@ -36,7 +36,7 @@ namespace Rybocompleks.Data
 
         public String GetStringValue()
         {
-            return (TurnedOn ? "включена" : "выключена");
+            return TurnedOn.ToString();
         }
 
         //Data
