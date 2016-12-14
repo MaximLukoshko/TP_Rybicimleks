@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -28,12 +29,14 @@ namespace Rybocompleks.GUI
             InitializeComponent();
             GrowingDispatcher = dispatcher;
             states = new List<SystemConditionNode>();
+            dgSystemCondition.ItemsSource = states;            
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             GrowingDispatcher.RunFishGrowing();
-            UpdateSystemConditionTable();          
+            Thread monitorThread = new Thread(MonitorSystem);
+            monitorThread.Start();
         }
         private void UpdateSystemConditionTable()
         {
@@ -46,8 +49,22 @@ namespace Rybocompleks.GUI
                 string name = info.GetItem().Name;
                 states.Add(new SystemConditionNode(name, state));
             }
-            dgSystemCondition.ItemsSource = null;            
-            dgSystemCondition.ItemsSource = states;            
+
+            dgSystemCondition.Dispatcher.Invoke(delegate { dgSystemCondition.ItemsSource = states; });
+        }
+
+        private void DisplayStates(List<SystemConditionNode> states)
+        {
+            dgSystemCondition.ItemsSource = states;
+        }
+
+        private void MonitorSystem()
+        {
+            while(true)
+            {
+                UpdateSystemConditionTable();
+                Thread.Sleep(500);
+            }
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
