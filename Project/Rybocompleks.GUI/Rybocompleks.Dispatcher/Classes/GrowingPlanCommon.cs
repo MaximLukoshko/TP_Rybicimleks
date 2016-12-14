@@ -30,12 +30,11 @@ namespace Rybocompleks.GrowingPlan
 
                 if (currentInstructionTime <= required && nextInstructionTime > required)
                 {
-                    //Заполнить прогресс
-//                             !!!
-//                             !!!
-//                             !!!
-//                             !!!
-                    //
+                    AllowedStatesList[i].Progress =
+                        ((required.Hour - currentInstructionTime.Hour) * 60 +
+                        (required.Minute - currentInstructionTime.Minute)) /
+                        ((nextInstructionTime.Hour - currentInstructionTime.Hour) * 60 +
+                        (nextInstructionTime.Minute - currentInstructionTime.Minute));
 
                     return AllowedStatesList[i];
                 }
