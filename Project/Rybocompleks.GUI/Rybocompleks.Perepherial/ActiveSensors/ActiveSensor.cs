@@ -32,5 +32,14 @@ namespace Perepherial.ActiveSensors
         }
 
         public abstract MeasurmentTypes.Type GetPropertyID();
+
+        public Boolean IsEnvironmentOK(IInstruction allowedStates)
+        {
+            if (GetState().Compare(allowedStates.GetMaxAllowedState()) == -1
+                && GetState().Compare(allowedStates.GetMinAllowedState()) == 1)
+                return true;
+
+            return false;
+        }
     }
 }

@@ -11,13 +11,14 @@ using System.Threading.Tasks;
 
 namespace Rybocompleks.Dispatcher
 {
-    public class Dispatcher : IDispatcher
+    public class Dispatcher : IDispatcher, IActiveSensorsControllerListener
     {
         private Thread RunThread;
         private Mutex mutex;
 
         private IDevicesController devicesController;
         private ISensorsController sensorsController;
+        private IActiveSensorsController activeSensorsController;
         private IStateFormersController stateFormersController;
         private IGrowingPlanCommon growingPlan;
         private Int32 Hours;
@@ -32,6 +33,7 @@ namespace Rybocompleks.Dispatcher
             Minutes = 0;
             devicesController = new DevicesController();
             sensorsController = new SensorsController();
+            activeSensorsController = new ActiveSensorsController();
             stateFormersController = new StateFormersController();
             growingPlan = gp;
         }
@@ -106,6 +108,14 @@ namespace Rybocompleks.Dispatcher
                 Tic_Toc();
                 Thread.Sleep(2000); //  1 минута в программе ~ 2 секунда в жизни
             }
+        }
+        public void Notify(IList<IMeasurment> dangerStates)
+        {
+            IDictionary<MeasurmentTypes.Type, IMeasurment> reqStates = new Dictionary<MeasurmentTypes.Type, IMeasurment>();
+            foreach (IMeasurment ds in dangerStates)
+                reqStates.Add(ds.GetPropertyID(), ds);
+            
+            AffectEnvironmentByStates(reqStates);
         }
     }
 }

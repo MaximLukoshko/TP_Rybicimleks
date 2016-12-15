@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Rybocompleks.Controllers
+namespace Rybocompleks.Dispatcher
 {
-    public interface IActiveSensorsController : IController
+    public interface IActiveSensorsControllerListener
     {
-        IGPAllowedStates CurrentInstruction{ set; }
+        void Notify(IList<IMeasurment> dangerStates);
     }
 }

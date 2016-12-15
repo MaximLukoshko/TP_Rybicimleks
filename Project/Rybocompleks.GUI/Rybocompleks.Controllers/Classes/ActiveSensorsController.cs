@@ -12,6 +12,8 @@ namespace Rybocompleks.Controllers
     public class ActiveSensorsController : IActiveSensorsController
     {
         protected Controller<IActiveSensor> physicalObjectsController;
+        public IGPAllowedStates CurrentInstruction{private get; set;}
+
         public ActiveSensorsController()
         {
             physicalObjectsController = new Controller<IActiveSensor>();

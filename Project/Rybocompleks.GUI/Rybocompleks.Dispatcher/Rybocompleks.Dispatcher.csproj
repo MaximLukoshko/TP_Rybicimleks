@@ -42,6 +42,7 @@
     <Compile Include="Classes\GPAllowedStates.cs" />
     <Compile Include="Classes\GrowingPlanCommon.cs" />
     <Compile Include="Classes\Dispatcher.cs" />
+    <Compile Include="Interfaces\IActiveSensorsControllerListener.cs" />
     <Compile Include="Interfaces\IDispatcher.cs" />
     <Compile Include="Interfaces\IGrowingPlanCommon.cs" />
     <Compile Include="Interfaces\IToIGPAllowedStates.cs" />
@@ -60,6 +61,9 @@
       <Project>{207aa976-9637-40ae-83e3-dd3920b21c9f}</Project>
       <Name>Rybocompleks.DecisionMakerModule</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

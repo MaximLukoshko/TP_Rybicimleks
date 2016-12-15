@@ -10,5 +10,6 @@ namespace Perepherial.ActiveSensors
     public interface IActiveSensor : IPhysicalObject
     {
         IMeasurment GetState();
+        Boolean IsEnvironmentOK(IInstruction allowedStates);
     }
 }
