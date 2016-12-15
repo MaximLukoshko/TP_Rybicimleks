@@ -25,7 +25,10 @@ namespace Rybocompleks.GUI
     {
         private IDispatcher GrowingDispatcher;
         private List<SystemConditionNode> states;
+        private GPInstruction currentInstruction;   
+
         private Thread MonitorSystemThread;
+
         public GrowingCycleWindow(IDispatcher dispatcher)
         {
             InitializeComponent();
@@ -33,7 +36,10 @@ namespace Rybocompleks.GUI
             states = new List<SystemConditionNode>();
             dgSystemCondition.ItemsSource = states;
             MonitorSystemThread = new Thread(MonitorSystem);
-        }
+
+            currentInstruction = new GPInstruction(GrowingDispatcher.GetCurrentInstruction());
+            
+    }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {

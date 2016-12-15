@@ -28,7 +28,7 @@
                     <DataGridTextColumn Header="Состояние"  Width="10*"  Binding="{Binding Path=ElementState, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <DataGrid Grid.Row="1" Grid.Column="0" ToolTip="текущая инструкция">
+            <DataGrid Name="dgCurrentInstruction" Grid.Row="1" Grid.Column="0" ToolTip="текущая инструкция">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Параметр" Width="50*"/>
                     <DataGridTextColumn Header="Допустимое значение"  Width="50*"/>

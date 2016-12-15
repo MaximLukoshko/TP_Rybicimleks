@@ -11,6 +11,27 @@ namespace Rybocompleks.GUI.Data
     public class GPInstruction : IToIGPAllowedStates
     {
         public GPInstruction(){}
+
+        public GPInstruction(IGPAllowedStates gpas)
+        {
+           InstructionName = gpas.Name;
+           Hours = gpas.Hours;
+           Minutes = gpas.Minutes;
+           IMeasurment temp;
+           temp = (IMeasurment)gpas.GetStateByPropertyID(MeasurmentTypes.Type.Temperature).GetMaxAllowedState();
+           TemperatureMax = ((ITemperatureMeasurment)temp).GetTemperature();
+
+           temp = (IMeasurment)gpas.GetStateByPropertyID(MeasurmentTypes.Type.Temperature).GetMinAllowedState();
+           TemperatureMin = ((ITemperatureMeasurment)temp).GetTemperature();
+
+           temp = (IMeasurment)gpas.GetStateByPropertyID(MeasurmentTypes.Type.Oxygen).GetMinAllowedState();
+           Oxygen = ((IOxygenMeasurrment)temp).GetOxygen();
+
+           temp = (IMeasurment)gpas.GetStateByPropertyID(MeasurmentTypes.Type.PH).GetMinAllowedState();
+           PH = ((IPHMeasurment)temp).GetPH();
+
+           LightHoursPerDay = 0;//?!?!?!?!!?!?!
+        }
         public GPInstruction(string instructionName = "имя интсрукции", int hours = 0, int minutes = 0,
             int temperatureMax = 25, int temperatureMin = 25, int oxygen = 20, int lightHoursPerDay = 12, double pH = 7) 
         {
