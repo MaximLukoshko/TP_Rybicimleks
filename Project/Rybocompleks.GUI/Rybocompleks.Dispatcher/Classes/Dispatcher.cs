@@ -33,7 +33,7 @@ namespace Rybocompleks.Dispatcher
             Minutes = 0;
             devicesController = new DevicesController();
             sensorsController = new SensorsController();
-            activeSensorsController = new ActiveSensorsController();
+            activeSensorsController = new ActiveSensorsController(this);
             stateFormersController = new StateFormersController();
             growingPlan = gp;
         }
@@ -72,6 +72,7 @@ namespace Rybocompleks.Dispatcher
             if (null == allowedStates)
                 return false;
 
+            activeSensorsController.CurrentInstruction = allowedStates;
             //Формируем инструкции для приборов
             IDictionary<MeasurmentTypes.Type, IMeasurment> reqStates = stateFormersController.FormDevicesInstructions(envStates, allowedStates);
             //Выставляем приборы в нужное состояние

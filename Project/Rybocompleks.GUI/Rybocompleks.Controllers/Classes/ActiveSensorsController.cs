@@ -1,10 +1,12 @@
 ﻿using Perepherial.ActiveSensors;
 using Rybocompleks.Data;
+using Rybocompleks.Dispatcher;
 using Rybocompleks.Perepherial;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Rybocompleks.Controllers
@@ -13,10 +15,15 @@ namespace Rybocompleks.Controllers
     {
         protected Controller<IActiveSensor> physicalObjectsController;
         public IGPAllowedStates CurrentInstruction{private get; set;}
+        private Thread MonitorSensorsThread;
+        public IActiveSensorsControllerListener Listener;
 
-        public ActiveSensorsController()
+        public ActiveSensorsController(IActiveSensorsControllerListener dispatcher)
         {
             physicalObjectsController = new Controller<IActiveSensor>();
+            MonitorSensorsThread = new Thread(Monitor);
+            MonitorSensorsThread.Start();
+            Listener = dispatcher; 
         }
 
         public ICollection<IShowInfo> GetShowInfo()
@@ -33,6 +40,26 @@ namespace Rybocompleks.Controllers
             }
 
             return ret;
+        }
+
+        private void Monitor()
+        {
+            ICollection<IActiveSensor> actSensors= physicalObjectsController.GetPhysicalObjects().Values;
+            IList<IMeasurment> dangerStates = new List<IMeasurment>();
+            while(true)
+            {
+                Thread.Sleep(400);
+                
+                dangerStates.Clear();
+                foreach(IActiveSensor actSens in actSensors)
+                {
+                    if (false == actSens.IsEnvironmentOK(CurrentInstruction.GetStateByPropertyID(actSens.GetPropertyID())))
+                        dangerStates.Add(actSens.GetState());
+                }
+
+                if (dangerStates.Count > 0)
+                    Listener.Notify(dangerStates);
+            }
         }
     }
 }
