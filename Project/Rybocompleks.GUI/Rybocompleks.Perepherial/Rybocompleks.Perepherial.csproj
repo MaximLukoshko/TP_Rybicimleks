@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActiveSensors\ActiveSensor.cs" />
+    <Compile Include="ActiveSensors\ActiveTemperatureSensor.cs" />
     <Compile Include="ActiveSensors\IActiveSensor.cs" />
     <Compile Include="Devices\Device.cs" />
     <Compile Include="Devices\IDevice.cs" />

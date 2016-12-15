@@ -53,15 +53,19 @@ namespace Rybocompleks.Dispatcher
             ICollection<IShowInfo> ret;
             ICollection<IShowInfo> ret_devices;
             ICollection<IShowInfo> ret_sensors;
+            ICollection<IShowInfo> ret_active_sensors;
 
             mutex.WaitOne();
             ret_devices = devicesController.GetShowInfo();
             ret_sensors = sensorsController.GetShowInfo();
+            ret_active_sensors = activeSensorsController.GetShowInfo();
             mutex.ReleaseMutex();
 
             ret = ret_devices;
             foreach (IShowInfo sensor_shinf in ret_sensors)
                 ret.Add(sensor_shinf);
+            foreach (IShowInfo act_sensor_shinf in ret_active_sensors)
+                ret.Add(act_sensor_shinf);
 
             return ret;
         }
