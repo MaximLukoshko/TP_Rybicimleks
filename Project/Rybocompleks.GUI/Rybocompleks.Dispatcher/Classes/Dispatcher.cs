@@ -98,7 +98,7 @@ namespace Rybocompleks.Dispatcher
             
             mutex.WaitOne();
             
-            //Снимаем показания сенсоров и отправляем их для ринятия решения и воздействия на окружающую среду
+            //Снимаем показания сенсоров и отправляем их для принятия решения и воздействия на окружающую среду
             IDictionary<MeasurmentTypes.Type, IMeasurment> sensStates = sensorsController.GetEnvironmentStates();
             if (false == AffectEnvironmentByStates(sensStates))
                 ret = false;

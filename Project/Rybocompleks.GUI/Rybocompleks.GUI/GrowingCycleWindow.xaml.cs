@@ -65,18 +65,21 @@ namespace Rybocompleks.GUI
 
         private void UpdateCurrentInstructionTable()
         {
-            dgCurrInstDescription.ItemsSource = null;
+            currentInstruction = new GPInstruction(GrowingDispatcher.GetCurrentInstruction());
             int temperMin = currentInstruction.TemperatureMin;
             int temperMax = currentInstruction.TemperatureMax;
+            DateTime SystemTime = GrowingDispatcher.GetCurrentTime();
 
-            dgCurrInstDescription.ItemsSource = new List<CurrentInstuctDescriptionTable>() {
-                new CurrentInstuctDescriptionTable(){ ParamName="Наименование", ParamValue = currentInstruction.InstructionName},
-                new CurrentInstuctDescriptionTable(){ ParamName="Время", ParamValue = currentInstruction.Hours+" ч.  "+currentInstruction.Minutes+" мин."},
+            List<CurrentInstuctDescriptionTable> currInstrDescrTable = new List<CurrentInstuctDescriptionTable>() {
+                new CurrentInstuctDescriptionTable(){ ParamName="Время", ParamValue = SystemTime.Hour+" ч.  "+SystemTime.Minute +" мин."},
+                new CurrentInstuctDescriptionTable(){ ParamName="Стадия", ParamValue = currentInstruction.InstructionName},
                 new CurrentInstuctDescriptionTable(){ ParamName="Температура",
                     ParamValue = (temperMin != temperMax) ? temperMin + " - " + temperMax + " grad" : temperMax+ " grad" },                                
                 new CurrentInstuctDescriptionTable(){ ParamName="Содержание кислорода", ParamValue = currentInstruction.Oxygen.ToString()},
                 new CurrentInstuctDescriptionTable(){ ParamName="Уровень кислотности", ParamValue = currentInstruction.PH.ToString()},                
-            };           
+            };
+
+            dgCurrInstDescription.Dispatcher.Invoke(delegate { dgCurrInstDescription.ItemsSource = currInstrDescrTable; });
         }
         private void DisplayStates(List<SystemConditionNode> states)
         {
@@ -88,6 +91,7 @@ namespace Rybocompleks.GUI
             while(true)
             {
                 UpdateSystemConditionTable();
+                UpdateCurrentInstructionTable();
                 Thread.Sleep(500);
             }
         }
