@@ -32,7 +32,7 @@ namespace Rybocompleks.Perepherial
 
             set
             {
-                temperature = new TemperatureMeasurment((temperature.GetTemperature() + value.GetTemperature()) / 2);
+                temperature = new TemperatureMeasurment((temperature.GetTemperature() + value.GetTemperature() + +value.Compare(temperature)) / 2);
             } 
         }
 
@@ -45,7 +45,7 @@ namespace Rybocompleks.Perepherial
 
             set
             {
-                oxygen = new OxygenMeasurment((oxygen.GetOxygen() + value.GetOxygen()) / 2);
+                oxygen = new OxygenMeasurment((oxygen.GetOxygen() + value.GetOxygen() + value.Compare(oxygen)) / 2);
             }
         }
 

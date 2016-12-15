@@ -51,6 +51,9 @@ namespace Rybocompleks.Controllers
             {
                 Thread.Sleep(400);
                 CurrentInstruction = Listener.GetCurrentInstruction();
+                if (null == CurrentInstruction)
+                    return;
+
                 dangerStates.Clear();
                 foreach(IActiveSensor actSens in actSensors)
                 {

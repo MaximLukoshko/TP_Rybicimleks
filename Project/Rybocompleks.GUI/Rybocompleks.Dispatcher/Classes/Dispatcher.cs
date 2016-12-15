@@ -83,23 +83,23 @@ namespace Rybocompleks.Dispatcher
             if (null == allowedStates)
                 return false;
 
+            mutex.WaitOne();
             //Формируем инструкции для приборов
             IDictionary<MeasurmentTypes.Type, IMeasurment> reqStates = stateFormersController.FormDevicesInstructions(envStates, allowedStates);
             //Выставляем приборы в нужное состояние
             devicesController.AffectEnvironment(reqStates);
+            mutex.ReleaseMutex();
 
             return true;
         }
 
         private Boolean MakeCycle()
         {
-            
             mutex.WaitOne();
-            
-            //Снимаем показания сенсоров и отправляем их для ринятия решения и воздействия на окружающую среду
-            AffectEnvironmentByStates(sensorsController.GetEnvironmentStates());
-
+            IDictionary<MeasurmentTypes.Type, IMeasurment> sensStates = sensorsController.GetEnvironmentStates();
             mutex.ReleaseMutex();
+            //Снимаем показания сенсоров и отправляем их для ринятия решения и воздействия на окружающую среду
+            AffectEnvironmentByStates(sensStates);
 
             return true;
         }
