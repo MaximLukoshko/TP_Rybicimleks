@@ -94,13 +94,18 @@ namespace Rybocompleks.Dispatcher
 
         private Boolean MakeCycle()
         {
+            Boolean ret = true;
+            
             mutex.WaitOne();
-            IDictionary<MeasurmentTypes.Type, IMeasurment> sensStates = sensorsController.GetEnvironmentStates();
-            mutex.ReleaseMutex();
+            
             //Снимаем показания сенсоров и отправляем их для ринятия решения и воздействия на окружающую среду
-            AffectEnvironmentByStates(sensStates);
+            IDictionary<MeasurmentTypes.Type, IMeasurment> sensStates = sensorsController.GetEnvironmentStates();
+            if (false == AffectEnvironmentByStates(sensStates))
+                ret = false;
 
-            return true;
+            mutex.ReleaseMutex();
+
+            return ret;
         }
         private void Tic_Toc()
         {

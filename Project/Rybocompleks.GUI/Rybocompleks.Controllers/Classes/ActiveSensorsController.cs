@@ -62,7 +62,10 @@ namespace Rybocompleks.Controllers
                 }
 
                 if (dangerStates.Count > 0)
+                {
                     Listener.Notify(dangerStates);
+                    Thread.Sleep(1000); //Ждём пока состояние среды изменится
+                }
             }
         }
     }
