@@ -10,5 +10,6 @@ namespace Rybocompleks.Dispatcher
     public interface IActiveSensorsControllerListener
     {
         void Notify(IList<IMeasurment> dangerStates);
+        IGPAllowedStates GetCurrentInstruction();
     }
 }

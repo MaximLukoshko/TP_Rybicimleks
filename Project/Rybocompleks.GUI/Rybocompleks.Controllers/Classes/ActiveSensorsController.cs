@@ -14,7 +14,7 @@ namespace Rybocompleks.Controllers
     public class ActiveSensorsController : IActiveSensorsController
     {
         protected Controller<IActiveSensor> physicalObjectsController;
-        public IGPAllowedStates CurrentInstruction{private get; set;}
+        private IGPAllowedStates CurrentInstruction { get; set; }
         private Thread MonitorSensorsThread;
         public IActiveSensorsControllerListener Listener;
 
@@ -50,7 +50,7 @@ namespace Rybocompleks.Controllers
             while(true)
             {
                 Thread.Sleep(400);
-                
+                CurrentInstruction = Listener.GetCurrentInstruction();
                 dangerStates.Clear();
                 foreach(IActiveSensor actSens in actSensors)
                 {

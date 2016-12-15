@@ -9,6 +9,5 @@ namespace Rybocompleks.Controllers
 {
     public interface IActiveSensorsController : IController
     {
-        IGPAllowedStates CurrentInstruction{ set; }
     }
 }

@@ -14,6 +14,7 @@ namespace Rybocompleks.Dispatcher
     public class Dispatcher : IDispatcher, IActiveSensorsControllerListener
     {
         private Thread RunThread;
+        Thread ClockThread;
         private Mutex mutex;
 
         private IDevicesController devicesController;
@@ -28,7 +29,8 @@ namespace Rybocompleks.Dispatcher
         {
             mutex = new Mutex();
             RunThread = new Thread(Run);
-            
+            ClockThread = new Thread(Tic_Toc);
+
             Hours = 0;
             Minutes = 0;
             devicesController = new DevicesController();
@@ -41,11 +43,13 @@ namespace Rybocompleks.Dispatcher
         public void RunFishGrowing()
         {
             RunThread.Start();
+            ClockThread.Start();
         }
 
         public void StopFishGrowing()
         {
             RunThread.Abort();
+            ClockThread.Abort();
         }
 
         public ICollection<IShowInfo> GetShowInfo()
@@ -69,14 +73,16 @@ namespace Rybocompleks.Dispatcher
 
             return ret;
         }
-
+        public IGPAllowedStates GetCurrentInstruction()
+        {
+            return growingPlan.GetAllowedStates(Hours, Minutes);
+        }
         private Boolean AffectEnvironmentByStates(IDictionary<MeasurmentTypes.Type, IMeasurment> envStates)
         {
-            IGPAllowedStates allowedStates = growingPlan.GetAllowedStates(Hours, Minutes);
+            IGPAllowedStates allowedStates = GetCurrentInstruction();
             if (null == allowedStates)
                 return false;
 
-            activeSensorsController.CurrentInstruction = allowedStates;
             //Формируем инструкции для приборов
             IDictionary<MeasurmentTypes.Type, IMeasurment> reqStates = stateFormersController.FormDevicesInstructions(envStates, allowedStates);
             //Выставляем приборы в нужное состояние
@@ -99,20 +105,23 @@ namespace Rybocompleks.Dispatcher
         }
         private void Tic_Toc()
         {
-            Minutes++;
-            if (Minutes > 60)
+            while(true)
             {
-                Hours++;
-                Minutes -= 60;
+                mutex.WaitOne();
+                Minutes++;
+                if (Minutes > 60)
+                {
+                    Hours++;
+                    Minutes -= 60;
+                }
+                mutex.ReleaseMutex();
+                Thread.Sleep(2000);//  1 минута в программе ~ 2 секунда в жизни
             }
         }
         private void Run()
         {
             while (true == MakeCycle())
-            {
-                Tic_Toc();
-                Thread.Sleep(2000); //  1 минута в программе ~ 2 секунда в жизни
-            }
+                Thread.Sleep(15000);
         }
         public void Notify(IList<IMeasurment> dangerStates)
         {
