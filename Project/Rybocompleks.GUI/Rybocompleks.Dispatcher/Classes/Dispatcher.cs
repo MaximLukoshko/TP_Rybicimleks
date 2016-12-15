@@ -131,5 +131,10 @@ namespace Rybocompleks.Dispatcher
             
             AffectEnvironmentByStates(reqStates);
         }
+
+        public DateTime GetCurrentTime()
+        {
+            return (new DateTime()).AddHours(Hours).AddMinutes(Minutes);
+        }
     }
 }

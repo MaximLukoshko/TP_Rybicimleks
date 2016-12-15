@@ -1,4 +1,5 @@
 ﻿using Rybocompleks.Data;
+using System;
 using System.Collections.Generic;
 
 namespace Rybocompleks.Dispatcher
@@ -9,5 +10,6 @@ namespace Rybocompleks.Dispatcher
         void StopFishGrowing();
         ICollection<IShowInfo> GetShowInfo();
         IGPAllowedStates GetCurrentInstruction();
+        DateTime GetCurrentTime();
     }
 }
