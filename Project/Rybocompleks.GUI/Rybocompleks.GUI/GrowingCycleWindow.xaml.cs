@@ -38,7 +38,9 @@ namespace Rybocompleks.GUI
             MonitorSystemThread = new Thread(MonitorSystem);
 
             currentInstruction = new GPInstruction(GrowingDispatcher.GetCurrentInstruction());
-            
+            UpdateCurrentInstructionTable();
+
+
     }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -61,6 +63,10 @@ namespace Rybocompleks.GUI
             dgSystemCondition.Dispatcher.Invoke(delegate { dgSystemCondition.ItemsSource = states; });
         }
 
+        private void UpdateCurrentInstructionTable()
+        {
+            currInstDescription_TxtBlck.Text = currentInstruction.InstructionName;
+        }
         private void DisplayStates(List<SystemConditionNode> states)
         {
             dgSystemCondition.ItemsSource = states;
