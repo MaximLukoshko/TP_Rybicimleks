@@ -58,14 +58,25 @@ namespace Rybocompleks.GUI
                 string state = info.GetState().GetStringValue();
                 string name = info.GetItem().Name;
                 states.Add(new SystemConditionNode(name, state));
-            }
-
+            }            
             dgSystemCondition.Dispatcher.Invoke(delegate { dgSystemCondition.ItemsSource = states; });
+
         }
 
         private void UpdateCurrentInstructionTable()
         {
-            currInstDescription_TxtBlck.Text = currentInstruction.InstructionName;
+            dgCurrInstDescription.ItemsSource = null;
+            int temperMin = currentInstruction.TemperatureMin;
+            int temperMax = currentInstruction.TemperatureMax;
+
+            dgCurrInstDescription.ItemsSource = new List<CurrentInstuctDescriptionTable>() {
+                new CurrentInstuctDescriptionTable(){ ParamName="Наименование", ParamValue = currentInstruction.InstructionName},
+                new CurrentInstuctDescriptionTable(){ ParamName="Время", ParamValue = currentInstruction.Hours+" ч.  "+currentInstruction.Minutes+" мин."},
+                new CurrentInstuctDescriptionTable(){ ParamName="Температура",
+                    ParamValue = (temperMin != temperMax) ? temperMin + " - " + temperMax + " grad" : temperMax+ " grad" },                                
+                new CurrentInstuctDescriptionTable(){ ParamName="Содержание кислорода", ParamValue = currentInstruction.Oxygen.ToString()},
+                new CurrentInstuctDescriptionTable(){ ParamName="Уровень кислотности", ParamValue = currentInstruction.PH.ToString()},                
+            };           
         }
         private void DisplayStates(List<SystemConditionNode> states)
         {

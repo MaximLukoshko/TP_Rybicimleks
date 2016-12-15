@@ -17,19 +17,27 @@
                 <ColumnDefinition Width="38*"/>
                 <ColumnDefinition Width="62*"/>
             </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="62*"/>
-                <RowDefinition Height="38*"/>
-            </Grid.RowDefinitions>
-            <DataGrid Name="dgSystemCondition"  Grid.Row="0" Grid.Column="0" AutoGenerateColumns="False" CanUserAddRows="False"
-                      CanUserReorderColumns="False">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Устройство" Width="auto"  Binding="{Binding Path=ElementName, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
-                    <DataGridTextColumn Header="Состояние"  Width="10*"  Binding="{Binding Path=ElementState, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
-                </DataGrid.Columns>
-            </DataGrid>
-            <StackPanel Name="viewCurrentInstruction" Grid.Row="1" Grid.Column="0" ToolTip="текущая инструкция" Orientation="Vertical">
-                <TextBlock Name="currInstDescription_TxtBlck" TextWrapping="Wrap"/>
+            <StackPanel Orientation="Vertical">
+                <GroupBox Header="Состояние системы">
+                    <StackPanel>
+                        <DataGrid Name="dgSystemCondition"  AutoGenerateColumns="False" CanUserAddRows="False"
+                              CanUserReorderColumns="False" Margin="2,0,2,2">
+                            <DataGrid.Columns>
+                            <DataGridTextColumn Header="Устройство" Width="auto"  Binding="{Binding Path=ElementName, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Состояние"  Width="10*"  Binding="{Binding Path=ElementState, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                        </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                </GroupBox>
+                    <GroupBox  Header="Текущая инструкция" ScrollViewer.CanContentScroll="True">
+                    <DataGrid Name="dgCurrInstDescription" AutoGenerateColumns="False" CanUserAddRows="False"
+                          CanUserReorderColumns="False" Margin="2,0,2,2">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Параметр" Width="auto"  Binding="{Binding Path=ParamName, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Значение"  Width="10*"  Binding="{Binding Path=ParamValue, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+            </GroupBox>
             </StackPanel>
             <DataGrid Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" ToolTip="графическое отображение состония системы" Background="#FFB2F4F7"></DataGrid>
         </Grid>
