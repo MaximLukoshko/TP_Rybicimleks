@@ -32,7 +32,10 @@ namespace Rybocompleks.Perepherial
 
             set
             {
-                temperature = new TemperatureMeasurment((temperature.GetTemperature() + value.GetTemperature() + +value.Compare(temperature)) / 2);
+                lock(temperature)
+                {
+                    temperature = new TemperatureMeasurment((temperature.GetTemperature() + value.GetTemperature() + +value.Compare(temperature)) / 2);
+                }
             } 
         }
 
@@ -45,7 +48,10 @@ namespace Rybocompleks.Perepherial
 
             set
             {
-                oxygen = new OxygenMeasurment((oxygen.GetOxygen() + value.GetOxygen() + value.Compare(oxygen)) / 2);
+                lock(oxygen)
+                {
+                    oxygen = new OxygenMeasurment((oxygen.GetOxygen() + value.GetOxygen() + value.Compare(oxygen)) / 2);
+                }
             }
         }
 
@@ -58,7 +64,10 @@ namespace Rybocompleks.Perepherial
 
             set
             {
-                ph = new PHMeasurment((Double)((ph.GetPH() + value.GetPH()) / 2));
+                lock(ph)
+                {
+                    ph = new PHMeasurment((Double)((ph.GetPH() + value.GetPH()) / 2));
+                }
             }
         }
         public static ILightMeasurment Light
@@ -70,7 +79,10 @@ namespace Rybocompleks.Perepherial
 
             set
             {
-                light = new LightMeasurment(value.GetLightState());
+                lock(light)
+                {
+                    light = new LightMeasurment(value.GetLightState());
+                }
             }
         }
     }
