@@ -39,6 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActiveSensors\ActiveSensor.cs" />
+    <Compile Include="ActiveSensors\IActiveSensor.cs" />
     <Compile Include="Devices\Device.cs" />
     <Compile Include="Devices\IDevice.cs" />
     <Compile Include="Devices\LightDevice.cs" />
@@ -54,9 +56,7 @@
     <Compile Include="Sensors\Sensor.cs" />
     <Compile Include="Sensors\TemperatureSensor.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ActiveSensors\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Rybocompleks.Data\Rybocompleks.Data.csproj">
       <Project>{77c8bdc2-4483-47ae-9bcc-fd0b13334bec}</Project>

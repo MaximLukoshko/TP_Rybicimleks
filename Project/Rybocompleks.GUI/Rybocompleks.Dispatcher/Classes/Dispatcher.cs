@@ -64,21 +64,28 @@ namespace Rybocompleks.Dispatcher
             return ret;
         }
 
-        private Boolean MakeCycle()
+        private Boolean AffectEnvironmentByStates(IDictionary<MeasurmentTypes.Type, IMeasurment> envStates)
         {
             IGPAllowedStates allowedStates = growingPlan.GetAllowedStates(Hours, Minutes);
             if (null == allowedStates)
                 return false;
-            
-            mutex.WaitOne();
-            //Снимаем показания сенсоров
-            IDictionary<MeasurmentTypes.Type, IMeasurment> envStates = sensorsController.GetEnvironmentStates();
-            // Снимаем состояние приборов
-            //IDictionary<MeasurmentTypes.Type, IMeasurment> devStates = devicesController.GetDevicesStates
+
             //Формируем инструкции для приборов
             IDictionary<MeasurmentTypes.Type, IMeasurment> reqStates = stateFormersController.FormDevicesInstructions(envStates, allowedStates);
             //Выставляем приборы в нужное состояние
             devicesController.AffectEnvironment(reqStates);
+
+            return true;
+        }
+
+        private Boolean MakeCycle()
+        {
+            
+            mutex.WaitOne();
+            
+            //Снимаем показания сенсоров и отправляем их для ринятия решения и воздействия на окружающую среду
+            AffectEnvironmentByStates(sensorsController.GetEnvironmentStates());
+
             mutex.ReleaseMutex();
 
             return true;
