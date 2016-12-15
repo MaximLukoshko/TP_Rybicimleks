@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Rybocompleks.Data;
-using Rybocompleks.GrowingPlan;
 
-namespace Rybocompleks.GrowingPlan
+namespace Rybocompleks.GUI.Data
 {
     public interface IGrowingPlan
     {

@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Rybocompleks.GrowingPlan;
 using Rybocompleks.Data;
-namespace Rybocompleks.GrowingPlan
+using Rybocompleks.Dispatcher;
+namespace Rybocompleks.GUI.Data
 {
     [Serializable]
     public class GPInstruction : IToIGPAllowedStates
     {
         public GPInstruction(){}
         public GPInstruction(string instructionName = "имя интсрукции", int hours = 0, int minutes = 0,
-            int temperatureMax = 25, int temperatureMin = 25, int oxygen = 20, int LightHoursPerDay = 12, double pH = 7) 
+            int temperatureMax = 25, int temperatureMin = 25, int oxygen = 20, int lightHoursPerDay = 12, double pH = 7) 
         {
             this.InstructionName = instructionName;
             this.Hours = hours;

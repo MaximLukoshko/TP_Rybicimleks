@@ -1,4 +1,5 @@
-﻿using Rybocompleks.Data;
+﻿using Rybocompleks.GUI.Data;
+using Rybocompleks.Data;
 using Rybocompleks.Dispatcher;
 using System;
 using System.Collections.Generic;

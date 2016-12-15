@@ -1,5 +1,5 @@
 ﻿using Rybocompleks.Dispatcher;
-using Rybocompleks.GrowingPlan;
+using Rybocompleks.GUI.Data;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

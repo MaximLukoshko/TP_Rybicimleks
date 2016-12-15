@@ -1,12 +1,10 @@
-﻿using Rybocompleks.Data;
-using Rybocompleks.GrowingPlan;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Rybocompleks.GrowingPlan
+namespace Rybocompleks.GUI.Data
 {    
     [Serializable]
     public class GrowingPlanList

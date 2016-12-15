@@ -1,13 +1,12 @@
 ﻿using Rybocompleks.Data;
-using Rybocompleks.Dispatcher;
-using Rybocompleks.GrowingPlan;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Rybocompleks.GrowingPlan
+//namespace Rybocompleks.GrowingPlan
+namespace Rybocompleks.Dispatcher
 {
     public class GrowingPlanCommon : IGrowingPlanCommon
     {

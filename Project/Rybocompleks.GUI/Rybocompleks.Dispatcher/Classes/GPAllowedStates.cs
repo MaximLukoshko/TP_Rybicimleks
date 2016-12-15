@@ -6,10 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Rybocompleks.GrowingPlan
+//namespace Rybocompleks.GrowingPlan
+namespace Rybocompleks.Dispatcher
 {
     public class GPAllowedStates : IGPAllowedStates
-    {
+    { 
         public Double Progress{ get; set; }
         public String Name { get; private set; }
         public Int32 Hours { get; private set; }

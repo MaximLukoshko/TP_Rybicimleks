@@ -1,7 +1,6 @@
 ﻿using Rybocompleks.Controllers;
 using Rybocompleks.Data;
 using Rybocompleks.DecisionMakerModule;
-using Rybocompleks.GrowingPlan;
 using System;
 using System.Collections.Generic;
 using System.Linq;

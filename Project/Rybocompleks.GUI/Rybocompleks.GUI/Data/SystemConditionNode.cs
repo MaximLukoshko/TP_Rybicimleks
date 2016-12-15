@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Rybocompleks.GUI
+namespace Rybocompleks.GUI.Data
 {
     class SystemConditionNode
     {

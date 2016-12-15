@@ -57,13 +57,13 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="GPInstruction.cs" />
-    <Compile Include="GrowingPlan.cs" />
-    <Compile Include="IGrowingPlan.cs" />
+    <Compile Include="Data\GPInstruction.cs" />
+    <Compile Include="Data\GrowingPlan.cs" />
+    <Compile Include="Data\IGrowingPlan.cs" />
     <Compile Include="SelectStringWindow.xaml.cs">
       <DependentUpon>SelectStringWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SystemConditionNode.cs" />
+    <Compile Include="Data\SystemConditionNode.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GrowingCycleWindow.xaml.cs">
