@@ -5,7 +5,7 @@ namespace Rybocompleks.DecisionMakerModule
 {
      public interface IStateFormersController
     {
-         IDictionary<MeasurmentTypes.Type, IMeasurment> FormDevicesInstructions(IDictionary<MeasurmentTypes.Type, IMeasurment> currentStates, 
+         IList<IMeasurment> FormDevicesInstructions(IList<IMeasurment> currentStates,
             IGPAllowedStates allowedStates);
     }
 }
