@@ -189,7 +189,9 @@
       <Name>Rybocompleks.Perepherial</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="UIElements\Content\tempDev.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="UIElements\Content\lightOff.png" />
     <Resource Include="UIElements\Content\lightOn.png" />

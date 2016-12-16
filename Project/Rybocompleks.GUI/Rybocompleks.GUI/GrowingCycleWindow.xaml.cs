@@ -81,13 +81,19 @@ namespace Rybocompleks.GUI
                     ((TemperatureSensorUI)tUI).TemperatureValue = info.GetState().GetStringValue();
                     canvas.Children.Add((TemperatureSensorUI)tUI);
                 }
+                if (phObj is TemperatureDevice)
+                {
+                    tUI = new TemperatureDeviceUI();
+                    ((TemperatureDeviceUI)tUI).TemperatureValue =info.GetState().GetStringValue();
+                    canvas.Children.Add((TemperatureDeviceUI)tUI);
+                }
                 if (phObj is LightDevice)
                 {
                     tUI = new LightDeviceUI();
                     ((LightDeviceUI)tUI).isLampOn = Boolean.Parse(info.GetState().GetStringValue());
                     canvas.Children.Add((LightDeviceUI)tUI);                   
                 }
-               double x = info.GetItem().GetLocation().X;
+                double x = info.GetItem().GetLocation().X;
                double y = info.GetItem().GetLocation().Y;
                x *= canvas.ActualWidth / 100;
                y *= canvas.ActualHeight / 100;
