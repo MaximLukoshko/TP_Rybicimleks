@@ -184,6 +184,17 @@
       <Project>{ff395f8c-5263-4d14-ae5c-534b30828361}</Project>
       <Name>Rybocompleks.Dispatcher</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Rybocompleks.Perepherial\Rybocompleks.Perepherial.csproj">
+      <Project>{c7298fba-cb81-40f8-b5cd-97333cd4794e}</Project>
+      <Name>Rybocompleks.Perepherial</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="UIElements\Content\lightOff.png" />
+    <Resource Include="UIElements\Content\lightOn.png" />
+    <Resource Include="UIElements\Content\term.jpg" />
+    <Resource Include="UIElements\Content\term.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,4 +1,6 @@
-﻿using Rybocompleks.GUI.Data;
+﻿using Rybocompleks.Perepherial;
+using Rybocompleks.GUI.UIElements;
+using Rybocompleks.GUI.Data;
 using Rybocompleks.Data;
 using Rybocompleks.Dispatcher;
 using System;
@@ -71,19 +73,24 @@ namespace Rybocompleks.GUI
             states = new List<SystemConditionNode>();
             foreach (IShowInfo info in showInfoList)
             {
-                //пока не трогать!
-                //SensorImage snsrImg = new SensorImage(info); 
-                //canvas.Children.Add(snsrImg);
-                //double x = info.GetItem().GetLocation().X;
-                //double y = info.GetItem().GetLocation().Y;
-                //x *= (int)canvas.Width / 100;
-                //y *= (int)canvas.Height / 100;
+                IPhysicalObject phObj = (IPhysicalObject)info.GetItem();
+                UIElement tUI = new UIElement();
+                if (phObj is TemperatureDevice)
+                {
+                    tUI = new TemperatureDeviceUI();
+                }
 
-                //MessageBox.Show(x+"  "+y+"   "+ (int)canvas.Height);
-                //Canvas.SetLeft(snsrImg, x);
-                //Canvas.SetTop(snsrImg, y);
-                
+                canvas.Children.Add(tUI);                    
+                double x = info.GetItem().GetLocation().X;
+                double y = info.GetItem().GetLocation().Y;
+                x *= canvas.ActualWidth / 100;
+                y *= canvas.ActualHeight / 100;
+                Canvas.SetTop(tUI, y);                
+                Canvas.SetLeft(tUI, x);
             }
+            LightDeviceUI lightImg = new LightDeviceUI(); 
+            canvas.Children.Add(lightImg);
+            lightImg.isChecked = true;
             dgSystemCondition.Dispatcher.Invoke(delegate { dgSystemCondition.ItemsSource = states; });
 
         }
@@ -162,5 +169,7 @@ namespace Rybocompleks.GUI
         {
             this.Close();
         }
+
+        
     }
 }

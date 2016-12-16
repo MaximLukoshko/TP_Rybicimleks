@@ -51,10 +51,10 @@ namespace Rybocompleks.Dispatcher
                     "Первая инструкция в списке должна начинаться в момент \"0 ч. 0 мин.\"\n"+
                     "Последняя инструкция должна Указывать время завершения процесса выращивания\n\n";
 
-            for (Int32 i = 0; i < AllowedStatesList.Count; i++)
+            for (Int32 i = 1; i < AllowedStatesList.Count; i++)
             {
-                DateTime currentInstructionTime = (new DateTime()).AddHours(AllowedStatesList[i].Hours).AddMinutes(AllowedStatesList[i].Minutes);
-                DateTime nextInstructionTime = (new DateTime()).AddHours(AllowedStatesList[i + 1].Hours).AddMinutes(AllowedStatesList[i + 1].Minutes);
+                DateTime currentInstructionTime = (new DateTime()).AddHours(AllowedStatesList[i-1].Hours).AddMinutes(AllowedStatesList[i-1].Minutes);
+                DateTime nextInstructionTime = (new DateTime()).AddHours(AllowedStatesList[i].Hours).AddMinutes(AllowedStatesList[i].Minutes);
 
                 if (currentInstructionTime >= nextInstructionTime)
                 {
