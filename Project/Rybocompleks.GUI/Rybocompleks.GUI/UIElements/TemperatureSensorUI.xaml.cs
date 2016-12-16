@@ -20,9 +20,23 @@ namespace Rybocompleks.GUI.UIElements
     /// </summary>
     public partial class TemperatureSensorUI : UserControl
     {
+        private string temperatureValue;
+        public string TemperatureValue
+        {
+            get
+            {
+                return temperatureValue;
+            }
+            set
+            {
+                temperatureValue = value;
+                value_lbl.Content = temperatureValue;
+            }
+        }
         public TemperatureSensorUI()
         {
             InitializeComponent();
+            value_lbl.Content = TemperatureValue;
         }
     }
 }

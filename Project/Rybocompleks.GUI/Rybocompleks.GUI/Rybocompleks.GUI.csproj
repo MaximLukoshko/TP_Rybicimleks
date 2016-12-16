@@ -193,7 +193,6 @@
   <ItemGroup>
     <Resource Include="UIElements\Content\lightOff.png" />
     <Resource Include="UIElements\Content\lightOn.png" />
-    <Resource Include="UIElements\Content\term.jpg" />
     <Resource Include="UIElements\Content\term.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

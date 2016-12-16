@@ -75,22 +75,25 @@ namespace Rybocompleks.GUI
             {
                 IPhysicalObject phObj = (IPhysicalObject)info.GetItem();
                 UIElement tUI = new UIElement();
-                if (phObj is TemperatureDevice)
-                {
-                    tUI = new TemperatureDeviceUI();
+                if (phObj is TemperatureSensor)
+                {                    
+                    tUI = new TemperatureSensorUI();
+                    ((TemperatureSensorUI)tUI).TemperatureValue = info.GetState().GetStringValue();
+                    canvas.Children.Add((TemperatureSensorUI)tUI);
                 }
-
-                canvas.Children.Add(tUI);                    
-                double x = info.GetItem().GetLocation().X;
-                double y = info.GetItem().GetLocation().Y;
-                x *= canvas.ActualWidth / 100;
-                y *= canvas.ActualHeight / 100;
-                Canvas.SetTop(tUI, y);                
-                Canvas.SetLeft(tUI, x);
+                if (phObj is LightDevice)
+                {
+                    tUI = new LightDeviceUI();
+                    ((LightDeviceUI)tUI).isLampOn = Boolean.Parse(info.GetState().GetStringValue());
+                    canvas.Children.Add((LightDeviceUI)tUI);                   
+                }
+               double x = info.GetItem().GetLocation().X;
+               double y = info.GetItem().GetLocation().Y;
+               x *= canvas.ActualWidth / 100;
+               y *= canvas.ActualHeight / 100;
+               Canvas.SetTop(tUI, y);
+               Canvas.SetLeft(tUI, x);
             }
-            LightDeviceUI lightImg = new LightDeviceUI(); 
-            canvas.Children.Add(lightImg);
-            lightImg.isChecked = true;
             dgSystemCondition.Dispatcher.Invoke(delegate { dgSystemCondition.ItemsSource = states; });
 
         }

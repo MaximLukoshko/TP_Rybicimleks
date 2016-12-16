@@ -20,18 +20,18 @@ namespace Rybocompleks.GUI.UIElements
     /// </summary>
     public partial class LightDeviceUI : UserControl
     {
-        private bool _isChecked = false;
-        public bool isChecked {
+        private bool _isLampOn = false;
+        public bool isLampOn {
             get
             {
-                return _isChecked;
+                return _isLampOn;
             }
             set
             {
-                if (value != _isChecked)
+                if (value != _isLampOn)
                 {
-                    _isChecked = value;
-                    if (isChecked)                    
+                    _isLampOn = value;
+                    if (isLampOn)                    
                         img.Source =  new BitmapImage(new Uri(pathToImageOn, UriKind.Relative));                    
                     else                   
                         img.Source = new BitmapImage(new Uri(pathToImageOff, UriKind.Relative));                    
