@@ -49,11 +49,10 @@ namespace Rybocompleks.GUI
         {
             GrowingDispatcher.RunFishGrowing();
             MonitorSystemThread.Start();
-
             UpdateSystemConditionCanvas();
         }
         private void UpdateSystemConditionTable()
-        {            
+        {          
             List<IShowInfo> showInfoList = (List<IShowInfo>)GrowingDispatcher.GetShowInfo();
             //var states= from info in showInfoList select info.GetState().GetStringValue();
             states = new List<SystemConditionNode>();
@@ -75,12 +74,39 @@ namespace Rybocompleks.GUI
             {
                 IPhysicalObject phObj = (IPhysicalObject)info.GetItem();
                 UIElement tUI = new UIElement();
+
                 if (phObj is TemperatureSensor)
                 {                    
                     tUI = new TemperatureSensorUI();
                     ((TemperatureSensorUI)tUI).TemperatureValue = info.GetState().GetStringValue();
                     canvas.Children.Add((TemperatureSensorUI)tUI);
+                }            
+                if (phObj is OxygenSensor)
+                {
+                    tUI = new OxygenSensorUI();
+                    ((OxygenSensorUI)tUI).OxygenValue = info.GetState().GetStringValue();
+                    canvas.Children.Add((OxygenSensorUI)tUI);
                 }
+                if (phObj is PhSensor)
+                {
+                    //tUI = new PhSensorUI();
+                    //((PhSensorUI)tUI).PhValue = info.GetState().GetStringValue();
+                    //canvas.Children.Add((PhSensorUI)tUI);
+                }
+
+                if (phObj is PhDevice)
+                {
+                 //   tUI = new PhDeviceUI();
+                   // ((PhDeviceUI)tUI).PhValue = info.GetState().GetStringValue();
+                    //canvas.Children.Add((PhDeviceUI)tUI);
+                }
+                if (phObj is OxygenDevice)
+                {
+                    // tUI = new OxygenDeviceUI();
+                    // ((PhDeviceUI)tUI).OxygenValue = info.GetState().GetStringValue();
+                    // canvas.Children.Add((OxygenDeviceUI)tUI);
+                }
+
                 if (phObj is TemperatureDevice)
                 {
                     tUI = new TemperatureDeviceUI();
@@ -93,7 +119,7 @@ namespace Rybocompleks.GUI
                     ((LightDeviceUI)tUI).isLampOn = Boolean.Parse(info.GetState().GetStringValue());
                     canvas.Children.Add((LightDeviceUI)tUI);                   
                 }
-                double x = info.GetItem().GetLocation().X;
+               double x = info.GetItem().GetLocation().X;
                double y = info.GetItem().GetLocation().Y;
                x *= canvas.ActualWidth / 100;
                y *= canvas.ActualHeight / 100;
@@ -147,7 +173,7 @@ namespace Rybocompleks.GUI
         {
             while (true == UpdateCurrentInstructionTable()) 
             {
-                UpdateSystemConditionTable();
+                UpdateSystemConditionTable();                
                 Thread.Sleep(500);
             }
             string msg = "Выращивание завершено";

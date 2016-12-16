@@ -20,9 +20,23 @@ namespace Rybocompleks.GUI.UIElements
     /// </summary>
     public partial class OxygenSensorUI : UserControl
     {
+        private string oxygenValue;
+        public string OxygenValue
+        {
+            get
+            {
+                return oxygenValue;
+            }
+            set
+            {
+                oxygenValue = value;
+                value_lbl.Content = oxygenValue;
+            }
+        }
         public OxygenSensorUI()
         {
             InitializeComponent();
+            value_lbl.Content = OxygenValue;
         }
     }
 }

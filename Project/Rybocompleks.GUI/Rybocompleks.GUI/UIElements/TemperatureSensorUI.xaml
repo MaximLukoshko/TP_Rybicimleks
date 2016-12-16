@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Rybocompleks.GUI.UIElements"
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="80">
-    <Canvas Background="Azure">
+    <Canvas>
         <Label Canvas.Left="5" >Темометр</Label>
         <Image Canvas.Top="20" Name="img" Source="Content/term.png" Height="80" Width="30" Canvas.Left="2"></Image>
         <Label Name="value_lbl" Canvas.Left="39" Canvas.Top="44">98</Label>
