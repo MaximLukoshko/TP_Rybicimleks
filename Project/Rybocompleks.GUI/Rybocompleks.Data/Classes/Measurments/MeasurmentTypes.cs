@@ -16,5 +16,21 @@ namespace Rybocompleks.Data
             LightPerDay      = 3,
             PH               = 4,
         }
+        public static String TypeToString(Type tp)
+        {
+            switch (tp)
+            {
+                case Type.Temperature:
+                    return "Температура";
+                case Type.PH:
+                    return "Кислотность";
+                case Type.Oxygen:
+                    return "Кислород";
+                case Type.LightPerDay:
+                    return "Освещение";
+                default:
+                    return "Тип не определён";
+            }
+        }
     }
 }

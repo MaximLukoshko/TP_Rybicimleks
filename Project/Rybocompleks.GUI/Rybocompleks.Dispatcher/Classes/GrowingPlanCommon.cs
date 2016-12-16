@@ -40,5 +40,30 @@ namespace Rybocompleks.Dispatcher
             }
             return null;
         }
+
+        public String CheckGrowingPlan()
+        {
+            String message = "";
+            if (AllowedStatesList.Count == 0)
+                return "План не может быть пустым!";
+            else if (null == GetAllowedStates(0, 0))
+                message += "Отсутствует первая или последняя инструкция\n"+
+                    "Первая инструкция в списке должна начинаться в момент \"0 ч. 0 мин.\"\n"+
+                    "Последняя инструкция должна Указывать время завершения процесса выращивания\n\n";
+
+            for (Int32 i = 0; i < AllowedStatesList.Count; i++)
+            {
+                DateTime currentInstructionTime = (new DateTime()).AddHours(AllowedStatesList[i].Hours).AddMinutes(AllowedStatesList[i].Minutes);
+                DateTime nextInstructionTime = (new DateTime()).AddHours(AllowedStatesList[i + 1].Hours).AddMinutes(AllowedStatesList[i + 1].Minutes);
+
+                if (currentInstructionTime >= nextInstructionTime)
+                {
+                    message += "Инструкции не упорядочены по времени!";
+                    break;
+                }
+            }
+
+            return message;
+        }
     }
 }

@@ -218,7 +218,16 @@ namespace Rybocompleks.GUI
 //             foreach (IToGPAllowedStates instr in gpList.Instructions)
 //                 instructions_copy.Add(instr);
 
-            IDispatcher dispatcher = new Dispatcher.Dispatcher(new GrowingPlanCommon(gpList.Instructions.ToList<IToIGPAllowedStates>()));
+            IGrowingPlanCommon planForModel = new GrowingPlanCommon(gpList.Instructions.ToList<IToIGPAllowedStates>());
+            
+            String errorsMsg = planForModel.CheckGrowingPlan();
+            if (errorsMsg.Length>0)
+            {
+               MessageBox.Show(errorsMsg, "Ошибки в плане выращивания!", MessageBoxButton.OK, MessageBoxImage.Error);
+               return;
+            }
+
+            IDispatcher dispatcher = new Dispatcher.Dispatcher(planForModel);
             GrowingCycleWindow gcw = new GrowingCycleWindow(dispatcher);
             gcw.Show();
         }

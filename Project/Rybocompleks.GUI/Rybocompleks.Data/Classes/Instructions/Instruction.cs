@@ -16,9 +16,17 @@ namespace Rybocompleks.Data
         {
             if (null == maxAllowedState || null == minAllowedState)
                 throw new NullReferenceException();
-            
-            MaxAllowedState = maxAllowedState;
-            MinAllowedState = minAllowedState;
+
+            if (0 != maxAllowedState.Compare(minAllowedState))
+            {
+                MaxAllowedState = maxAllowedState.Compare(minAllowedState) == 1 ? maxAllowedState : minAllowedState;
+                MinAllowedState = maxAllowedState.Compare(minAllowedState) == -1 ? maxAllowedState : minAllowedState; ;
+            }
+            else
+            {
+                MaxAllowedState = maxAllowedState;
+                MinAllowedState = minAllowedState;
+            }
         }
         public Instruction(IMeasurment allowedState)
         {
