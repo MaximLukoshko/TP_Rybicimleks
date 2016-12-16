@@ -23,7 +23,6 @@ namespace Rybocompleks.Controllers
             physicalObjectsController = new Controller<IActiveSensor>();
             physicalObjectsController.AddObject(new ActiveTemperatureSensor(new Location(80, 20)));
             MonitorSensorsThread = new Thread(Monitor);
-            MonitorSensorsThread.Start();
             Listener = dispatcher; 
         }
 
@@ -67,6 +66,17 @@ namespace Rybocompleks.Controllers
                     Thread.Sleep(1000); //Ждём пока состояние среды изменится
                 }
             }
+        }
+
+        public void RunMonitoring()
+        {
+            MonitorSensorsThread.Start();
+        }
+
+        public void StopMonitoring()
+        {
+            MonitorSensorsThread.Abort();
+            Nature.environmentThread.Abort();
         }
     }
 }

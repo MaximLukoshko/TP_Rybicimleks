@@ -41,6 +41,7 @@ namespace Rybocompleks.Dispatcher
 
         public void RunFishGrowing()
         {
+            activeSensorsController.RunMonitoring();
             RunThread.Start();
             ClockThread.Start();
         }
@@ -49,6 +50,7 @@ namespace Rybocompleks.Dispatcher
         {
             RunThread.Abort();
             ClockThread.Abort();
+            activeSensorsController.StopMonitoring();
         }
 
         public ICollection<IShowInfo> GetShowInfo()

@@ -8,7 +8,9 @@ using System.Threading;
 
 namespace Rybocompleks.Perepherial
 {
-    internal static class Nature
+    // Данный класс моделирует поведение окружающей среды
+    // public - для того, чтобы можно было остановить поток изменения состояния
+    public static class Nature
     {
         //Data
         private static TemperatureMeasurment    temperatureMustBe     = null;
@@ -21,7 +23,8 @@ namespace Rybocompleks.Perepherial
         private static PHMeasurment             phReal              = null;
         private static LightMeasurment          lightReal           = null;
 
-        private static Thread environmentThread = null;
+        //поток изменения состояния
+        public static Thread environmentThread { get; private set; }
         static Nature()
         {
 

@@ -9,5 +9,8 @@ namespace Rybocompleks.Controllers
 {
     public interface IActiveSensorsController : IController
     {
+        void RunMonitoring();
+        void StopMonitoring();
     }
 }
+
