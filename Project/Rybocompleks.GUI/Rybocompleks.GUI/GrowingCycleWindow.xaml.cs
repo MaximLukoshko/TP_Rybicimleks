@@ -57,8 +57,11 @@ namespace Rybocompleks.GUI
             states = new List<SystemConditionNode>();
             foreach (IShowInfo info in showInfoList)
             {
-                string state = info.GetState().GetStringValue();
                 string name = info.GetItem().Name;
+                if (name == "")
+                    continue;
+
+                string state = info.GetState().GetStringValue();
                 states.Add(new SystemConditionNode(name, state));
             }            
             dgSystemCondition.Dispatcher.Invoke(delegate { dgSystemCondition.ItemsSource = states; });

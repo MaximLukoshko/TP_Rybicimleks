@@ -14,6 +14,10 @@ namespace Rybocompleks.Perepherial
             : base(loc, name)
         {
             Measure();
+
+            // Присваиваем пустую строку, чтобы датчик не отображался, 
+            // так как физически он не существует
+            Name = ""; 
         }
 
         public override IMeasurment Measure()
