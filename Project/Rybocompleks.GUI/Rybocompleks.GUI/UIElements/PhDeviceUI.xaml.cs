@@ -20,9 +20,23 @@ namespace Rybocompleks.GUI.UIElements
     /// </summary>
     public partial class PhDeviceUI : UserControl
     {
+        private string phValue;
+        public string PhValue
+        {
+            get
+            {
+                return phValue;
+            }
+            set
+            {
+                phValue = value;
+                value_lbl.Content = phValue;
+            }
+        }
         public PhDeviceUI()
         {
             InitializeComponent();
+            value_lbl.Content = phValue;
         }
     }
 }

@@ -89,22 +89,22 @@ namespace Rybocompleks.GUI
                 }
                 if (phObj is PhSensor)
                 {
-                    //tUI = new PhSensorUI();
-                    //((PhSensorUI)tUI).PhValue = info.GetState().GetStringValue();
-                    //canvas.Children.Add((PhSensorUI)tUI);
+                    tUI = new PhSensorUI();
+                    ((PhSensorUI)tUI).PhValue = info.GetState().GetStringValue();
+                    canvas.Children.Add((PhSensorUI)tUI);
                 }
 
                 if (phObj is PhDevice)
                 {
-                 //   tUI = new PhDeviceUI();
-                   // ((PhDeviceUI)tUI).PhValue = info.GetState().GetStringValue();
-                    //canvas.Children.Add((PhDeviceUI)tUI);
+                    tUI = new PhDeviceUI();
+                    ((PhDeviceUI)tUI).PhValue = info.GetState().GetStringValue();
+                    canvas.Children.Add((PhDeviceUI)tUI);
                 }
                 if (phObj is OxygenDevice)
                 {
-                    // tUI = new OxygenDeviceUI();
-                    // ((PhDeviceUI)tUI).OxygenValue = info.GetState().GetStringValue();
-                    // canvas.Children.Add((OxygenDeviceUI)tUI);
+                    tUI = new OxygenDeviceUI();
+                    ((OxygenDeviceUI)tUI).OxygenValue = info.GetState().GetStringValue();
+                    canvas.Children.Add((OxygenDeviceUI)tUI);
                 }
 
                 if (phObj is TemperatureDevice)

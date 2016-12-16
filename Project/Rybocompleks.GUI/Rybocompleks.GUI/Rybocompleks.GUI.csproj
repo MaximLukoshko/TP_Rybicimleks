@@ -200,6 +200,15 @@
   <ItemGroup>
     <Resource Include="UIElements\Content\oxygen.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="UIElements\Content\phSensor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="UIElements\Content\oxygenDev.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="UIElements\Content\phDev.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
