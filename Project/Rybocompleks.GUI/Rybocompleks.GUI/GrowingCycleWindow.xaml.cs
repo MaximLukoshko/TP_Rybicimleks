@@ -134,12 +134,18 @@ namespace Rybocompleks.GUI
                 UpdateSystemConditionTable();
                 Thread.Sleep(500);
             }
+            string msg = "Выращивание завершено";
+            MessageBoxResult result = MessageBox.Show(msg, "Отчёт", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            //Если выращивание завершено, просто закрываем окно
+            if (null == GrowingDispatcher.GetCurrentInstruction())
+                return;
+
             string msg = "Цикл выращивания будет прерван! Продолжить?";
-            MessageBoxResult result = MessageBox.Show(msg,"Выход",MessageBoxButton.YesNo,MessageBoxImage.Warning);
+            MessageBoxResult result = MessageBox.Show(msg, "Выход", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if (result == MessageBoxResult.No)
             {
                 e.Cancel = true;
