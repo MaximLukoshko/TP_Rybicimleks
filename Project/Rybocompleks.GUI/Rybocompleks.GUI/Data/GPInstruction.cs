@@ -30,7 +30,8 @@ namespace Rybocompleks.GUI.Data
            temp = (IMeasurment)gpas.GetStateByPropertyID(MeasurmentTypes.Type.PH).GetMinAllowedState();
            PH = ((IPHMeasurment)temp).GetPH();
 
-           LightHoursPerDay = 0;//?!?!?!?!!?!?!
+            // temp = (IMeasurment)gpas.GetStateByPropertyID(MeasurmentTypes.Type.LightPerDay).GetMinAllowedState();
+            LightHoursPerDay = 0;
         }
         public GPInstruction(string instructionName = "имя интсрукции", int hours = 0, int minutes = 0,
             int temperatureMax = 25, int temperatureMin = 25, int oxygen = 20, int lightHoursPerDay = 12, double pH = 7) 

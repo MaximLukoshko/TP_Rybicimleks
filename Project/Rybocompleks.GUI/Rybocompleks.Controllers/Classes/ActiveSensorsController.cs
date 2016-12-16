@@ -21,7 +21,7 @@ namespace Rybocompleks.Controllers
         public ActiveSensorsController(IActiveSensorsControllerListener dispatcher)
         {
             physicalObjectsController = new Controller<IActiveSensor>();
-            physicalObjectsController.AddObject(new ActiveTemperatureSensor(new Location(10, 20)));
+            physicalObjectsController.AddObject(new ActiveTemperatureSensor(new Location(80, 20)));
             MonitorSensorsThread = new Thread(Monitor);
             MonitorSensorsThread.Start();
             Listener = dispatcher; 

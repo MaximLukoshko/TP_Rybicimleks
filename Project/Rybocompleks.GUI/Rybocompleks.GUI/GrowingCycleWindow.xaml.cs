@@ -47,9 +47,11 @@ namespace Rybocompleks.GUI
         {
             GrowingDispatcher.RunFishGrowing();
             MonitorSystemThread.Start();
+
+            UpdateSystemConditionCanvas();
         }
         private void UpdateSystemConditionTable()
-        {
+        {            
             List<IShowInfo> showInfoList = (List<IShowInfo>)GrowingDispatcher.GetShowInfo();
             //var states= from info in showInfoList select info.GetState().GetStringValue();
             states = new List<SystemConditionNode>();
@@ -59,6 +61,29 @@ namespace Rybocompleks.GUI
                 string name = info.GetItem().Name;
                 states.Add(new SystemConditionNode(name, state));
             }            
+            dgSystemCondition.Dispatcher.Invoke(delegate { dgSystemCondition.ItemsSource = states; });
+
+        }
+
+        private void UpdateSystemConditionCanvas()
+        {
+            List<IShowInfo> showInfoList = (List<IShowInfo>)GrowingDispatcher.GetShowInfo();
+            states = new List<SystemConditionNode>();
+            foreach (IShowInfo info in showInfoList)
+            {
+                //пока не трогать!
+                //SensorImage snsrImg = new SensorImage(info); 
+                //canvas.Children.Add(snsrImg);
+                //double x = info.GetItem().GetLocation().X;
+                //double y = info.GetItem().GetLocation().Y;
+                //x *= (int)canvas.Width / 100;
+                //y *= (int)canvas.Height / 100;
+
+                //MessageBox.Show(x+"  "+y+"   "+ (int)canvas.Height);
+                //Canvas.SetLeft(snsrImg, x);
+                //Canvas.SetTop(snsrImg, y);
+                
+            }
             dgSystemCondition.Dispatcher.Invoke(delegate { dgSystemCondition.ItemsSource = states; });
 
         }

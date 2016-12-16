@@ -65,6 +65,27 @@
       <DependentUpon>SelectStringWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Data\SystemConditionNode.cs" />
+    <Compile Include="UIElements\LightDeviceUI.xaml.cs">
+      <DependentUpon>LightDeviceUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UIElements\OxygenDeviceUI.xaml.cs">
+      <DependentUpon>OxygenDeviceUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UIElements\OxygenSensorUI.xaml.cs">
+      <DependentUpon>OxygenSensorUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UIElements\PhDeviceUI.xaml.cs">
+      <DependentUpon>PhDeviceUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UIElements\PhSensorUI.xaml.cs">
+      <DependentUpon>PhSensorUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UIElements\TemperatureDeviceUI.xaml.cs">
+      <DependentUpon>TemperatureDeviceUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UIElements\TemperatureSensorUI.xaml.cs">
+      <DependentUpon>TemperatureSensorUI.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GrowingCycleWindow.xaml.cs">
@@ -109,6 +130,34 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SelectStringWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UIElements\LightDeviceUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UIElements\OxygenDeviceUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UIElements\OxygenSensorUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UIElements\PhDeviceUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UIElements\PhSensorUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UIElements\TemperatureDeviceUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UIElements\TemperatureSensorUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
