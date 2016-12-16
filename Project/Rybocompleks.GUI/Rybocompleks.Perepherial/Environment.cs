@@ -4,37 +4,88 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Rybocompleks.Data;
+using System.Threading;
 
 namespace Rybocompleks.Perepherial
 {
     internal static class Nature
     {
         //Data
-        private static TemperatureMeasurment temperature = null;
-        private static OxygenMeasurment oxygen = null;
-        private static PHMeasurment ph = null;
-        private static LightMeasurment light = null;
+        private static TemperatureMeasurment    temperatureMustBe     = null;
+        private static OxygenMeasurment         oxygenMustBe          = null;
+        private static PHMeasurment             phMustBe              = null;
+        private static LightMeasurment          lightMustBe           = null;
 
+        private static TemperatureMeasurment    temperatureReal     = null;
+        private static OxygenMeasurment         oxygenReal          = null;
+        private static PHMeasurment             phReal              = null;
+        private static LightMeasurment          lightReal           = null;
+
+        private static Thread environmentThread = null;
         static Nature()
         {
-            temperature = new TemperatureMeasurment((new Random()).Next(0, 100));
-            ph = new PHMeasurment(((new Random()).NextDouble()*10));
-            oxygen = new OxygenMeasurment((new Random()).Next(0, 1000));
-            light = new LightMeasurment(false);
+
+            temperatureReal   = new TemperatureMeasurment((new Random()).Next(0, 100));
+            phReal            = new PHMeasurment(((new Random()).NextDouble() * 7));
+            oxygenReal        = new OxygenMeasurment((new Random()).Next(0, 1000));
+            lightReal         = new LightMeasurment(false);
+
+            temperatureMustBe   = temperatureReal;
+            phMustBe            = phReal;
+            oxygenMustBe        = oxygenReal;
+            lightMustBe         = lightReal;
+
+            environmentThread = new Thread(Change);
+            environmentThread.Start();
+        }
+
+        private static void Change()
+        {
+            while (true)
+            {
+                lock (temperatureMustBe)
+                {
+                    lock (temperatureReal)
+                    {
+                        temperatureReal = new TemperatureMeasurment(temperatureReal.GetTemperature() +
+                            (temperatureMustBe.GetTemperature() - temperatureReal.GetTemperature()
+                            + 4 * temperatureMustBe.Compare(temperatureReal)) / 5);
+                    }
+                }
+                lock (phMustBe)
+                {
+                    lock (phReal)
+                    {
+                        phReal = new PHMeasurment(phReal.GetPH() +
+                            (phMustBe.GetPH() - phReal.GetPH()) / 5);
+                    }
+                }
+                lock (oxygenMustBe)
+                {
+                    lock (oxygenReal)
+                    {
+                        oxygenReal = new OxygenMeasurment(oxygenReal.GetOxygen() +
+                            (oxygenMustBe.GetOxygen() - oxygenReal.GetOxygen()
+                            + 4 * oxygenMustBe.Compare(oxygenReal)) / 5);
+                    }
+                }
+
+                Thread.Sleep(400);
+            }
         }
 
         public static ITemperatureMeasurment Temperature 
         { 
             get
-            {                
-                return temperature;
+            {
+                return temperatureReal;
             } 
 
             set
             {
-                lock(temperature)
+                lock(temperatureMustBe)
                 {
-                    temperature = new TemperatureMeasurment((temperature.GetTemperature() + value.GetTemperature() + +value.Compare(temperature)) / 2);
+                    temperatureMustBe = new TemperatureMeasurment(value.GetTemperature());
                 }
             } 
         }
@@ -43,14 +94,14 @@ namespace Rybocompleks.Perepherial
         {
             get
             {
-                return oxygen;
+                return oxygenReal;
             }
 
             set
             {
-                lock(oxygen)
+                lock(oxygenMustBe)
                 {
-                    oxygen = new OxygenMeasurment((oxygen.GetOxygen() + value.GetOxygen() + value.Compare(oxygen)) / 2);
+                    oxygenMustBe = new OxygenMeasurment(value.GetOxygen());
                 }
             }
         }
@@ -59,14 +110,14 @@ namespace Rybocompleks.Perepherial
         {
             get
             {
-                return ph;
+                return phReal;
             }
 
             set
             {
-                lock(ph)
+                lock(phMustBe)
                 {
-                    ph = new PHMeasurment((Double)((ph.GetPH() + value.GetPH()) / 2));
+                    phMustBe = new PHMeasurment(value.GetPH());
                 }
             }
         }
@@ -74,14 +125,18 @@ namespace Rybocompleks.Perepherial
         {
             get
             {
-                return light;
+                return lightReal;
             }
 
             set
             {
-                lock(light)
+                lock(lightMustBe)
                 {
-                    light = new LightMeasurment(value.GetLightState());
+                    lightMustBe = new LightMeasurment(value.GetLightState());
+                    lock(lightReal)
+                    {
+                        lightReal = lightMustBe;
+                    }
                 }
             }
         }
