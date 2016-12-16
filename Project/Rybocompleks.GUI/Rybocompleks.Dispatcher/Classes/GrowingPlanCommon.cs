@@ -27,7 +27,7 @@ namespace Rybocompleks.Dispatcher
                 DateTime currentInstructionTime = (new DateTime()).AddHours(AllowedStatesList[i].Hours).AddMinutes(AllowedStatesList[i].Minutes);
                 DateTime nextInstructionTime = (new DateTime()).AddHours(AllowedStatesList[i + 1].Hours).AddMinutes(AllowedStatesList[i + 1].Minutes);
 
-                if (currentInstructionTime <= required && nextInstructionTime > required)
+                if (currentInstructionTime <= required && nextInstructionTime >= required)
                 {
                     AllowedStatesList[i].Progress =
                         (Double)((required.Hour - currentInstructionTime.Hour) * 60 +

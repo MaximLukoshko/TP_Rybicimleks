@@ -88,13 +88,15 @@ namespace Rybocompleks.GUI
 
         }
 
-        private void UpdateCurrentInstructionTable()
+        private Boolean UpdateCurrentInstructionTable()
         {
             IGPAllowedStates showingInstruction = GrowingDispatcher.GetCurrentInstruction();
+            if (null == showingInstruction)
+                return false;
 //             currentInstruction = new GPInstruction(showingInstruction);
 //             int temperMin = currentInstruction.TemperatureMin;
 //             int temperMax = currentInstruction.TemperatureMax;
-            DateTime SystemTime = GrowingDispatcher.GetCurrentTime();
+//             DateTime SystemTime = GrowingDispatcher.GetCurrentTime();
 
 //             List<CurrentInstuctDescriptionTable> currInstrDescrTable = new List<CurrentInstuctDescriptionTable>() {
 //                 new CurrentInstuctDescriptionTable(){ ParamName="Время", ParamValue = SystemTime.Hour+" ч.  "+SystemTime.Minute +" мин."},
@@ -106,7 +108,9 @@ namespace Rybocompleks.GUI
 //             };
 
             List<CurrentInstuctDescriptionTable> currInstrDescrTable = new List<CurrentInstuctDescriptionTable>() {
-                new CurrentInstuctDescriptionTable(){ ParamName="Время", ParamValue = SystemTime.Hour+" ч.  "+SystemTime.Minute +" мин."},
+                new CurrentInstuctDescriptionTable(){ ParamName="Время", 
+                    ParamValue = GrowingDispatcher.GetCurrentTime().Hour + " ч.  " +
+                                 GrowingDispatcher.GetCurrentTime().Minute +" мин."},
                 new CurrentInstuctDescriptionTable(){ ParamName="Стадия", ParamValue = showingInstruction.Name},
                 new CurrentInstuctDescriptionTable(){ ParamName="Выполнение инструкции", ParamValue = ((Int32)(showingInstruction.Progress*100)).ToString() + "%"},
                 new CurrentInstuctDescriptionTable(){ ParamName="Температура",
@@ -120,13 +124,14 @@ namespace Rybocompleks.GUI
             };
 
             dgCurrInstDescription.Dispatcher.Invoke(delegate { dgCurrInstDescription.ItemsSource = currInstrDescrTable; });
+            
+            return true;
         }
         private void MonitorSystem()
         {
-            while(true)
+            while (true == UpdateCurrentInstructionTable()) 
             {
                 UpdateSystemConditionTable();
-                UpdateCurrentInstructionTable();
                 Thread.Sleep(500);
             }
         }
