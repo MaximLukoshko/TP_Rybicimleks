@@ -43,5 +43,12 @@ namespace Rybocompleks.Data
         {
             return MaxAllowedState.GetPropertyID();
         }
+
+        public override String ToString()
+        {
+            return MaxAllowedState.Compare(MinAllowedState) == 0 ? 
+                MaxAllowedState.GetStringValue() : 
+                MinAllowedState.GetStringValue() + " - " + MaxAllowedState.GetStringValue();
+        }
     }
 }

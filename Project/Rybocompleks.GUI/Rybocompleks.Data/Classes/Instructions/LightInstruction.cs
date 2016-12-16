@@ -29,7 +29,9 @@ namespace Rybocompleks.Data
         {
             return MeasurmentTypes.Type.LightPerDay;
         }
+        public override String ToString()
+        {
+            return HoursPerDay.ToString();
+        }
     }
-
-
 }

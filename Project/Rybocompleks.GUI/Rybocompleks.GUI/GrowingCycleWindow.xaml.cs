@@ -90,27 +90,37 @@ namespace Rybocompleks.GUI
 
         private void UpdateCurrentInstructionTable()
         {
-            currentInstruction = new GPInstruction(GrowingDispatcher.GetCurrentInstruction());
-            int temperMin = currentInstruction.TemperatureMin;
-            int temperMax = currentInstruction.TemperatureMax;
+            IGPAllowedStates showingInstruction = GrowingDispatcher.GetCurrentInstruction();
+//             currentInstruction = new GPInstruction(showingInstruction);
+//             int temperMin = currentInstruction.TemperatureMin;
+//             int temperMax = currentInstruction.TemperatureMax;
             DateTime SystemTime = GrowingDispatcher.GetCurrentTime();
+
+//             List<CurrentInstuctDescriptionTable> currInstrDescrTable = new List<CurrentInstuctDescriptionTable>() {
+//                 new CurrentInstuctDescriptionTable(){ ParamName="Время", ParamValue = SystemTime.Hour+" ч.  "+SystemTime.Minute +" мин."},
+//                 new CurrentInstuctDescriptionTable(){ ParamName="Стадия", ParamValue = currentInstruction.InstructionName},
+//                 new CurrentInstuctDescriptionTable(){ ParamName="Температура",
+//                     ParamValue = (temperMin != temperMax) ? temperMin + " - " + temperMax + " grad" : temperMax+ " grad" },                                
+//                 new CurrentInstuctDescriptionTable(){ ParamName="Содержание кислорода", ParamValue = currentInstruction.Oxygen.ToString()},
+//                 new CurrentInstuctDescriptionTable(){ ParamName="Уровень кислотности", ParamValue = currentInstruction.PH.ToString()},                
+//             };
 
             List<CurrentInstuctDescriptionTable> currInstrDescrTable = new List<CurrentInstuctDescriptionTable>() {
                 new CurrentInstuctDescriptionTable(){ ParamName="Время", ParamValue = SystemTime.Hour+" ч.  "+SystemTime.Minute +" мин."},
-                new CurrentInstuctDescriptionTable(){ ParamName="Стадия", ParamValue = currentInstruction.InstructionName},
+                new CurrentInstuctDescriptionTable(){ ParamName="Стадия", ParamValue = showingInstruction.Name},
+                new CurrentInstuctDescriptionTable(){ ParamName="Выполнение инструкции", ParamValue = ((Int32)(showingInstruction.Progress*100)).ToString() + "%"},
                 new CurrentInstuctDescriptionTable(){ ParamName="Температура",
-                    ParamValue = (temperMin != temperMax) ? temperMin + " - " + temperMax + " grad" : temperMax+ " grad" },                                
-                new CurrentInstuctDescriptionTable(){ ParamName="Содержание кислорода", ParamValue = currentInstruction.Oxygen.ToString()},
-                new CurrentInstuctDescriptionTable(){ ParamName="Уровень кислотности", ParamValue = currentInstruction.PH.ToString()},                
+                    ParamValue = showingInstruction.GetStateByPropertyID(MeasurmentTypes.Type.Temperature).ToString() + " grad" },
+                new CurrentInstuctDescriptionTable(){ ParamName="Содержание кислорода", 
+                    ParamValue = showingInstruction.GetStateByPropertyID(MeasurmentTypes.Type.Oxygen).ToString()},
+                new CurrentInstuctDescriptionTable(){ ParamName="Уровень кислотности", 
+                    ParamValue = showingInstruction.GetStateByPropertyID(MeasurmentTypes.Type.PH).ToString() },
+                new CurrentInstuctDescriptionTable(){ ParamName="Освещение", 
+                    ParamValue = showingInstruction.GetStateByPropertyID(MeasurmentTypes.Type.LightPerDay).ToString() + " ч/сут" },
             };
 
             dgCurrInstDescription.Dispatcher.Invoke(delegate { dgCurrInstDescription.ItemsSource = currInstrDescrTable; });
         }
-        private void DisplayStates(List<SystemConditionNode> states)
-        {
-            dgSystemCondition.ItemsSource = states;
-        }
-
         private void MonitorSystem()
         {
             while(true)

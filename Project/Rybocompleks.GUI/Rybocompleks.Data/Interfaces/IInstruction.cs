@@ -10,5 +10,6 @@ namespace Rybocompleks.Data
     {
         IMeasurment GetMaxAllowedState();
         IMeasurment GetMinAllowedState();
+        String ToString();
     }
 }
