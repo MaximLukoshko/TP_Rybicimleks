@@ -10,7 +10,7 @@ namespace Perepherial.ActiveSensors
 {
     public class ActiveTemperatureSensor : ActiveSensor
     {
-        public ActiveTemperatureSensor(Location loc, String name = "Активный датчик температуры")
+        public ActiveTemperatureSensor(Location loc, String name = "Активный термометр")
             : base(loc, name)
         {
         }

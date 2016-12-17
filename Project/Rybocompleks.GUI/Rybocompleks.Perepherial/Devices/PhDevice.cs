@@ -10,7 +10,7 @@ namespace Rybocompleks.Perepherial
 {
     public class PhDevice : Device
     {
-        public PhDevice(Location loc, String name = "Регулятор кислотности") : base(loc,name)
+        public PhDevice(Location loc, String name = "Дозатор питательных веществ") : base(loc,name)
         {
             SetState( new PHMeasurment(0) );
         }

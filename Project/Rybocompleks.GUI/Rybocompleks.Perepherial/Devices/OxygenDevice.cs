@@ -10,7 +10,7 @@ namespace Rybocompleks.Perepherial
 {
     public class OxygenDevice : Device
     {
-        public OxygenDevice(Location loc, String name = "Регулятор кислорода")
+        public OxygenDevice(Location loc, String name = "Дозатор кислорода")
             : base(loc,name)
         {
             SetState( new OxygenMeasurment(0) );

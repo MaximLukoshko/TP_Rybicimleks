@@ -10,7 +10,7 @@ namespace Rybocompleks.Perepherial
 {
     public class TemperatureSensor : Sensor
     {
-        public TemperatureSensor(Location loc, String name = "Датчик температуры") : base(loc,name)
+        public TemperatureSensor(Location loc, String name = "Термометр") : base(loc,name)
         {
             Measure();
         }

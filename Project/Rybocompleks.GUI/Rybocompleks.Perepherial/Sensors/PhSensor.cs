@@ -10,7 +10,7 @@ namespace Rybocompleks.Perepherial
 {
     public class PhSensor : Sensor
     {
-        public PhSensor(Location loc,String name = "Датчик кислотности") : base(loc,name)
+        public PhSensor(Location loc,String name = "PH датчик") : base(loc,name)
         {
             Measure();
         }
