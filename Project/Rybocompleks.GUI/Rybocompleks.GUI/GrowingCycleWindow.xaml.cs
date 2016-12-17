@@ -89,7 +89,7 @@ namespace Rybocompleks.GUI
             int i = 0;
             foreach(IHaveProp_Value el in mapForIUEl)
             {
-                ((UIElement)el).Dispatcher.Invoke(delegate { el.Value = states[i].ElementState; });
+                ((UIElement)el).Dispatcher.Invoke(delegate { el.Value = states[i].ElementState;});
                 i++;
             }
         }
@@ -149,7 +149,7 @@ namespace Rybocompleks.GUI
                 if(phObj is ActiveTemperatureSensor)            
                 {
                     tUI = new ActiveTemperatureSensorUI();
-                    //((ActiveTemperatureSensorUI)tUI).value = info.GetState().GetStringValue();;
+                    ((ActiveTemperatureSensorUI)tUI).Value = info.GetState().GetStringValue();;
                     canvas.Children.Add((ActiveTemperatureSensorUI)tUI);
                 }
                 if(phObj is LightSensor){ }
@@ -159,8 +159,8 @@ namespace Rybocompleks.GUI
 
                 double x = info.GetItem().GetLocation().X;
                 double y = info.GetItem().GetLocation().Y;
-                x *= canvas.ActualWidth / 100;
-                y *= canvas.ActualHeight / 100;
+                x *= (canvas.ActualWidth-80) / 100;
+                y *= (canvas.ActualHeight-100) / 100;
                 Canvas.SetTop(tUI, y);
                 Canvas.SetLeft(tUI, x);                
             }
