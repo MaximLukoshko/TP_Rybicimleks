@@ -6,29 +6,30 @@ namespace Rybocompleks.DecisionMakerModule
 {
      public class StateFormersController : IStateFormersController
     {
-         private IDictionary<MeasurmentTypes.Type, IStateFormer> StateFormers;
+         private IList<IStateFormer> StateFormers;
          public StateFormersController()
          {
-             StateFormers = new Dictionary<MeasurmentTypes.Type, IStateFormer>();
-             StateFormers.Add(MeasurmentTypes.Type.DefaultType, new DefaultStateFormer());
-             StateFormers.Add(MeasurmentTypes.Type.LightPerDay, new LightStateFormer());
+             StateFormers = new List<IStateFormer>();
+             StateFormers.Add(new DefaultStateFormer());
+             StateFormers.Add(new LightStateFormer());
          }
 
-         public IDictionary<MeasurmentTypes.Type, IMeasurment> FormDevicesInstructions(IDictionary<MeasurmentTypes.Type, IMeasurment> currentStates, 
-             IGPAllowedStates allowedStates)
+         public IList<IMeasurment> FormDevicesInstructions(IList<IMeasurment> currentStates, IGPAllowedStates allowedStates)
          {
-             IDictionary<MeasurmentTypes.Type, IMeasurment> ret = new Dictionary<MeasurmentTypes.Type, IMeasurment>();
+             IList<IMeasurment> ret = new List<IMeasurment>();
              
-             foreach(IMeasurment curState in currentStates.Values)
+             foreach(IMeasurment curState in currentStates)
              {
                  IStateFormer former = null;
-                 if(StateFormers.ContainsKey(curState.GetPropertyID()))    
-                    former = StateFormers[curState.GetPropertyID()];
-                 else
-                     former = StateFormers[MeasurmentTypes.Type.DefaultType];
 
-                 ret.Add(curState.GetPropertyID(),
-                     former.FormDevicesInstruction(curState, allowedStates));
+                 foreach (IStateFormer sf in StateFormers)
+                 {
+                     if (null == former && sf.GetPropertyID() == MeasurmentTypes.Type.DefaultType
+                         || sf.GetPropertyID() == former.GetPropertyID())
+                         former = sf;
+                 }
+
+                 ret.Add(former.FormDevicesInstruction(curState, allowedStates));
              }
 
              return ret;

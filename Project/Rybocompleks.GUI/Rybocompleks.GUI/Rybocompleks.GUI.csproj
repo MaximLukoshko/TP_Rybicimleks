@@ -60,7 +60,6 @@
     <Compile Include="Data\CurrentInstuctDescriptionTable.cs" />
     <Compile Include="Data\GPInstruction.cs" />
     <Compile Include="Data\GrowingPlan.cs" />
-    <Compile Include="Data\IGrowingPlan.cs" />
     <Compile Include="SelectStringWindow.xaml.cs">
       <DependentUpon>SelectStringWindow.xaml</DependentUpon>
     </Compile>

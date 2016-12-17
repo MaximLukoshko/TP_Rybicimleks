@@ -5,7 +5,7 @@ namespace Rybocompleks.Controllers
 {
     public interface IDevicesController : IController
     {
-        IDictionary<MeasurmentTypes.Type,IMeasurment> GetDevicesStates();
-        void AffectEnvironment(IDictionary<MeasurmentTypes.Type, IMeasurment> reauiredStates);
+        IList<IMeasurment> GetDevicesStates();
+        void AffectEnvironment(IList<IMeasurment> reauiredStates);
     }
 }

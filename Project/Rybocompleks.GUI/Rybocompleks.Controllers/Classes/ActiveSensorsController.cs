@@ -29,9 +29,9 @@ namespace Rybocompleks.Controllers
         public ICollection<IShowInfo> GetShowInfo()
         {
             List<IShowInfo> ret = new List<IShowInfo>();
-            IDictionary<MeasurmentTypes.Type, IActiveSensor> devices = physicalObjectsController.GetPhysicalObjects();
+            IList<IActiveSensor> devices = physicalObjectsController.GetPhysicalObjects();
 
-            foreach (IActiveSensor it in devices.Values)
+            foreach (IActiveSensor it in devices)
             {
                 ShowInfo shInf = new ShowInfo();
                 shInf.State=it.GetState();
@@ -44,7 +44,7 @@ namespace Rybocompleks.Controllers
 
         private void Monitor()
         {
-            ICollection<IActiveSensor> actSensors= physicalObjectsController.GetPhysicalObjects().Values;
+            ICollection<IActiveSensor> actSensors= physicalObjectsController.GetPhysicalObjects();
             IList<IMeasurment> dangerStates = new List<IMeasurment>();
             while(true)
             {

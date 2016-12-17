@@ -78,7 +78,7 @@ namespace Rybocompleks.Dispatcher
         {
             return growingPlan.GetAllowedStates(Hours, Minutes);
         }
-        private Boolean AffectEnvironmentByStates(IDictionary<MeasurmentTypes.Type, IMeasurment> envStates)
+        private Boolean AffectEnvironmentByStates(IList<IMeasurment> envStates)
         {
             IGPAllowedStates allowedStates = GetCurrentInstruction();
             if (null == allowedStates)
@@ -86,7 +86,7 @@ namespace Rybocompleks.Dispatcher
 
             mutex.WaitOne();
             //Формируем инструкции для приборов
-            IDictionary<MeasurmentTypes.Type, IMeasurment> reqStates = stateFormersController.FormDevicesInstructions(envStates, allowedStates);
+            IList<IMeasurment> reqStates = stateFormersController.FormDevicesInstructions(envStates, allowedStates);
             //Выставляем приборы в нужное состояние
             devicesController.AffectEnvironment(reqStates);
             mutex.ReleaseMutex();
@@ -101,7 +101,7 @@ namespace Rybocompleks.Dispatcher
             mutex.WaitOne();
             
             //Снимаем показания сенсоров и отправляем их для принятия решения и воздействия на окружающую среду
-            IDictionary<MeasurmentTypes.Type, IMeasurment> sensStates = sensorsController.GetEnvironmentStates();
+            IList<IMeasurment> sensStates = sensorsController.GetEnvironmentStates();
             if (false == AffectEnvironmentByStates(sensStates))
                 ret = false;
 
@@ -131,9 +131,9 @@ namespace Rybocompleks.Dispatcher
         }
         public void Notify(IList<IMeasurment> dangerStates)
         {
-            IDictionary<MeasurmentTypes.Type, IMeasurment> reqStates = new Dictionary<MeasurmentTypes.Type, IMeasurment>();
+            IList<IMeasurment> reqStates = new List<IMeasurment>();
             foreach (IMeasurment ds in dangerStates)
-                reqStates.Add(ds.GetPropertyID(), ds);
+                reqStates.Add(ds);
             
             AffectEnvironmentByStates(reqStates);
         }

@@ -10,11 +10,11 @@ namespace Rybocompleks.Controllers
     
     public class Controller<IPhysObjType> where IPhysObjType : IPhysicalObject
     {
-        protected IDictionary<MeasurmentTypes.Type, IPhysObjType> devices;
+        protected IList<IPhysObjType> devices;
 
         public Controller()
         {
-            devices = new Dictionary<MeasurmentTypes.Type, IPhysObjType>();
+            devices = new List<IPhysObjType>();
         }
 
         public ICollection<IShowInfo> GetShowInfo()
@@ -24,10 +24,10 @@ namespace Rybocompleks.Controllers
 
         public void AddObject(IPhysObjType obj)
         {
-            devices.Add(obj.GetPropertyID(), obj);
+            devices.Add(obj);
         }
 
-        public IDictionary<MeasurmentTypes.Type, IPhysObjType> GetPhysicalObjects()
+        public IList<IPhysObjType> GetPhysicalObjects()
         {
             return devices;
         }
