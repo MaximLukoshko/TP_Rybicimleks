@@ -34,8 +34,8 @@
                 <MenuItem Header="_Запусить цикл выращивания" HorizontalAlignment="Stretch" Click="RunGC_BtnClick"/>
             </MenuItem>
             <MenuItem Header="_Справка">
-               <MenuItem Header="_Просмотр справку" HorizontalAlignment="Stretch"/>
-               <MenuItem Header="_О программе" HorizontalAlignment="Stretch"/>
+            <!--   <MenuItem Header="_Просмотр справку" HorizontalAlignment="Stretch"/>   -->
+               <MenuItem Header="_О программе" HorizontalAlignment="Stretch" Click="AboutMenItem_Click"/>
             </MenuItem>
         </Menu>
         <ToolBarTray Name="toolButTray" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch">

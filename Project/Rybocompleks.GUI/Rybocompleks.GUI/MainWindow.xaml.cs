@@ -259,5 +259,10 @@ namespace Rybocompleks.GUI
             }           
         }
 
+        private void AboutMenItem_Click(object sender, RoutedEventArgs e)
+        {
+            Window w = new AboutProgramm();
+            w.Show();
+        }
     }
 }
