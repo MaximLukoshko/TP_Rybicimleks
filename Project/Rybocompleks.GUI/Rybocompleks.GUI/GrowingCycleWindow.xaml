@@ -31,14 +31,17 @@
                     </StackPanel>
                 </GroupBox>
                     <GroupBox  Header="Текущая инструкция" ScrollViewer.CanContentScroll="True">
-                    <DataGrid Name="dgCurrInstDescription" AutoGenerateColumns="False" CanUserAddRows="False"
+                    <StackPanel>
+                        <DataGrid Name="dgCurrInstDescription" AutoGenerateColumns="False" CanUserAddRows="False"
                           CanUserReorderColumns="False" Margin="2,0,2,2" MaxHeight="300">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Параметр" Width="auto"  Binding="{Binding Path=ParamName, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
                             <DataGridTextColumn Header="Значение"  Width="10*"  Binding="{Binding Path=ParamValue, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
                         </DataGrid.Columns>
-                    </DataGrid>
-            </GroupBox>
+                        </DataGrid>
+                        <ProgressBar Height="2" Maximum="100" Minimum="0"/>
+                    </StackPanel>
+                </GroupBox>
             </StackPanel>
             <GroupBox Grid.Column="1" Grid.Row="0" Header="Система">
                 <Canvas Name="canvas"></Canvas>

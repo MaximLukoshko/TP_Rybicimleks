@@ -15,11 +15,11 @@ namespace Rybocompleks.Controllers
         public SensorsController()
         {
             physicalObjectsController = new Controller<ISensor>();
-            physicalObjectsController.AddObject(new TemperatureSensor(new Location(50, 10)));
-            physicalObjectsController.AddObject(new TemperatureSensor(new Location(80, 50)));
-            physicalObjectsController.AddObject(new OxygenSensor(new Location(50, 30)));
-            physicalObjectsController.AddObject(new PhSensor(new Location(50, 60)));
-            physicalObjectsController.AddObject(new LightSensor(new Location(50, 80)));
+            physicalObjectsController.AddObject(new TemperatureSensor(new Location(50, 30)));
+            physicalObjectsController.AddObject(new TemperatureSensor(new Location(80, 30)));
+            physicalObjectsController.AddObject(new OxygenSensor(new Location(50, 80)));
+            physicalObjectsController.AddObject(new PhSensor(new Location(20, 60)));
+            physicalObjectsController.AddObject(new LightSensor(new Location(0, 0)));
         }
 
         public IList<IMeasurment> GetEnvironmentStates()
