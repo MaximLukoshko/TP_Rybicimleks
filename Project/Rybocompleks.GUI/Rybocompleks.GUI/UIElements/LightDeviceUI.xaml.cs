@@ -18,22 +18,22 @@ namespace Rybocompleks.GUI.UIElements
     /// <summary>
     /// Логика взаимодействия для LightDeviceUI.xaml
     /// </summary>
-    public partial class LightDeviceUI : UserControl
+    public partial class LightDeviceUI : UserControl, IHaveProp_Value
     {
         private bool _isLampOn = false;
-        public bool isLampOn {
+        public string Value {
             get
             {
-                return _isLampOn;
+                return _isLampOn.ToString();
             }
             set
             {
-                if (value != _isLampOn)
+                if (_isLampOn != Boolean.Parse(value))
                 {
-                    _isLampOn = value;
-                    if (isLampOn)                    
+                    _isLampOn = Boolean.Parse(value);
+                    if (_isLampOn)
                         img.Source =  new BitmapImage(new Uri(pathToImageOn, UriKind.Relative));                    
-                    else                   
+                    else
                         img.Source = new BitmapImage(new Uri(pathToImageOff, UriKind.Relative));                    
                 }
             }

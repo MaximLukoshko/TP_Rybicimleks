@@ -18,10 +18,10 @@ namespace Rybocompleks.GUI.UIElements
     /// <summary>
     /// Логика взаимодействия для TemperatureDeviceUI.xaml
     /// </summary>
-    public partial class TemperatureDeviceUI : UserControl
+    public partial class TemperatureDeviceUI : UserControl, IHaveProp_Value
     {
         private string temperatureValue;
-        public string TemperatureValue
+        public string Value
         {
             get
             {
@@ -36,7 +36,7 @@ namespace Rybocompleks.GUI.UIElements
         public TemperatureDeviceUI()
         {
             InitializeComponent();
-            value_lbl.Content = TemperatureValue;
+            value_lbl.Content = Value;
         }
     }
 }

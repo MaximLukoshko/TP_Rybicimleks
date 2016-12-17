@@ -16,9 +16,9 @@ using System.Windows.Shapes;
 namespace Rybocompleks.GUI.UIElements
 {
     /// <summary>
-    /// Логика взаимодействия для TemperatureSensorUI.xaml
+    /// Логика взаимодействия для ActiveTemperatureSensorUI.xaml
     /// </summary>
-    public partial class TemperatureSensorUI : UserControl, IHaveProp_Value
+    public partial class ActiveTemperatureSensorUI : UserControl, IHaveProp_Value
     {
         private string temperatureValue;
         public string Value
@@ -33,7 +33,7 @@ namespace Rybocompleks.GUI.UIElements
                 value_lbl.Content = temperatureValue;
             }
         }
-        public TemperatureSensorUI()
+        public ActiveTemperatureSensorUI()
         {
             InitializeComponent();
             value_lbl.Content = Value;

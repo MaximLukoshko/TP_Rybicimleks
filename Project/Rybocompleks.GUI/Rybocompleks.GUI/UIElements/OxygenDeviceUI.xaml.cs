@@ -18,10 +18,10 @@ namespace Rybocompleks.GUI.UIElements
     /// <summary>
     /// Логика взаимодействия для OxygenDeviceUI.xaml
     /// </summary>
-    public partial class OxygenDeviceUI : UserControl
+    public partial class OxygenDeviceUI : UserControl, IHaveProp_Value
     {
         private string oxygenValue;
-        public string OxygenValue
+        public string Value
         {
             get
             {

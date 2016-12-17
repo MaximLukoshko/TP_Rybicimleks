@@ -18,10 +18,10 @@ namespace Rybocompleks.GUI.UIElements
     /// <summary>
     /// Логика взаимодействия для PhDeviceUI.xaml
     /// </summary>
-    public partial class PhDeviceUI : UserControl
+    public partial class PhDeviceUI : UserControl, IHaveProp_Value
     {
         private string phValue;
-        public string PhValue
+        public string Value
         {
             get
             {

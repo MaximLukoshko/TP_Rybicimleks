@@ -18,10 +18,10 @@ namespace Rybocompleks.GUI.UIElements
     /// <summary>
     /// Логика взаимодействия для PhSensorUI.xaml
     /// </summary>
-    public partial class PhSensorUI : UserControl
+    public partial class PhSensorUI : UserControl, IHaveProp_Value
     {
         private string phValue;
-        public string PhValue
+        public string Value
         {
             get
             {
@@ -36,7 +36,7 @@ namespace Rybocompleks.GUI.UIElements
         public PhSensorUI()
         {
             InitializeComponent();
-            value_lbl.Content = PhValue;
+            value_lbl.Content = Value;
         }
     }
 }

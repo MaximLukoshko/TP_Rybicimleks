@@ -1,4 +1,5 @@
-﻿using Rybocompleks.Perepherial;
+﻿using Perepherial.ActiveSensors;
+using Rybocompleks.Perepherial;
 using Rybocompleks.GUI.UIElements;
 using Rybocompleks.GUI.Data;
 using Rybocompleks.Data;
@@ -27,7 +28,9 @@ namespace Rybocompleks.GUI
     {
         private IDispatcher GrowingDispatcher;
         private List<SystemConditionNode> states;
-        private GPInstruction currentInstruction;   
+        private GPInstruction currentInstruction;
+
+        private List<UIElement> mapForIUEl = new List<UIElement>();
 
         private Thread MonitorSystemThread;
 
@@ -47,13 +50,14 @@ namespace Rybocompleks.GUI
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             GrowingDispatcher.RunFishGrowing();
-            CrateSystemConditionCanvas();
+            CrateSystemConditionCanvas();            
+         
+            UpdateSystemConditionCanvas();
             MonitorSystemThread.Start();
         }
         private void UpdateSystemConditionTable()
         {          
             List<IShowInfo> showInfoList = (List<IShowInfo>)GrowingDispatcher.GetShowInfo();
-            //var states= from info in showInfoList select info.GetState().GetStringValue();
             states = new List<SystemConditionNode>();
             foreach (IShowInfo info in showInfoList)
             {
@@ -69,69 +73,98 @@ namespace Rybocompleks.GUI
         }
 
         private void UpdateSystemConditionCanvas()
-        {            
-        }
-
-        private void CrateSystemConditionCanvas()
         {
             List<IShowInfo> showInfoList = (List<IShowInfo>)GrowingDispatcher.GetShowInfo();
             states = new List<SystemConditionNode>();
             foreach (IShowInfo info in showInfoList)
             {
+                
+                string name = info.GetItem().Name;
+                if (name == "")
+                    continue;
+
+                string state = info.GetState().GetStringValue();
+                states.Add(new SystemConditionNode(name, state));
+            }
+            int i = 0;
+            foreach(IHaveProp_Value el in mapForIUEl)
+            {
+                ((UIElement)el).Dispatcher.Invoke(delegate { el.Value = states[i].ElementState; });
+                i++;
+            }
+        }
+
+        private void CrateSystemConditionCanvas()
+        {
+            canvas.Dispatcher.Invoke(delegate { canvas.Children.Clear(); });            
+            List<IShowInfo> showInfoList = (List<IShowInfo>)GrowingDispatcher.GetShowInfo();
+            states = new List<SystemConditionNode>();            
+            foreach (IShowInfo info in showInfoList)
+            {
                 IPhysicalObject phObj = (IPhysicalObject)info.GetItem();
-                UIElement tUI = new UIElement();
+                UIElement tUI = new UIElement();              
                 if (phObj is TemperatureSensor)
                 {
                     tUI = new TemperatureSensorUI();
-                    ((TemperatureSensorUI)tUI).TemperatureValue = info.GetState().GetStringValue();
-                    canvas.Children.Add((TemperatureSensorUI)tUI);
+                    ((TemperatureSensorUI)tUI).Value = info.GetState().GetStringValue();                                        
+                    canvas.Children.Add((TemperatureSensorUI)tUI);                    
                 }
                 if (phObj is OxygenSensor)
                 {
                     tUI = new OxygenSensorUI();
-                    ((OxygenSensorUI)tUI).OxygenValue = info.GetState().GetStringValue();
+                    ((OxygenSensorUI)tUI).Value = info.GetState().GetStringValue();
                     canvas.Children.Add((OxygenSensorUI)tUI);
                 }
                 if (phObj is PhSensor)
                 {
                     tUI = new PhSensorUI();
-                    ((PhSensorUI)tUI).PhValue = info.GetState().GetStringValue();
+                    ((PhSensorUI)tUI).Value = info.GetState().GetStringValue();
                     canvas.Children.Add((PhSensorUI)tUI);
                 }
-
                 if (phObj is PhDevice)
                 {
                     tUI = new PhDeviceUI();
-                    ((PhDeviceUI)tUI).PhValue = info.GetState().GetStringValue();
+                    ((PhDeviceUI)tUI).Value = info.GetState().GetStringValue();
                     canvas.Children.Add((PhDeviceUI)tUI);
                 }
                 if (phObj is OxygenDevice)
                 {
                     tUI = new OxygenDeviceUI();
-                    ((OxygenDeviceUI)tUI).OxygenValue = info.GetState().GetStringValue();
+                    ((OxygenDeviceUI)tUI).Value = info.GetState().GetStringValue();
                     canvas.Children.Add((OxygenDeviceUI)tUI);
                 }
 
                 if (phObj is TemperatureDevice)
                 {
                     tUI = new TemperatureDeviceUI();
-                    ((TemperatureDeviceUI)tUI).TemperatureValue = info.GetState().GetStringValue();
+                    ((TemperatureDeviceUI)tUI).Value = info.GetState().GetStringValue();
                     canvas.Children.Add((TemperatureDeviceUI)tUI);
                 }
                 if (phObj is LightDevice)
                 {
                     tUI = new LightDeviceUI();
-                    ((LightDeviceUI)tUI).isLampOn = Boolean.Parse(info.GetState().GetStringValue());
+                    ((LightDeviceUI)tUI).Value = info.GetState().GetStringValue();
                     canvas.Children.Add((LightDeviceUI)tUI);
                 }
+                if(phObj is ActiveTemperatureSensor)            
+                {
+                    tUI = new ActiveTemperatureSensorUI();
+                    //((ActiveTemperatureSensorUI)tUI).value = info.GetState().GetStringValue();;
+                    canvas.Children.Add((ActiveTemperatureSensorUI)tUI);
+                }
+                if(phObj is LightSensor){ }
+                else
+                    mapForIUEl.Add(tUI);
+                
+
                 double x = info.GetItem().GetLocation().X;
                 double y = info.GetItem().GetLocation().Y;
                 x *= canvas.ActualWidth / 100;
                 y *= canvas.ActualHeight / 100;
                 Canvas.SetTop(tUI, y);
-                Canvas.SetLeft(tUI, x);
+                Canvas.SetLeft(tUI, x);                
             }
-            dgSystemCondition.Dispatcher.Invoke(delegate { dgSystemCondition.ItemsSource = states; });
+           // dgSystemCondition.Dispatcher.Invoke(delegate { dgSystemCondition.ItemsSource = states; });
 
         }
 
@@ -174,11 +207,13 @@ namespace Rybocompleks.GUI
             
             return true;
         }
+      
         private void MonitorSystem()
         {
             while (true == UpdateCurrentInstructionTable()) 
             {
-                UpdateSystemConditionTable();                
+                UpdateSystemConditionTable();
+                UpdateSystemConditionCanvas();
                 Thread.Sleep(500);
             }
             string msg = "Выращивание завершено";

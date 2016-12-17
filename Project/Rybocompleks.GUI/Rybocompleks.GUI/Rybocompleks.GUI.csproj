@@ -65,6 +65,10 @@
       <DependentUpon>SelectStringWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Data\SystemConditionNode.cs" />
+    <Compile Include="UIElements\ActiveTemperatureSensorUI.xaml.cs">
+      <DependentUpon>ActiveTemperatureSensorUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UIElements\IHaveProp_Value.cs" />
     <Compile Include="UIElements\LightDeviceUI.xaml.cs">
       <DependentUpon>LightDeviceUI.xaml</DependentUpon>
     </Compile>
@@ -130,6 +134,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SelectStringWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UIElements\ActiveTemperatureSensorUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
