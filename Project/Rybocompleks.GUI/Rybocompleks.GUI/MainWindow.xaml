@@ -85,8 +85,8 @@
                 <DataGridTextColumn Header="Наименование стадии" Width="280" Binding="{Binding Path=InstructionName, UpdateSourceTrigger=LostFocus}"/>
                 <DataGridTextColumn Header="Часов" Width="90" Binding="{Binding Path=Hours, UpdateSourceTrigger=LostFocus}"/>
                 <DataGridTextColumn Header="Минут" Width="90" Binding="{Binding Path=Minutes, UpdateSourceTrigger=LostFocus}"/>
-                <DataGridTextColumn Header="Температура(min)" Width="90"  Binding="{Binding Path=TemperatureMin, UpdateSourceTrigger=LostFocus}"/>
-                <DataGridTextColumn Header="Температура(max)" Width="90"  Binding="{Binding Path=TemperatureMax, UpdateSourceTrigger=LostFocus}"/>
+                <DataGridTextColumn Header="Температура(min)" Width="110"  Binding="{Binding Path=TemperatureMin, UpdateSourceTrigger=LostFocus}"/>
+                <DataGridTextColumn Header="Температура(max)" Width="110"  Binding="{Binding Path=TemperatureMax, UpdateSourceTrigger=LostFocus}"/>
                 <DataGridTextColumn Header="Кислород" Width="90" Binding="{Binding Path=Oxygen, UpdateSourceTrigger=LostFocus}"/>
                 <DataGridTextColumn Header="Освещение" Width="90" Binding="{Binding Path=LightHoursPerDay, UpdateSourceTrigger=LostFocus}"/>
                 <DataGridTextColumn Header="pH" Width="90" Binding="{Binding Path=PH, UpdateSourceTrigger=LostFocus}"/>
