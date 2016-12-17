@@ -32,14 +32,14 @@
                 </GroupBox>
                     <GroupBox  Header="Текущая инструкция" ScrollViewer.CanContentScroll="True">
                     <StackPanel>
+                        <ProgressBar Name="progressInstrBar" Height="5" Maximum="100" Minimum="0" Margin="2"/>
                         <DataGrid Name="dgCurrInstDescription" AutoGenerateColumns="False" CanUserAddRows="False"
-                          CanUserReorderColumns="False" Margin="2,0,2,2" MaxHeight="300">
+                          CanUserReorderColumns="False" Margin="2,2,2,2" MaxHeight="300">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Параметр" Width="auto"  Binding="{Binding Path=ParamName, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
                             <DataGridTextColumn Header="Значение"  Width="10*"  Binding="{Binding Path=ParamValue, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
                         </DataGrid.Columns>
                         </DataGrid>
-                        <ProgressBar Height="2" Maximum="100" Minimum="0"/>
                     </StackPanel>
                 </GroupBox>
             </StackPanel>
