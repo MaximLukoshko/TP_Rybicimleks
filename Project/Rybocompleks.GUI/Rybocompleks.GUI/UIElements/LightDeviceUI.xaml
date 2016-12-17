@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="80">
     <Canvas>
-        <Label Canvas.Left="17" >Лампа</Label>
+        <Label Name="CaptionLbl" Canvas.Left="17" >Лампа</Label>
         <Image Canvas.Top="20" Name="img" Source="Content/lightOff.png" Height="80" Width="80"></Image>
     </Canvas>
 </UserControl>
