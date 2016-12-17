@@ -22,7 +22,7 @@
                 <GroupBox Header="Состояние системы">
                     <StackPanel>
                         <DataGrid Name="dgSystemCondition"  AutoGenerateColumns="False" CanUserAddRows="False"
-                              CanUserReorderColumns="False" Margin="2,0,2,2" MaxHeight="300">
+                           CanUserSortColumns="False" CanUserReorderColumns="False" Margin="2,0,2,2" MaxHeight="300">
                             <DataGrid.Columns>
                             <DataGridTextColumn Header="Устройство" Width="auto"  Binding="{Binding Path=ElementName, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
                             <DataGridTextColumn Header="Состояние"  Width="20*"  Binding="{Binding Path=ElementState, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
@@ -34,7 +34,7 @@
                     <StackPanel>
                         <ProgressBar Name="progressInstrBar" Height="5" Maximum="100" Minimum="0" Margin="2"/>
                         <DataGrid Name="dgCurrInstDescription" AutoGenerateColumns="False" CanUserAddRows="False"
-                          CanUserReorderColumns="False" Margin="2,2,2,2" MaxHeight="300">
+                          CanUserReorderColumns="False" CanUserSortColumns="False" Margin="2" MaxHeight="300">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Параметр" Width="auto"  Binding="{Binding Path=ParamName, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
                             <DataGridTextColumn Header="Значение"  Width="10*"  Binding="{Binding Path=ParamValue, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>

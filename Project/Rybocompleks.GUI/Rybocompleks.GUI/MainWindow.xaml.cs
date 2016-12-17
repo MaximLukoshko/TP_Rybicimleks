@@ -229,7 +229,7 @@ namespace Rybocompleks.GUI
 
             IDispatcher dispatcher = new Dispatcher.Dispatcher(planForModel);
             GrowingCycleWindow gcw = new GrowingCycleWindow(dispatcher);
-            gcw.Show();
+            gcw.ShowDialog();
         }
 
         private void UpdateWindow()
