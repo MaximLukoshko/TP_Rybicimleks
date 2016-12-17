@@ -44,7 +44,9 @@
                 </GroupBox>
             </StackPanel>
             <GroupBox Grid.Column="1" Grid.Row="0" Header="Система">
-                <Canvas Name="canvas"></Canvas>
+                <Canvas Name="canvas" >
+                    <Image Source="Content/backgraund.jpg" Height="{Binding Path=canvas.}"/>
+                </Canvas>
             </GroupBox>    
         </Grid>
     </DockPanel>

@@ -1,0 +1,28 @@
+﻿<Window x:Class="Rybocompleks.GUI.AboutProgramm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Rybocompleks.GUI"
+        mc:Ignorable="d"
+        Title="О программе" Height="275.301" Width="300">
+    <StackPanel Height="228" VerticalAlignment="Top" Margin="7,7,7,-11">
+        <TextBlock TextWrapping="Wrap" Height="31">
+            Rybokompleks v1.0 2016.
+        </TextBlock>
+        <Separator></Separator>
+        <TextBlock TextWrapping="Wrap">
+            Данная программа является работой по учебной дисциплине "Технологии программирования". 
+            Разработали студенты 3 курса 6 группы 
+            факультета Радиофизики и компьютерных технологий БГУ
+        </TextBlock>
+        <Label>
+            Лукошоко Максим
+        </Label>
+        <Label Height="43">
+            Палович Андрей
+        </Label>
+        <Separator/>
+        <Button Content="OK" Margin="185,0,24,0" Click="Button_Click"/>
+    </StackPanel>
+</Window>
