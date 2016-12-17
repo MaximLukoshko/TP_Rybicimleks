@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="80">
     <Canvas>
-        <Label Canvas.Left="5" >Ph датчик</Label>
+        <Label Name="CaptionLbl" Canvas.Left="5" >Ph датчик</Label>
         <Image Canvas.Top="20" Name="img" Source="Content/phSensor.png" Height="80" Width="50" Canvas.Left="2"></Image>
         <Label Name="value_lbl" Canvas.Left="45" Canvas.Top="35">7</Label>
     </Canvas>

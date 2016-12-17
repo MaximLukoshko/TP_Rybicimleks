@@ -7,8 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="80">
     <Canvas>
-        <Label Canvas.Left="0" >Дозатор</Label>
-        <Label Canvas.Left="15" Canvas.Top="13">кислорода</Label>
+        <Label Name="CaptionLbl" Canvas.Left="0" >Дозатор</Label>
         <Image Canvas.Top="25" Name="img" Source="Content/oxygenDev.png" Height="80" Width="60" Canvas.Left="2"></Image>
         <Label Name="value_lbl" Canvas.Left="55" Canvas.Top="40">98</Label>
     </Canvas>

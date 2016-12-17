@@ -6,9 +6,8 @@
              xmlns:local="clr-namespace:Rybocompleks.GUI.UIElements"
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="85">
-    
     <Canvas>
-        <Label Canvas.Left="3" >Нагреватель</Label>
+        <Label Name="CaptionLbl" Canvas.Left="3" >Нагреватель</Label>
             <Image Canvas.Top="20" Name="img" Source="Content/tempDev.png" Height="80" Width="55" Canvas.Left="2"></Image>
         <Label Name="value_lbl" Canvas.Left="60" Canvas.Top="44">0</Label>
     </Canvas>

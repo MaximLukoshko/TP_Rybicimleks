@@ -106,31 +106,36 @@ namespace Rybocompleks.GUI
                 if (phObj is TemperatureSensor)
                 {
                     tUI = new TemperatureSensorUI();
-                    ((TemperatureSensorUI)tUI).Value = info.GetState().GetStringValue();                                        
+                    ((TemperatureSensorUI)tUI).Value = info.GetState().GetStringValue();
+                    ((TemperatureSensorUI)tUI).CaptionLbl.Content = info.GetItem().Name;
                     canvas.Children.Add((TemperatureSensorUI)tUI);                    
                 }
                 if (phObj is OxygenSensor)
                 {
                     tUI = new OxygenSensorUI();
                     ((OxygenSensorUI)tUI).Value = info.GetState().GetStringValue();
+                    ((OxygenSensorUI)tUI).CaptionLbl.Content = info.GetItem().Name;
                     canvas.Children.Add((OxygenSensorUI)tUI);
                 }
                 if (phObj is PhSensor)
                 {
                     tUI = new PhSensorUI();
                     ((PhSensorUI)tUI).Value = info.GetState().GetStringValue();
+                    ((PhSensorUI)tUI).CaptionLbl.Content = info.GetItem().Name;
                     canvas.Children.Add((PhSensorUI)tUI);
                 }
                 if (phObj is PhDevice)
                 {
                     tUI = new PhDeviceUI();
                     ((PhDeviceUI)tUI).Value = info.GetState().GetStringValue();
+                    ((PhDeviceUI)tUI).CaptionLbl.Content = info.GetItem().Name;
                     canvas.Children.Add((PhDeviceUI)tUI);
                 }
                 if (phObj is OxygenDevice)
                 {
                     tUI = new OxygenDeviceUI();
                     ((OxygenDeviceUI)tUI).Value = info.GetState().GetStringValue();
+                    ((OxygenDeviceUI)tUI).CaptionLbl.Content = info.GetItem().Name;
                     canvas.Children.Add((OxygenDeviceUI)tUI);
                 }
 
@@ -138,18 +143,21 @@ namespace Rybocompleks.GUI
                 {
                     tUI = new TemperatureDeviceUI();
                     ((TemperatureDeviceUI)tUI).Value = info.GetState().GetStringValue();
+                    ((TemperatureDeviceUI)tUI).CaptionLbl.Content = info.GetItem().Name;
                     canvas.Children.Add((TemperatureDeviceUI)tUI);
                 }
                 if (phObj is LightDevice)
                 {
                     tUI = new LightDeviceUI();
                     ((LightDeviceUI)tUI).Value = info.GetState().GetStringValue();
+                    ((LightDeviceUI)tUI).CaptionLbl.Content = info.GetItem().Name;
                     canvas.Children.Add((LightDeviceUI)tUI);
                 }
                 if(phObj is ActiveTemperatureSensor)            
                 {
                     tUI = new ActiveTemperatureSensorUI();
-                    ((ActiveTemperatureSensorUI)tUI).Value = info.GetState().GetStringValue();;
+                    ((ActiveTemperatureSensorUI)tUI).Value = info.GetState().GetStringValue();
+                    ((ActiveTemperatureSensorUI)tUI).CaptionLbl.Content = info.GetItem().Name;
                     canvas.Children.Add((ActiveTemperatureSensorUI)tUI);
                 }
                 if(phObj is LightSensor){ }
