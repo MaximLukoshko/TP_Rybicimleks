@@ -25,7 +25,7 @@ namespace Rybocompleks.DecisionMakerModule
                  foreach (IStateFormer sf in StateFormers)
                  {
                      if (null == former && sf.GetPropertyID() == MeasurmentTypes.Type.DefaultType
-                         || sf.GetPropertyID() == former.GetPropertyID())
+                         || sf.GetPropertyID() == curState.GetPropertyID())
                          former = sf;
                  }
 
