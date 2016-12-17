@@ -39,7 +39,6 @@ namespace Rybocompleks.Perepherial
             lightMustBe         = lightReal;
 
             environmentThread = new Thread(Change);
-            environmentThread.Start();
         }
 
         private static void Change()

@@ -127,7 +127,7 @@ namespace Rybocompleks.Dispatcher
         private void Run()
         {
             while (true == MakeCycle())
-                Thread.Sleep(15000);
+                Thread.Sleep(4000);
         }
         public void Notify(IList<IMeasurment> dangerStates)
         {
