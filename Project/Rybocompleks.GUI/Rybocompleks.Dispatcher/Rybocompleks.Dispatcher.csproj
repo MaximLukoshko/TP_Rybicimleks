@@ -39,12 +39,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\GPAllowedStates.cs" />
     <Compile Include="Classes\GrowingPlanCommon.cs" />
     <Compile Include="Classes\Dispatcher.cs" />
     <Compile Include="Interfaces\IDispatcher.cs" />
     <Compile Include="Interfaces\IGrowingPlanCommon.cs" />
-    <Compile Include="Interfaces\IToIGPAllowedStates.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\GPAllowedStates.cs" />
     <Compile Include="Classes\Instructions\Instruction.cs" />
     <Compile Include="Classes\Instructions\LightInstruction.cs" />
     <Compile Include="Classes\Measurments\LightMeasurment.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="Interfaces\IActiveSensorsControllerListener.cs" />
     <Compile Include="Interfaces\IGPAllowedStates.cs" />
     <Compile Include="Interfaces\IInstruction.cs" />
+    <Compile Include="Interfaces\IToIGPAllowedStates.cs" />
     <Compile Include="Interfaces\Measurments\ILightMeasurment.cs" />
     <Compile Include="Interfaces\Measurments\IMeasurment.cs" />
     <Compile Include="Interfaces\Measurments\IOxygenMeasurrment.cs" />
