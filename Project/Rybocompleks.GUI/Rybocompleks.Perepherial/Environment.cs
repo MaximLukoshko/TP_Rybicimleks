@@ -24,7 +24,18 @@ namespace Rybocompleks.Perepherial
         private static LightMeasurment          lightReal           = null;
 
         //поток изменения состояния
-        public static Thread environmentThread { get; private set; }
+        private static Thread environmentThread = null;
+        public static Thread EnvironmentThread 
+        { 
+            get
+            {
+                return environmentThread;
+            }
+            set
+            {
+                environmentThread = new Thread(Change); // При попытке любого присваивания поток сбрасывается
+            } 
+        }
         static Nature()
         {
 
@@ -41,6 +52,14 @@ namespace Rybocompleks.Perepherial
             environmentThread = new Thread(Change);
         }
 
+        public static void StartModelling()
+        {
+
+        }
+        public static void StopModelling()
+        {
+
+        }
         private static void Change()
         {
             while (true)

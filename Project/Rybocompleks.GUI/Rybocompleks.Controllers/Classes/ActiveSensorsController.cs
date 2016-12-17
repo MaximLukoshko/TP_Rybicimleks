@@ -71,14 +71,15 @@ namespace Rybocompleks.Controllers
         public void RunMonitoring()
         {
             MonitorSensorsThread.Start();
-            Nature.environmentThread.Start();   // Запускаем процесс изменения окружающей среды отсюда,
+            Nature.EnvironmentThread.Start();   // Запускаем процесс изменения окружающей среды отсюда,
                                                 // потому что изменение состояние среды никак не зависит от системы
         }
 
         public void StopMonitoring()
         {
             MonitorSensorsThread.Abort();
-            Nature.environmentThread.Abort();   // См. комментарий к "Nature.environmentThread.Start();"
+            Nature.EnvironmentThread.Abort();   // См. комментарий к "Nature.environmentThread.Start();"
+            Nature.EnvironmentThread = null;    // Очищаем поток окружающей среды
         }
     }
 }
